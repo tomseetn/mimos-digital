@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mimo Solutions — Digital Transformation &amp; IT Services</title>
+  <meta name="description" content="Mimo Solutions helps businesses in Malaysia and Southeast Asia accelerate digital transformation through IT consulting, web development, process automation, and cloud solutions." />
+  <meta property="og:title" content="Mimo Solutions — Digital Transformation &amp; IT Services" />
+  <meta property="og:description" content="Helping Malaysian businesses accelerate digital transformation through IT consulting, web development, and process automation." />
+  <meta property="og:url" content="https://mimos.digital" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mimo Solutions — Digital Transformation &amp; IT Services" />
+  <meta name="twitter:description" content="Helping Malaysian businesses accelerate digital transformation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    :root {
+      --dark:       #080D1A;
+      --dark-2:     #0D1427;
+      --dark-3:     #131C34;
+      --dark-4:     #1E2A45;
+      --accent:     #00D4A8;
+      --accent-dim: #00A882;
+      --accent-gl:  rgba(0,212,168,0.12);
+      --white:      #FFFFFF;
+      --g1:         #EEF0F6;
+      --g2:         #B8BCCE;
+      --g3:         #6B7194;
+      --g4:         #2E3550;
+      --line:       rgba(255,255,255,0.07);
+      --line2:      rgba(255,255,255,0.13);
+      --max:        1200px;
+      --gap:        clamp(20px,5vw,60px);
+      --r-md:       8px;
+      --r-lg:       14px;
+      --r-xl:       22px;
+      --display:    clamp(38px,5.2vw,72px);
+      --h1:         clamp(30px,3.8vw,52px);
+      --h2:         clamp(24px,2.4vw,36px);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+      font-size:16px;line-height:1.65;
+      color:var(--white);background:var(--dark);
+      -webkit-font-smoothing:antialiased;
+    }
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:var(--dark-2)}
+    ::-webkit-scrollbar-thumb{background:var(--dark-4);border-radius:3px}
+
+    /* NAV */
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      height:68px;padding:0 var(--gap);display:flex;align-items:center;
+      border-bottom:1px solid transparent;transition:background .3s,border-color .3s;
+    }
+    .nav.solid{
+      background:rgba(8,13,26,.92);
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+      border-bottom-color:var(--line);
+    }
+    .nav-inner{width:100%;max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:8px}
+    .brand{display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;padding:0}
+    .brand-mark{
+      width:36px;height:36px;background:var(--accent);border-radius:8px;
+      display:flex;align-items:center;justify-content:center;
+      font-family:"JetBrains Mono",monospace;font-size:15px;font-weight:700;
+      color:var(--dark);flex-shrink:0;
+    }
+    .brand-name{font-size:15px;font-weight:700;color:var(--white);line-height:1;letter-spacing:-.2px}
+    .brand-sub{font-size:10px;color:var(--g3);letter-spacing:.05em;margin-top:2px}
+    .nav-links{display:flex;align-items:center;gap:2px;margin-left:auto}
+    .nav-links button{
+      background:none;border:none;cursor:pointer;padding:6px 14px;
+      font-size:14px;font-weight:500;color:var(--g2);border-radius:var(--r-md);
+      transition:color .2s,background .2s;font-family:inherit;
+    }
+    .nav-links button:hover{color:var(--white);background:var(--line)}
+    .nav-links button.active{color:var(--accent)}
+    .nav-cta{
+      background:var(--accent);color:var(--dark)!important;border:none;
+      padding:8px 20px!important;font-weight:700!important;
+      border-radius:var(--r-md)!important;cursor:pointer;font-size:14px;
+      transition:background .2s,transform .15s;white-space:nowrap;font-family:inherit;
+    }
+    .nav-cta:hover{background:var(--accent-dim);transform:translateY(-1px)}
+    .burger{
+      display:none;flex-direction:column;gap:5px;
+      background:none;border:none;cursor:pointer;padding:4px;margin-left:auto;
+    }
+    .burger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:transform .25s,opacity .25s}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mmenu{
+      display:none;position:fixed;top:68px;left:0;right:0;z-index:99;
+      background:rgba(8,13,26,.97);backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--line);padding:16px var(--gap) 24px;
+      flex-direction:column;gap:4px;
+    }
+    .mmenu.open{display:flex}
+    .mmenu button{
+      background:none;border:none;cursor:pointer;padding:12px 16px;
+      font-size:16px;font-weight:500;color:var(--g2);text-align:left;
+      border-radius:var(--r-md);transition:color .2s,background .2s;font-family:inherit;
+    }
+    .mmenu button:hover{color:var(--white);background:var(--line)}
+    .mmenu button.active{color:var(--accent)}
+    .mmenu-cta{background:var(--accent)!important;color:var(--dark)!important;font-weight:700!important;text-align:center!important;margin-top:8px}
+    @media(max-width:860px){.nav-links,.nav-cta{display:none}.burger{display:flex}}
+
+    /* LANG TOGGLE */
+    .ltoggle{
+      display:flex;align-items:center;gap:2px;
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+      border-radius:999px;padding:3px;
+    }
+    .ltoggle button{
+      background:none;border:none;cursor:pointer;padding:4px 10px;
+      font-size:11px;font-weight:600;border-radius:999px;
+      font-family:"JetBrains Mono",monospace;letter-spacing:.04em;
+      transition:all .2s;
+    }
+    .ltoggle button.on{background:var(--accent);color:var(--dark)}
+    .ltoggle button.off{color:rgba(255,255,255,.45)}
+
+    /* HERO */
+    .hero{
+      min-height:100vh;display:flex;align-items:center;
+      position:relative;overflow:hidden;padding:100px var(--gap) 80px;
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 80% 60% at 65% 40%,rgba(0,212,168,.08) 0%,transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 80%,rgba(79,123,240,.06) 0%,transparent 50%),
+        var(--dark);
+    }
+    .hero-grid{
+      position:absolute;inset:0;
+      background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+      background-size:60px 60px;
+      mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);
+    }
+    .hero-inner{position:relative;z-index:1;width:100%;max-width:var(--max);margin:0 auto}
+    .hero-pill{
+      display:inline-flex;align-items:center;gap:8px;margin-bottom:28px;
+      padding:6px 14px;border:1px solid rgba(0,212,168,.3);border-radius:999px;
+      font-size:12px;font-weight:500;color:var(--accent);letter-spacing:.08em;
+      background:var(--accent-gl);
+    }
+    .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
+    .hero h1{font-size:var(--display);font-weight:800;letter-spacing:-2px;line-height:1.06;margin:0 0 24px;max-width:820px}
+    .hero h1 .ac{color:var(--accent)}
+    .hero-sub{font-size:clamp(16px,1.6vw,19px);color:var(--g2);max-width:560px;line-height:1.72;margin:0 0 40px}
+    .ctas{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+      padding:13px 26px;font-size:15px;font-weight:700;border-radius:var(--r-lg);
+      border:none;transition:all .2s;font-family:inherit;
+    }
+    .btn-p{background:var(--accent);color:var(--dark)}
+    .btn-p:hover{background:var(--accent-dim);transform:translateY(-2px)}
+    .btn-o{background:transparent;color:var(--white);border:1px solid var(--line2)}
+    .btn-o:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+    .hero-stats{
+      display:flex;gap:48px;margin-top:64px;padding-top:40px;
+      border-top:1px solid var(--line);flex-wrap:wrap;
+    }
+    .stat-n{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1}
+    .stat-l{font-size:12px;color:var(--g3);margin-top:4px}
+
+    /* SECTION */
+    .sec{padding:96px var(--gap)}
+    .sec-in{max-width:var(--max);margin:0 auto}
+    .sec-label{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:12px}
+    .sec-title{font-size:var(--h2);font-weight:800;letter-spacing:-.5px;color:var(--white);line-height:1.15;margin:0 0 14px}
+    .sec-desc{font-size:17px;color:var(--g2);max-width:520px;line-height:1.7;margin:0 0 52px}
+
+    /* SERVICE CARDS */
+    .svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+    .svc-card{
+      background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-xl);padding:28px;
+      transition:border-color .25s,transform .25s;
+    }
+    .svc-card:hover{border-color:rgba(0,212,168,.3);transform:translateY(-4px)}
+    .svc-icon{
+      width:42px;height:42px;background:var(--accent-gl);border:1px solid rgba(0,212,168,.2);
+      border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;
+      color:var(--accent);margin-bottom:16px;
+    }
+    .svc-num{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--g4);margin-bottom:8px}
+    .svc-t{font-size:17px;font-weight:700;color:var(--white);margin:0 0 10px}
+    .svc-d{font-size:14px;color:var(--g3);line-height:1.65;margin:0}
+
+    /* ABOUT TEASER */
+    .dark-sec{background:var(--dark-2)}
+    .ab-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    @media(max-width:860px){.ab-layout{grid-template-columns:1fr;gap:40px}}
+    .ab-card{background:var(--dark-3);border:1px solid var(--line);border-radius:var(--r-xl);padding:32px}
+    .f-avatar{
+      width:68px;height:68px;border-radius:50%;border:2px solid var(--accent);
+      background:var(--dark-4);display:flex;align-items:center;justify-content:center;
+      font-size:22px;font-weight:700;color:var(--accent);margin-bottom:14px;overflow:hidden;
+    }
+    .f-avatar img{width:100%;height:100%;object-fit:cover}
+    .f-name{font-size:19px;font-weight:700;color:var(--white);margin:0 0 4px}
+    .f-role{font-size:13px;color:var(--accent);font-weight:500;margin:0 0 14px}
+    .f-bio{font-size:14px;color:var(--g2);line-height:1.7;margin:0 0 18px}
+    .f-links{display:flex;gap:10px}
+    .badge{
+      display:inline-flex;align-items:center;gap:6px;padding:6px 12px;
+      background:var(--accent-gl);border:1px solid rgba(0,212,168,.2);
+      border-radius:var(--r-md);font-size:12px;color:var(--accent);
+      text-decoration:none;transition:background .2s;
+    }
+    .badge:hover{background:rgba(0,212,168,.2)}
+    .ab-bullets{list-style:none;padding:0;margin:0 0 32px}
+    .ab-bullets li{
+      display:flex;align-items:flex-start;gap:12px;color:var(--g2);font-size:15px;
+      padding:10px 0;border-bottom:1px solid var(--line);
+    }
+    .ab-bullets li:last-child{border-bottom:none}
+    .ab-bullets li::before{
+      content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
+      flex-shrink:0;margin-top:9px;
+    }
+
+    /* CTA BANNER */
+    .cta-box{
+      background:linear-gradient(135deg,var(--dark-3) 0%,rgba(0,212,168,.06) 100%);
+      border:1px solid rgba(0,212,168,.15);border-radius:var(--r-xl);
+      padding:56px 48px;text-align:center;
+    }
+    .cta-box h2{font-size:clamp(26px,3.5vw,42px);font-weight:800;letter-spacing:-.5px;margin:0 0 14px}
+    .cta-box p{font-size:17px;color:var(--g2);margin:0 0 34px;max-width:460px;margin-left:auto;margin-right:auto}
+
+    /* PROJECTS */
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+    .proj-card{
+      background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-xl);
+      overflow:hidden;transition:border-color .25s,transform .25s;
+    }
+    .proj-card:hover{border-color:rgba(0,212,168,.3);transform:translateY(-4px)}
+    .proj-thumb{
+      height:180px;display:flex;align-items:center;justify-content:center;
+      font-size:42px;letter-spacing:-2px;font-weight:800;
+      background:var(--dark-3);border-bottom:1px solid var(--line);
+    }
+    .proj-body{padding:28px}
+    .proj-tag{
+      display:inline-block;padding:3px 10px;background:var(--accent-gl);
+      border-radius:999px;font-size:11px;font-weight:600;color:var(--accent);
+      letter-spacing:.06em;margin-bottom:14px;
+    }
+    .proj-title{font-size:20px;font-weight:700;color:var(--white);margin:0 0 10px}
+    .proj-desc{font-size:14px;color:var(--g3);line-height:1.65;margin:0 0 20px}
+    .proj-url{
+      display:inline-flex;align-items:center;gap:6px;font-size:13px;
+      color:var(--accent);text-decoration:none;font-weight:500;
+      transition:gap .2s;
+    }
+    .proj-url:hover{gap:10px}
+
+    /* SERVICES FULL PAGE */
+    .svc-full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+    .svc-full-card{
+      background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-xl);padding:34px;
+      transition:border-color .25s;
+    }
+    .svc-full-card:hover{border-color:rgba(0,212,168,.25)}
+    .svc-tag{display:inline-block;padding:3px 10px;background:var(--accent-gl);border-radius:999px;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.06em;margin-bottom:18px}
+    .svc-full-t{font-size:20px;font-weight:700;color:var(--white);margin:0 0 12px}
+    .svc-full-d{font-size:15px;color:var(--g2);line-height:1.7;margin:0 0 18px}
+    .svc-pts{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+    .svc-pts li{font-size:13px;color:var(--g3);padding-left:16px;position:relative}
+    .svc-pts li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+
+    /* ABOUT PAGE */
+    .co-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-top:48px}
+    .co-card{background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 22px}
+    .co-label{font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--g3);text-transform:uppercase;margin-bottom:6px}
+    .co-val{font-size:15px;font-weight:600;color:var(--white)}
+
+    /* CONTACT */
+    .ct-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start}
+    @media(max-width:860px){.ct-layout{grid-template-columns:1fr;gap:40px}}
+    .ct-info h3{font-size:22px;font-weight:700;color:var(--white);margin:0 0 14px}
+    .ct-info p{color:var(--g2);line-height:1.7;margin:0 0 30px}
+    .ct-items{display:flex;flex-direction:column;gap:14px}
+    .ct-item{display:flex;align-items:center;gap:12px;color:var(--g2);font-size:14px}
+    .ct-ico{
+      width:36px;height:36px;background:var(--dark-3);border:1px solid var(--line);
+      border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;
+      color:var(--accent);flex-shrink:0;
+    }
+    .ct-sub{font-size:11px;color:var(--g3);margin-bottom:2px}
+    .ct-form{background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-xl);padding:34px}
+    .frow{margin-bottom:18px}
+    .frow label{display:block;font-size:13px;font-weight:500;color:var(--g2);margin-bottom:7px}
+    .frow input,.frow textarea,.frow select{
+      width:100%;background:var(--dark-3);border:1px solid var(--line2);
+      border-radius:var(--r-md);padding:12px 15px;font-size:15px;
+      color:var(--white);font-family:inherit;outline:none;transition:border-color .2s;
+    }
+    .frow input:focus,.frow textarea:focus{border-color:var(--accent)}
+    .frow textarea{resize:vertical;min-height:120px}
+    .frow input::placeholder,.frow textarea::placeholder{color:var(--g4)}
+    .frow select option{background:var(--dark-3)}
+    .f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:520px){.f2{grid-template-columns:1fr}}
+    .fsub{
+      width:100%;background:var(--accent);color:var(--dark);border:none;
+      padding:13px;font-size:15px;font-weight:700;border-radius:var(--r-md);
+      cursor:pointer;transition:background .2s;font-family:inherit;
+    }
+    .fsub:hover:not(:disabled){background:var(--accent-dim)}
+    .fsub:disabled{opacity:.6;cursor:not-allowed}
+    .f-ok{text-align:center;padding:40px 20px}
+    .f-ok-ico{
+      width:54px;height:54px;background:var(--accent-gl);border:1px solid rgba(0,212,168,.3);
+      border-radius:50%;display:flex;align-items:center;justify-content:center;
+      color:var(--accent);margin:0 auto 14px;
+    }
+    .f-ok h3{font-size:20px;font-weight:700;color:var(--white);margin:0 0 8px}
+    .f-ok p{color:var(--g2);font-size:14px;margin:0}
+
+    /* FOOTER */
+    .footer{background:var(--dark-2);border-top:1px solid var(--line);padding:48px var(--gap) 30px}
+    .footer-in{max-width:var(--max);margin:0 auto}
+    .ft-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:40px;flex-wrap:wrap}
+    .ft-tagline{font-size:13px;color:var(--g3);margin-top:8px;max-width:240px;line-height:1.6}
+    .ft-links{display:flex;gap:56px;flex-wrap:wrap}
+    .ft-col h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g3);margin:0 0 14px}
+    .ft-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+    .ft-col ul li button,.ft-col ul li a{
+      background:none;border:none;cursor:pointer;padding:0;font-size:14px;
+      color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;font-family:inherit;
+    }
+    .ft-col ul li button:hover,.ft-col ul li a:hover{color:var(--white)}
+    .ft-bot{
+      border-top:1px solid var(--line);padding-top:22px;
+      display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+    }
+    .ft-copy{font-size:13px;color:var(--g3)}
+    .ft-reg{font-size:12px;color:var(--g4)}
+
+    /* REVEAL */
+    .rv{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+    .rv.vis{opacity:1;transform:none}
+    .pf{animation:pfIn .3s ease}
+    @keyframes pfIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useContext, createContext } = React;
+
+/* ─── i18n ─── */
+const LangCtx = createContext({ lang:"en", setLang:()=>{} });
+function useLang(){ return useContext(LangCtx); }
+function T({ en, zh }){ const { lang } = useLang(); return lang==="zh" ? zh : en; }
+function tx(lang, en, zh){ return lang==="zh" ? zh : en; }
+function LanguageProvider({ children }){
+  const [lang, setL] = useState(()=>{ try{ return localStorage.getItem("mimo-lang")||"en"; }catch(e){ return "en"; } });
+  const setLang = l => {
+    setL(l);
+    try{ localStorage.setItem("mimo-lang",l); }catch(e){}
+    document.documentElement.setAttribute("data-lang",l);
+    document.documentElement.lang = l==="zh" ? "zh-Hans" : "en";
+  };
+  useEffect(()=>{ document.documentElement.setAttribute("data-lang",lang); },[lang]);
+  return <LangCtx.Provider value={{lang,setLang}}>{children}</LangCtx.Provider>;
+}
+function LangToggle(){
+  const {lang,setLang} = useLang();
+  return (
+    <div className="ltoggle">
+      {["en","zh"].map(l=>(
+        <button key={l} className={lang===l?"on":"off"} onClick={()=>setLang(l)}>
+          {l==="en"?"EN":"中"}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/* ─── Reveal hook ─── */
+function useReveal(){
+  useEffect(()=>{
+    const els = document.querySelectorAll(".rv");
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("vis"); obs.unobserve(e.target); } });
+    },{threshold:0.1});
+    els.forEach(el=>obs.observe(el));
+    return ()=>obs.disconnect();
+  },[]);
+}
+
+/* ─── Icons ─── */
+const I = {
+  transform:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
+  web:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>,
+  cloud:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M18 17a4 4 0 0 0 0-8 6 6 0 0 0-11.6-1.6A4 4 0 0 0 6 17h12Z"/></svg>,
+  auto:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4"/><path d="m16.24 7.76 2.83-2.83"/><path d="M18 12h4"/><path d="m16.24 16.24 2.83 2.83"/><path d="M12 18v4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M2 12h4"/><path d="m4.93 4.93 2.83 2.83"/><circle cx="12" cy="12" r="4"/></svg>,
+  grant:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>,
+  shield:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+  arrow:<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>,
+  check:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
+  mail:<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
+  pin:<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>,
+  wa:<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 5.55 5.55l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>,
+  li:<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>,
+  ext:<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>,
+};
+
+/* ─── NAV ─── */
+const PAGES = [
+  {id:"home",  en:"Home",     zh:"首页"},
+  {id:"services", en:"Services", zh:"服务"},
+  {id:"projects", en:"Projects", zh:"项目"},
+  {id:"about", en:"About",    zh:"关于"},
+  {id:"contact",en:"Contact", zh:"联系"},
+];
+function Nav({ page, setPage }){
+  const [scrolled,setScrolled] = useState(false);
+  const [mOpen,setMOpen] = useState(false);
+  const {lang} = useLang();
+  useEffect(()=>{
+    const fn=()=>setScrolled(window.scrollY>30);
+    fn(); window.addEventListener("scroll",fn,{passive:true});
+    return ()=>window.removeEventListener("scroll",fn);
+  },[]);
+  const go=id=>{ setPage(id); setMOpen(false); window.scrollTo({top:0,behavior:"instant"}); };
+  const solid = page!=="home"||scrolled;
+  return (
+    <>
+      <nav className={`nav ${solid?"solid":""}`}>
+        <div className="nav-inner">
+          <button className="brand" onClick={()=>go("home")} aria-label="Mimo Solutions home">
+            <div className="brand-mark">M</div>
+            <div>
+              <div className="brand-name">Mimo Solutions</div>
+              <div className="brand-sub">Digital Transformation · IT Services</div>
+            </div>
+          </button>
+          <div className="nav-links">
+            {PAGES.map(p=>(
+              <button key={p.id} className={page===p.id?"active":""} onClick={()=>go(p.id)}>
+                {lang==="zh"?p.zh:p.en}
+              </button>
+            ))}
+          </div>
+          <LangToggle/>
+          <button className="nav-cta" onClick={()=>go("contact")}>
+            <T en="Get in Touch" zh="联系我们"/>
+          </button>
+          <button className={`burger ${mOpen?"open":""}`} onClick={()=>setMOpen(o=>!o)} aria-label="Menu">
+            <span/><span/><span/>
+          </button>
+        </div>
+      </nav>
+      <div className={`mmenu ${mOpen?"open":""}`}>
+        {PAGES.map(p=>(
+          <button key={p.id} className={page===p.id?"active":""} onClick={()=>go(p.id)}>
+            {lang==="zh"?p.zh:p.en}
+          </button>
+        ))}
+        <button className="mmenu-cta" onClick={()=>go("contact")}>
+          <T en="Get in Touch" zh="联系我们"/>
+        </button>
+      </div>
+    </>
+  );
+}
+
+/* ─── FOOTER ─── */
+function Footer({ setPage }){
+  const {lang} = useLang();
+  const go=id=>{ setPage(id); window.scrollTo({top:0,behavior:"instant"}); };
+  return (
+    <footer className="footer">
+      <div className="footer-in">
+        <div className="ft-top">
+          <div>
+            <div style={{display:"flex",alignItems:"center",gap:10}}>
+              <div className="brand-mark">M</div>
+              <div className="brand-name">Mimo Solutions</div>
+            </div>
+            <p className="ft-tagline">
+              <T en="Helping Malaysian businesses build for the digital era." zh="助力马来西亚企业迈向数字时代。"/>
+            </p>
+          </div>
+          <div className="ft-links">
+            <div className="ft-col">
+              <h4><T en="Navigation" zh="导航"/></h4>
+              <ul>
+                {PAGES.map(p=>(
+                  <li key={p.id}><button onClick={()=>go(p.id)}>{lang==="zh"?p.zh:p.en}</button></li>
+                ))}
+              </ul>
+            </div>
+            <div className="ft-col">
+              <h4><T en="Contact" zh="联系"/></h4>
+              <ul>
+                <li><a href="mailto:hello@mimos.digital">hello@mimos.digital</a></li>
+                <li><a href="https://wa.me/60192815191">+60 19-281 5191</a></li>
+                <li><span style={{color:"rgba(255,255,255,.45)",fontSize:14}}>Kuala Lumpur, Malaysia</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="ft-bot">
+          <span className="ft-copy">© 2026 Mimo Solutions. <T en="All rights reserved." zh="版权所有。"/></span>
+          <span className="ft-reg">Reg. 202603157683 · Malaysia</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ─── HOME ─── */
+const HOME_SVCS = [
+  {n:"01",icon:I.transform, t:{en:"Digital Transformation",zh:"数字化转型"}, d:{en:"End-to-end strategy and execution to modernize your business operations and workflows.",zh:"端到端策略与执行，帮助企业实现业务运营与流程的现代化升级。"}},
+  {n:"02",icon:I.web,        t:{en:"Web & Mobile Development",zh:"网站与移动端开发"}, d:{en:"Custom websites, web apps, and mobile solutions built for performance and growth.",zh:"量身定制的网站、Web 应用与移动端解决方案，专为高效增长而设计。"}},
+  {n:"03",icon:I.cloud,      t:{en:"Cloud Solutions",zh:"云端解决方案"}, d:{en:"Cloud migration, infrastructure management, and hybrid cloud for SMEs.",zh:"面向中小企业的云迁移、基础设施管理与混合云架构。"}},
+  {n:"04",icon:I.auto,       t:{en:"Process Automation",zh:"流程自动化"}, d:{en:"AI-powered automation to reduce manual work and accelerate business workflows.",zh:"借助 AI 自动化工具，减少人工操作，提升业务效率。"}},
+  {n:"05",icon:I.grant,      t:{en:"SME Digital Grant",zh:"中小企业数字补贴"}, d:{en:"Malaysia government grant consultation and application support for digital adoption.",zh:"马来西亚政府数字化补贴咨询与申请协助。"}},
+  {n:"06",icon:I.shield,     t:{en:"IT Strategy & Security",zh:"IT 战略与安全"}, d:{en:"Technology roadmapping, vendor selection, and PDPA compliance advisory.",zh:"技术路线图、供应商选型，以及 PDPA 合规咨询。"}},
+];
+
+function HomePage({ setPage }){
+  useReveal();
+  const {lang} = useLang();
+  const go=id=>{ setPage(id); window.scrollTo({top:0}); };
+  return (
+    <div className="pf">
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-bg"/>
+        <div className="hero-grid"/>
+        <div className="hero-inner">
+          <div className="hero-pill">
+            <div className="pill-dot"/>
+            <T en="Based in Kuala Lumpur · Serving Malaysia & ASEAN" zh="立足吉隆坡 · 服务马来西亚与东南亚"/>
+          </div>
+          <h1>
+            <T
+              en={<>Build Your <span className="ac">Digital</span> Future.</>}
+              zh={<>构建您的<span className="ac">数字</span>未来。</>}
+            />
+          </h1>
+          <p className="hero-sub">
+            <T
+              en="Mimo Solutions helps Malaysian businesses and startups accelerate digital transformation — from strategy to execution, web to cloud, automation to advisory."
+              zh="Mimo Solutions 助力马来西亚企业与初创公司加速数字化转型——从战略到执行，从网站到云端，从自动化到顾问服务。"
+            />
+          </p>
+          <div className="ctas">
+            <button className="btn btn-p" onClick={()=>go("services")}>
+              <T en="Explore Services" zh="了解服务"/> {I.arrow}
+            </button>
+            <button className="btn btn-o" onClick={()=>go("contact")}>
+              <T en="Talk to Us" zh="与我们沟通"/>
+            </button>
+          </div>
+          <div className="hero-stats">
+            <div><div className="stat-n">6+</div><div className="stat-l"><T en="Service categories" zh="服务类别"/></div></div>
+            <div><div className="stat-n">MY</div><div className="stat-l"><T en="Malaysia registered" zh="马来西亚注册"/></div></div>
+            <div><div className="stat-n">100%</div><div className="stat-l"><T en="Client-focused delivery" zh="以客户为中心"/></div></div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES PREVIEW */}
+      <section className="sec">
+        <div className="sec-in">
+          <div className="sec-label rv"><T en="What We Do" zh="我们的服务"/></div>
+          <h2 className="sec-title rv"><T en="Digital Services for the Modern Business" zh="为现代企业提供的数字化服务"/></h2>
+          <p className="sec-desc rv"><T en="From building your first website to migrating enterprise systems to the cloud — we cover the full digital spectrum." zh="从搭建第一个网站，到将企业系统迁移至云端——我们覆盖完整的数字化服务链。"/></p>
+          <div className="svc-grid">
+            {HOME_SVCS.map(s=>(
+              <div key={s.n} className="svc-card rv">
+                <div className="svc-icon">{s.icon}</div>
+                <div className="svc-num">{s.n}</div>
+                <div className="svc-t">{s.t[lang]}</div>
+                <p className="svc-d">{s.d[lang]}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT TEASER */}
+      <section className="sec dark-sec">
+        <div className="sec-in">
+          <div className="ab-layout">
+            <div>
+              <div className="sec-label rv"><T en="About Mimo Solutions" zh="关于 Mimo Solutions"/></div>
+              <h2 className="sec-title rv"><T en="Technology that works for your business" zh="让科技真正为您的业务服务"/></h2>
+              <p className="rv" style={{color:"var(--g2)",lineHeight:1.8,margin:"0 0 20px"}}>
+                <T en="Mimo Solutions is a Malaysia-registered IT services company focused on helping SMEs and growing businesses adopt technology that makes a real difference." zh="Mimo Solutions 是一家在马来西亚注册的 IT 服务公司，专注于帮助中小企业和成长型企业采用真正有实效的数字化解决方案。"/>
+              </p>
+              <ul className="ab-bullets">
+                {[
+                  {en:"Practical, business-first approach to digital transformation",zh:"以业务优先的务实数字化转型方法"},
+                  {en:"Malaysia SME digital grant guidance and application support",zh:"马来西亚中小企业数字化补贴申请指导"},
+                  {en:"End-to-end delivery: strategy → design → build → deploy",zh:"端到端交付：战略→设计→建设→部署"},
+                  {en:"ASEAN market knowledge and regional technology network",zh:"东南亚市场洞察与区域技术网络"},
+                ].map((item,i)=>(
+                  <li key={i} className="rv">{item[lang]}</li>
+                ))}
+              </ul>
+              <button className="btn btn-p rv" onClick={()=>go("about")}>
+                <T en="Learn More" zh="了解更多"/>
+              </button>
+            </div>
+            <div className="rv">
+              <div className="ab-card">
+                <div className="f-avatar"><span>T</span></div>
+                <div className="f-name">Tom See</div>
+                <div className="f-role"><T en="Founder & Director" zh="创始人 & 总监"/></div>
+                <p className="f-bio">
+                  <T en="IoT adoption specialist and digital growth strategist with experience driving enterprise technology partnerships and market entry across ASEAN." zh="物联网应用专家与数字增长策略师，在推动东南亚企业技术合作与市场拓展方面拥有丰富经验。"/>
+                </p>
+                <div className="f-links">
+                  <a href="https://www.linkedin.com/in/tomsee" target="_blank" rel="noreferrer" className="badge">{I.li} LinkedIn</a>
+                  <a href="mailto:hello@mimos.digital" className="badge">{I.mail} Email</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="sec">
+        <div className="sec-in">
+          <div className="cta-box rv">
+            <h2><T en="Ready to transform your business?" zh="准备好开始数字化转型了吗？"/></h2>
+            <p><T en="Let's talk about your digital goals. No jargon, just practical solutions." zh="一起探讨您的数字化目标。不说废话，只给实用方案。"/></p>
+            <button className="btn btn-p" onClick={()=>go("contact")}>
+              <T en="Start the Conversation" zh="开启对话"/>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── SERVICES PAGE ─── */
+const SVCS_FULL = [
+  {
+    tag:"Core", icon:I.transform,
+    t:{en:"Digital Transformation Consulting",zh:"数字化转型咨询"},
+    d:{en:"We help you build a clear digital transformation roadmap — assessing where you are, identifying quick wins, and planning long-term technology adoption aligned with your business goals.",zh:"我们帮助您制定清晰的数字化转型路线图，评估现状、识别快速收益点，并规划与业务目标一致的长期技术采用计划。"},
+    pts:[
+      {en:"Digital maturity assessment",zh:"数字化成熟度评估"},
+      {en:"Technology roadmap development",zh:"技术路线图制定"},
+      {en:"Change management and adoption planning",zh:"变革管理与推广计划"},
+      {en:"ROI and business case development",zh:"投资回报率与商业案例"},
+    ]
+  },
+  {
+    tag:"Core", icon:I.web,
+    t:{en:"Web & Mobile Development",zh:"网站与移动端开发"},
+    d:{en:"Custom-built websites and web applications designed for performance, conversion, and scale. From company landing pages to full-stack web apps.",zh:"量身定制的网站与 Web 应用，聚焦性能、转化与可扩展性。从企业官网到全栈 Web 应用一应俱全。"},
+    pts:[
+      {en:"Corporate websites and landing pages",zh:"企业官网与落地页"},
+      {en:"E-commerce and marketplace development",zh:"电商与平台开发"},
+      {en:"Progressive web apps (PWA)",zh:"渐进式网页应用（PWA）"},
+      {en:"API integration and backend systems",zh:"API 集成与后端系统"},
+    ]
+  },
+  {
+    tag:"Infrastructure", icon:I.cloud,
+    t:{en:"Cloud Migration & Management",zh:"云迁移与云管理"},
+    d:{en:"Move your business to the cloud with confidence. We assess your infrastructure, plan a smooth migration path, and manage your cloud environment for reliability and cost-efficiency.",zh:"放心迁移云端。我们评估基础设施、规划平滑迁移路径，并管理云环境以确保可靠性与成本效益。"},
+    pts:[
+      {en:"Cloud readiness assessment",zh:"云迁移就绪评估"},
+      {en:"AWS, GCP, Azure and Huawei Cloud",zh:"AWS、GCP、Azure 及华为云"},
+      {en:"Hybrid cloud architecture design",zh:"混合云架构设计"},
+      {en:"Ongoing monitoring and cost optimization",zh:"持续监控与成本优化"},
+    ]
+  },
+  {
+    tag:"Automation", icon:I.auto,
+    t:{en:"Process Automation & AI Tools",zh:"流程自动化与 AI 工具"},
+    d:{en:"Identify and automate repetitive business processes using AI and no-code tools. Reduce manual work and free your team to focus on what matters.",zh:"利用 AI 和无代码工具识别并自动化重复性业务流程，减少人工操作，让团队专注于更有价值的工作。"},
+    pts:[
+      {en:"Business process analysis and mapping",zh:"业务流程分析与梳理"},
+      {en:"RPA and no-code automation implementation",zh:"RPA 与无代码自动化实施"},
+      {en:"AI-powered document and data processing",zh:"AI 驱动的文件与数据处理"},
+      {en:"System integration and workflow automation",zh:"系统集成与工作流自动化"},
+    ]
+  },
+  {
+    tag:"Advisory", icon:I.grant,
+    t:{en:"Malaysia SME Digital Grant Support",zh:"马来西亚中小企业数字补贴"},
+    d:{en:"Navigate Malaysia's SME digital transformation grants including MDEC and SME Corp programs. We help identify eligible grants, prepare documentation, and submit applications.",zh:"协助申请马来西亚中小企业数字化转型补贴，包括 MDEC 和 SME Corp 项目，覆盖资格评估、文件准备与申请提交全流程。"},
+    pts:[
+      {en:"Grant eligibility assessment",zh:"补贴资格评估"},
+      {en:"Application documentation preparation",zh:"申请文件准备"},
+      {en:"MDEC and SME Corp programs",zh:"MDEC 与 SME Corp 项目"},
+      {en:"Post-approval compliance support",zh:"获批后合规支持"},
+    ]
+  },
+  {
+    tag:"Advisory", icon:I.shield,
+    t:{en:"IT Strategy & Security",zh:"IT 战略与安全"},
+    d:{en:"Technology roadmapping, vendor selection, digital maturity assessments, and PDPA compliance advisory for Malaysian businesses.",zh:"技术路线图规划、供应商选型、数字化成熟度评估，以及面向马来西亚企业的 PDPA 合规咨询。"},
+    pts:[
+      {en:"IT strategy and technology roadmap",zh:"IT 战略与技术路线图"},
+      {en:"Vendor evaluation and selection",zh:"供应商评估与选型"},
+      {en:"PDPA compliance advisory",zh:"PDPA 合规咨询"},
+      {en:"Basic security audit and gap analysis",zh:"基础安全审计与差距分析"},
+    ]
+  },
+];
+
+function ServicesPage(){
+  useReveal();
+  const {lang} = useLang();
+  return (
+    <div className="pf">
+      <section className="sec" style={{paddingTop:140}}>
+        <div className="sec-in">
+          <div className="sec-label rv"><T en="Our Services" zh="服务范围"/></div>
+          <h1 className="sec-title rv" style={{fontSize:"var(--h1)"}}>
+            <T en="Full-Spectrum Digital Services" zh="全方位数字化服务"/>
+          </h1>
+          <p className="sec-desc rv">
+            <T en="From consulting to delivery — we cover every stage of your digital journey." zh="从咨询到交付，覆盖您数字化旅程的每一个阶段。"/>
+          </p>
+          <div className="svc-full-grid">
+            {SVCS_FULL.map((s,i)=>(
+              <div key={i} className="svc-full-card rv">
+                <div style={{display:"flex",alignItems:"center",gap:14,marginBottom:18}}>
+                  <div className="svc-icon" style={{flexShrink:0}}>{s.icon}</div>
+                  <span className="svc-tag">{s.tag}</span>
+                </div>
+                <h3 className="svc-full-t">{s.t[lang]}</h3>
+                <p className="svc-full-d">{s.d[lang]}</p>
+                <ul className="svc-pts">
+                  {s.pts.map((p,j)=><li key={j}>{p[lang]}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── PROJECTS PAGE ─── */
+const PROJECTS = [
+  {
+    name:"MJ Leisure",
+    url:"https://mjcleisure.com",
+    domain:"mjcleisure.com",
+    emoji:"🎰",
+    tag:{en:"Web Development",zh:"网站开发"},
+    t:{en:"MJ Leisure",zh:"MJ Leisure"},
+    d:{
+      en:"Corporate website for MJ Leisure, a Malaysia-based leisure and entertainment business. Full-stack web development including brand identity integration, responsive design, and content management.",
+      zh:"MJ Leisure（马来西亚休闲娱乐企业）官网开发，涵盖品牌形象整合、响应式设计与内容管理系统全栈交付。"
+    },
+    color:"#1a2a1a",
+    accent:"#4ade80",
+  },
+  {
+    name:"Zixi Metaphysics",
+    url:"https://www.c13191413.com",
+    domain:"c13191413.com",
+    emoji:"☯",
+    tag:{en:"Web Development",zh:"网站开发"},
+    t:{en:"Zixi Metaphysics",zh:"紫希玄学"},
+    d:{
+      en:"Full website build for Zixi Metaphysics, a Chinese metaphysics and fortune-reading consultancy. Delivered a clean, culturally-attuned web presence with bilingual content and service booking integration.",
+      zh:"为紫希玄学咨询服务打造官方网站，呈现文化底蕴与专业形象，包含双语内容与服务预约功能。"
+    },
+    color:"#1a1a2a",
+    accent:"#a78bfa",
+  },
+];
+
+function ProjectsPage(){
+  useReveal();
+  const {lang} = useLang();
+  return (
+    <div className="pf">
+      <section className="sec" style={{paddingTop:140}}>
+        <div className="sec-in">
+          <div className="sec-label rv"><T en="Projects" zh="项目案例"/></div>
+          <h1 className="sec-title rv" style={{fontSize:"var(--h1)"}}>
+            <T en="Work We've Delivered" zh="我们交付的项目"/>
+          </h1>
+          <p className="sec-desc rv">
+            <T en="A selection of websites and digital solutions built for our clients." zh="为客户打造的网站与数字化解决方案精选。"/>
+          </p>
+          <div className="proj-grid">
+            {PROJECTS.map((p,i)=>(
+              <div key={i} className="proj-card rv">
+                <div className="proj-thumb" style={{background:`linear-gradient(135deg, ${p.color} 0%, #0d1427 100%)`}}>
+                  <span style={{color:p.accent}}>{p.emoji}</span>
+                </div>
+                <div className="proj-body">
+                  <span className="proj-tag">{p.tag[lang]}</span>
+                  <h3 className="proj-title">{p.t[lang]}</h3>
+                  <p className="proj-desc">{p.d[lang]}</p>
+                  <a href={p.url} target="_blank" rel="noreferrer" className="proj-url">
+                    {p.domain} {I.ext}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── ABOUT PAGE ─── */
+const CO_INFO = [
+  {label:{en:"Incorporated",zh:"注册时间"}, val:{en:"2026, Malaysia",zh:"2026 年，马来西亚"}},
+  {label:{en:"Reg. No.",zh:"注册编号"},    val:{en:"202603157683",zh:"202603157683"}},
+  {label:{en:"Structure",zh:"公司类型"},   val:{en:"Sole Proprietor",zh:"独资经营"}},
+  {label:{en:"Location",zh:"所在地"},      val:{en:"Kuala Lumpur, MY",zh:"马来西亚吉隆坡"}},
+  {label:{en:"Email",zh:"邮箱"},           val:{en:"hello@mimos.digital",zh:"hello@mimos.digital"}},
+  {label:{en:"Website",zh:"网站"},         val:{en:"mimos.digital",zh:"mimos.digital"}},
+];
+
+function AboutPage({ setPage }){
+  useReveal();
+  const {lang} = useLang();
+  const go=id=>{ setPage(id); window.scrollTo({top:0}); };
+  return (
+    <div className="pf">
+      <section className="sec" style={{paddingTop:140}}>
+        <div className="sec-in">
+          <div className="sec-label rv"><T en="About Us" zh="关于我们"/></div>
+          <h1 className="sec-title rv" style={{fontSize:"var(--h1)",maxWidth:620}}>
+            <T en="A lean, focused digital services partner" zh="精专而专注的数字化服务伙伴"/>
+          </h1>
+          <p className="rv" style={{color:"var(--g2)",lineHeight:1.8,maxWidth:580,margin:"0 0 18px",fontSize:17}}>
+            <T en="Mimo Solutions was founded with a simple belief: businesses of all sizes deserve access to quality digital expertise that's practical, affordable, and outcome-driven." zh="Mimo Solutions 的成立源于一个简单的信念：无论规模大小，企业都应获得务实、可负担且以结果为导向的优质数字化专业服务。"/>
+          </p>
+          <p className="rv" style={{color:"var(--g2)",lineHeight:1.8,maxWidth:580,margin:"0 0 52px"}}>
+            <T en="We work with SMEs, startups, and established businesses across Malaysia to cut through the noise and adopt technologies that genuinely improve their operations." zh="我们与马来西亚的中小企业、初创公司和成熟企业合作，帮助他们找准方向，采用真正能提升运营效率的技术。"/>
+          </p>
+
+          {/* Founder Card */}
+          <div className="rv" style={{background:"var(--dark-2)",border:"1px solid var(--line)",borderRadius:"var(--r-xl)",padding:36,maxWidth:620,marginBottom:48}}>
+            <div style={{display:"flex",alignItems:"flex-start",gap:20}}>
+              <div className="f-avatar" style={{width:78,height:78,fontSize:26,flexShrink:0}}><span>T</span></div>
+              <div>
+                <div className="f-name" style={{fontSize:22}}>Tom See</div>
+                <div className="f-role"><T en="Founder & Director" zh="创始人 & 总监"/></div>
+                <p className="f-bio" style={{marginTop:12}}>
+                  <T
+                    en="Tom brings experience in IoT adoption, business development, and digital growth strategy across ASEAN. With a background in enterprise technology partnerships and regional market entry, he founded Mimo Solutions to make quality digital services accessible to Malaysian businesses of all sizes."
+                    zh="Tom 在物联网应用、商业拓展和东南亚数字增长战略方面拥有丰富经验。凭借企业技术合作与区域市场拓展的背景，他创立了 Mimo Solutions，致力于让各规模的马来西亚企业都能享受到优质数字化服务。"
+                  />
+                </p>
+                <div className="f-links">
+                  <a href="https://www.linkedin.com/in/tomsee" target="_blank" rel="noreferrer" className="badge">{I.li} LinkedIn</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Company Info */}
+          <div className="sec-label rv"><T en="Company Details" zh="公司信息"/></div>
+          <div className="co-grid rv">
+            {CO_INFO.map((item,i)=>(
+              <div key={i} className="co-card">
+                <div className="co-label">{item.label[lang]||item.label.en}</div>
+                <div className="co-val">{item.val[lang]||item.val.en}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="rv" style={{marginTop:56}}>
+            <button className="btn btn-p" onClick={()=>go("contact")}>
+              <T en="Work With Us" zh="与我们合作"/> {I.arrow}
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── CONTACT PAGE ─── */
+function ContactPage(){
+  useReveal();
+  const {lang} = useLang();
+  const [form,setForm] = useState({name:"",email:"",company:"",service:"",message:""});
+  const [status,setStatus] = useState("idle");
+  const set=(k,v)=>setForm(f=>({...f,[k]:v}));
+
+  const submit = async e => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          access_key:"REPLACE_WITH_YOUR_WEB3FORMS_KEY",
+          subject:`Inquiry from ${form.name} — ${form.company||"mimos.digital"}`,
+          from_name:form.name,
+          ...form,
+        }),
+      });
+      const data = await res.json();
+      setStatus(data.success?"success":"error");
+    } catch { setStatus("error"); }
+  };
+
+  return (
+    <div className="pf">
+      <section className="sec" style={{paddingTop:140}}>
+        <div className="sec-in">
+          <div className="sec-label rv"><T en="Contact Us" zh="联系我们"/></div>
+          <h1 className="sec-title rv" style={{fontSize:"var(--h1)"}}>
+            <T en="Let's Talk" zh="一起聊聊"/>
+          </h1>
+          <div className="ct-layout">
+            <div className="ct-info rv">
+              <h3><T en="Get in touch" zh="联系我们"/></h3>
+              <p><T en="Have a project in mind, or want to explore how digital transformation can benefit your business? We'd love to hear from you." zh="有项目想法，或想探讨数字化转型如何让您的业务受益？欢迎随时联系我们。"/></p>
+              <div className="ct-items">
+                <div className="ct-item">
+                  <div className="ct-ico">{I.mail}</div>
+                  <div>
+                    <div className="ct-sub"><T en="Email" zh="邮箱"/></div>
+                    <a href="mailto:hello@mimos.digital" style={{color:"var(--white)",textDecoration:"none"}}>hello@mimos.digital</a>
+                  </div>
+                </div>
+                <div className="ct-item">
+                  <div className="ct-ico">{I.wa}</div>
+                  <div>
+                    <div className="ct-sub">WhatsApp</div>
+                    <a href="https://wa.me/60192815191" style={{color:"var(--white)",textDecoration:"none"}}>+60 19-281 5191</a>
+                  </div>
+                </div>
+                <div className="ct-item">
+                  <div className="ct-ico">{I.pin}</div>
+                  <div>
+                    <div className="ct-sub"><T en="Location" zh="所在地"/></div>
+                    <span>Kuala Lumpur, Malaysia</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="ct-form rv">
+              {status==="success" ? (
+                <div className="f-ok">
+                  <div className="f-ok-ico">{I.check}</div>
+                  <h3><T en="Message Sent!" zh="消息已发送！"/></h3>
+                  <p><T en="Thank you! We'll get back to you within 1-2 business days." zh="感谢您的来信，我们将在 1-2 个工作日内回复。"/></p>
+                </div>
+              ):(
+                <form onSubmit={submit}>
+                  <div className="f2">
+                    <div className="frow">
+                      <label><T en="Full Name *" zh="姓名 *"/></label>
+                      <input required value={form.name} onChange={e=>set("name",e.target.value)} placeholder={tx(lang,"Your name","您的姓名")}/>
+                    </div>
+                    <div className="frow">
+                      <label><T en="Email *" zh="邮箱 *"/></label>
+                      <input required type="email" value={form.email} onChange={e=>set("email",e.target.value)} placeholder="your@email.com"/>
+                    </div>
+                  </div>
+                  <div className="frow">
+                    <label><T en="Company" zh="公司"/></label>
+                    <input value={form.company} onChange={e=>set("company",e.target.value)} placeholder={tx(lang,"Your company (optional)","公司名称（选填）")}/>
+                  </div>
+                  <div className="frow">
+                    <label><T en="Service Interested In" zh="感兴趣的服务"/></label>
+                    <select value={form.service} onChange={e=>set("service",e.target.value)}>
+                      <option value="">{tx(lang,"Select a service...","选择服务...")}</option>
+                      <option value="Digital Transformation">{tx(lang,"Digital Transformation Consulting","数字化转型咨询")}</option>
+                      <option value="Web Development">{tx(lang,"Web & Mobile Development","网站与移动端开发")}</option>
+                      <option value="Cloud Solutions">{tx(lang,"Cloud Solutions","云端解决方案")}</option>
+                      <option value="Process Automation">{tx(lang,"Process Automation","流程自动化")}</option>
+                      <option value="SME Grant">{tx(lang,"SME Digital Grant","中小企业数字补贴")}</option>
+                      <option value="IT Advisory">{tx(lang,"IT Strategy & Security","IT 战略与安全")}</option>
+                      <option value="Other">{tx(lang,"Other / Not sure yet","其他 / 待定")}</option>
+                    </select>
+                  </div>
+                  <div className="frow">
+                    <label><T en="Message *" zh="留言 *"/></label>
+                    <textarea required value={form.message} onChange={e=>set("message",e.target.value)} placeholder={tx(lang,"Tell us about your project or question...","告诉我们您的项目或问题...")}/>
+                  </div>
+                  <button type="submit" className="fsub" disabled={status==="loading"}>
+                    {status==="loading"?tx(lang,"Sending...","发送中…"):tx(lang,"Send Message","发送消息")}
+                  </button>
+                  {status==="error"&&(
+                    <p style={{color:"#ef4444",fontSize:13,marginTop:8,textAlign:"center"}}>
+                      <T en="Something went wrong. Please email hello@mimos.digital directly." zh="出错了，请直接发邮件至 hello@mimos.digital"/>
+                    </p>
+                  )}
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ─── APP ─── */
+function App(){
+  const [page,setPage] = useState("home");
+  return (
+    <LanguageProvider>
+      <Nav page={page} setPage={setPage}/>
+      {page==="home"     && <HomePage     setPage={setPage}/>}
+      {page==="services" && <ServicesPage/>}
+      {page==="projects" && <ProjectsPage/>}
+      {page==="about"    && <AboutPage    setPage={setPage}/>}
+      {page==="contact"  && <ContactPage/>}
+      <Footer setPage={setPage}/>
+    </LanguageProvider>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
