@@ -996,7 +996,7 @@ function ContactPage() {
     e.preventDefault();
     setStatus("loading");
     const fd = new FormData();
-    fd.append("access_key", "REPLACE_WITH_YOUR_WEB3FORMS_KEY");
+    fd.append("access_key", "845cc7b6-7b7d-40a4-ab42-44931c3aa30e");
     fd.append("subject", "New inquiry from "+form.name+" — Mimo Solutions");
     fd.append("from_name", "Mimo Solutions Website");
     Object.entries(form).forEach(([k,v]) => fd.append(k,v));
