@@ -1,1047 +1,1129 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mimo Solutions — Digital Transformation &amp; IT Services</title>
-  <meta name="description" content="Mimo Solutions helps businesses in Malaysia and Southeast Asia accelerate digital transformation through IT consulting, web development, process automation, and cloud solutions." />
-  <meta property="og:title" content="Mimo Solutions — Digital Transformation &amp; IT Services" />
-  <meta property="og:description" content="Helping Malaysian businesses accelerate digital transformation through IT consulting, web development, and process automation." />
-  <meta property="og:url" content="https://mimos.digital" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mimo Solutions — Digital Transformation &amp; IT Services" />
-  <meta name="twitter:description" content="Helping Malaysian businesses accelerate digital transformation." />
+  <title>Mimo Solutions — Digital Transformation & IT Services</title>
+  <meta name="description" content="Mimo Solutions — Malaysia's trusted partner for digital transformation, cloud solutions, cybersecurity, and custom IT services." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="favicon-192.png" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
   <style>
-    :root {
-      --dark:       #080D1A;
-      --dark-2:     #0D1427;
-      --dark-3:     #131C34;
-      --dark-4:     #1E2A45;
-      --accent:     #00D4A8;
-      --accent-dim: #00A882;
-      --accent-gl:  rgba(0,212,168,0.12);
-      --white:      #FFFFFF;
-      --g1:         #EEF0F6;
-      --g2:         #B8BCCE;
-      --g3:         #6B7194;
-      --g4:         #2E3550;
-      --line:       rgba(255,255,255,0.07);
-      --line2:      rgba(255,255,255,0.13);
-      --max:        1200px;
-      --gap:        clamp(20px,5vw,60px);
-      --r-md:       8px;
-      --r-lg:       14px;
-      --r-xl:       22px;
-      --display:    clamp(38px,5.2vw,72px);
-      --h1:         clamp(30px,3.8vw,52px);
-      --h2:         clamp(24px,2.4vw,36px);
-    }
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family:"Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
-      font-size:16px;line-height:1.65;
-      color:var(--white);background:var(--dark);
-      -webkit-font-smoothing:antialiased;
-    }
-    ::-webkit-scrollbar{width:5px}
-    ::-webkit-scrollbar-track{background:var(--dark-2)}
-    ::-webkit-scrollbar-thumb{background:var(--dark-4);border-radius:3px}
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #fff;
+    color: #0F1729;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { cursor: pointer; font-family: inherit; border: none; background: none; }
+  ul { list-style: none; }
 
-    /* NAV */
-    .nav{
-      position:fixed;top:0;left:0;right:0;z-index:100;
-      height:68px;padding:0 var(--gap);display:flex;align-items:center;
-      border-bottom:1px solid transparent;transition:background .3s,border-color .3s;
-    }
-    .nav.solid{
-      background:rgba(8,13,26,.92);
-      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-      border-bottom-color:var(--line);
-    }
-    .nav-inner{width:100%;max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:8px}
-    .brand{display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;padding:0}
-    .brand-mark{
-      width:36px;height:36px;background:var(--accent);border-radius:8px;
-      display:flex;align-items:center;justify-content:center;
-      font-family:"JetBrains Mono",monospace;font-size:15px;font-weight:700;
-      color:var(--dark);flex-shrink:0;
-    }
-    .brand-name{font-size:15px;font-weight:700;color:var(--white);line-height:1;letter-spacing:-.2px}
-    .brand-sub{font-size:10px;color:var(--g3);letter-spacing:.05em;margin-top:2px}
-    .nav-links{display:flex;align-items:center;gap:2px;margin-left:auto}
-    .nav-links button{
-      background:none;border:none;cursor:pointer;padding:6px 14px;
-      font-size:14px;font-weight:500;color:var(--g2);border-radius:var(--r-md);
-      transition:color .2s,background .2s;font-family:inherit;
-    }
-    .nav-links button:hover{color:var(--white);background:var(--line)}
-    .nav-links button.active{color:var(--accent)}
-    .nav-cta{
-      background:var(--accent);color:var(--dark)!important;border:none;
-      padding:8px 20px!important;font-weight:700!important;
-      border-radius:var(--r-md)!important;cursor:pointer;font-size:14px;
-      transition:background .2s,transform .15s;white-space:nowrap;font-family:inherit;
-    }
-    .nav-cta:hover{background:var(--accent-dim);transform:translateY(-1px)}
-    .burger{
-      display:none;flex-direction:column;gap:5px;
-      background:none;border:none;cursor:pointer;padding:4px;margin-left:auto;
-    }
-    .burger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:transform .25s,opacity .25s}
-    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-    .burger.open span:nth-child(2){opacity:0}
-    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-    .mmenu{
-      display:none;position:fixed;top:68px;left:0;right:0;z-index:99;
-      background:rgba(8,13,26,.97);backdrop-filter:blur(20px);
-      border-bottom:1px solid var(--line);padding:16px var(--gap) 24px;
-      flex-direction:column;gap:4px;
-    }
-    .mmenu.open{display:flex}
-    .mmenu button{
-      background:none;border:none;cursor:pointer;padding:12px 16px;
-      font-size:16px;font-weight:500;color:var(--g2);text-align:left;
-      border-radius:var(--r-md);transition:color .2s,background .2s;font-family:inherit;
-    }
-    .mmenu button:hover{color:var(--white);background:var(--line)}
-    .mmenu button.active{color:var(--accent)}
-    .mmenu-cta{background:var(--accent)!important;color:var(--dark)!important;font-weight:700!important;text-align:center!important;margin-top:8px}
-    @media(max-width:860px){.nav-links,.nav-cta{display:none}.burger{display:flex}}
+  /* ── Tokens ── */
+  :root {
+    --bg:       #FFFFFF;
+    --bg2:      #F7F9FF;
+    --bg3:      #EEF2FF;
+    --border:   #E2E8F4;
+    --border2:  #C9D5E8;
+    --txt:      #0F1729;
+    --txt2:     #4B5A72;
+    --txt3:     #8896AA;
+    --blue:     #1D5BE8;
+    --blue-dk:  #1449C9;
+    --blue-lt:  #EBF0FD;
+    --teal:     #0BB9A2;
+    --teal-lt:  #E5F8F5;
+    --grad:     linear-gradient(135deg,#1D5BE8 0%,#0BB9A2 100%);
+    --sh-sm:    0 1px 4px rgba(15,23,41,.06),0 1px 2px rgba(15,23,41,.04);
+    --sh:       0 4px 20px rgba(15,23,41,.09),0 2px 6px rgba(15,23,41,.05);
+    --sh-lg:    0 16px 56px rgba(15,23,41,.13),0 6px 18px rgba(15,23,41,.07);
+    --r:        12px;
+    --r-lg:     20px;
+  }
 
-    /* LANG TOGGLE */
-    .ltoggle{
-      display:flex;align-items:center;gap:2px;
-      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
-      border-radius:999px;padding:3px;
-    }
-    .ltoggle button{
-      background:none;border:none;cursor:pointer;padding:4px 10px;
-      font-size:11px;font-weight:600;border-radius:999px;
-      font-family:"JetBrains Mono",monospace;letter-spacing:.04em;
-      transition:all .2s;
-    }
-    .ltoggle button.on{background:var(--accent);color:var(--dark)}
-    .ltoggle button.off{color:rgba(255,255,255,.45)}
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg2); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 
-    /* HERO */
-    .hero{
-      min-height:100vh;display:flex;align-items:center;
-      position:relative;overflow:hidden;padding:100px var(--gap) 80px;
-    }
-    .hero-bg{
-      position:absolute;inset:0;
-      background:
-        radial-gradient(ellipse 80% 60% at 65% 40%,rgba(0,212,168,.08) 0%,transparent 60%),
-        radial-gradient(ellipse 50% 40% at 20% 80%,rgba(79,123,240,.06) 0%,transparent 50%),
-        var(--dark);
-    }
-    .hero-grid{
-      position:absolute;inset:0;
-      background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-      background-size:60px 60px;
-      mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);
-    }
-    .hero-inner{position:relative;z-index:1;width:100%;max-width:var(--max);margin:0 auto}
-    .hero-pill{
-      display:inline-flex;align-items:center;gap:8px;margin-bottom:28px;
-      padding:6px 14px;border:1px solid rgba(0,212,168,.3);border-radius:999px;
-      font-size:12px;font-weight:500;color:var(--accent);letter-spacing:.08em;
-      background:var(--accent-gl);
-    }
-    .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite}
-    @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
-    .hero h1{font-size:var(--display);font-weight:800;letter-spacing:-2px;line-height:1.06;margin:0 0 24px;max-width:820px}
-    .hero h1 .ac{color:var(--accent)}
-    .hero-sub{font-size:clamp(16px,1.6vw,19px);color:var(--g2);max-width:560px;line-height:1.72;margin:0 0 40px}
-    .ctas{display:flex;gap:14px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;cursor:pointer;
-      padding:13px 26px;font-size:15px;font-weight:700;border-radius:var(--r-lg);
-      border:none;transition:all .2s;font-family:inherit;
-    }
-    .btn-p{background:var(--accent);color:var(--dark)}
-    .btn-p:hover{background:var(--accent-dim);transform:translateY(-2px)}
-    .btn-o{background:transparent;color:var(--white);border:1px solid var(--line2)}
-    .btn-o:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-    .hero-stats{
-      display:flex;gap:48px;margin-top:64px;padding-top:40px;
-      border-top:1px solid var(--line);flex-wrap:wrap;
-    }
-    .stat-n{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1}
-    .stat-l{font-size:12px;color:var(--g3);margin-top:4px}
+  /* ── Typography helpers ── */
+  h1,h2,h3,h4 { font-weight: 800; line-height: 1.15; letter-spacing: -.025em; }
+  .grad-text {
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .section-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 14px; border-radius: 20px;
+    background: var(--blue-lt); color: var(--blue);
+    font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-title { font-size: clamp(26px,4vw,42px); margin-bottom: 14px; }
+  .section-sub { font-size: 16px; color: var(--txt2); line-height: 1.75; max-width: 520px; }
 
-    /* SECTION */
-    .sec{padding:96px var(--gap)}
-    .sec-in{max-width:var(--max);margin:0 auto}
-    .sec-label{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:12px}
-    .sec-title{font-size:var(--h2);font-weight:800;letter-spacing:-.5px;color:var(--white);line-height:1.15;margin:0 0 14px}
-    .sec-desc{font-size:17px;color:var(--g2);max-width:520px;line-height:1.7;margin:0 0 52px}
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px; border-radius: 10px;
+    font-size: 15px; font-weight: 600; transition: all .2s;
+  }
+  .btn-blue {
+    background: var(--blue); color: #fff;
+    box-shadow: 0 4px 18px rgba(29,91,232,.28);
+  }
+  .btn-blue:hover { background: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(29,91,232,.38); }
+  .btn-ghost {
+    background: transparent; color: var(--txt);
+    border: 1.5px solid var(--border2);
+  }
+  .btn-ghost:hover { background: var(--bg2); border-color: var(--txt3); }
+  .btn-white {
+    background: #fff; color: var(--blue);
+    box-shadow: 0 4px 18px rgba(0,0,0,.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.22); }
 
-    /* SERVICE CARDS */
-    .svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
-    .svc-card{
-      background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-xl);padding:28px;
-      transition:border-color .25s,transform .25s;
-    }
-    .svc-card:hover{border-color:rgba(0,212,168,.3);transform:translateY(-4px)}
-    .svc-icon{
-      width:42px;height:42px;background:var(--accent-gl);border:1px solid rgba(0,212,168,.2);
-      border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;
-      color:var(--accent);margin-bottom:16px;
-    }
-    .svc-num{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--g4);margin-bottom:8px}
-    .svc-t{font-size:17px;font-weight:700;color:var(--white);margin:0 0 10px}
-    .svc-d{font-size:14px;color:var(--g3);line-height:1.65;margin:0}
+  /* ── Reveal animation ── */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s, transform .65s; }
+  .reveal.v { opacity: 1; transform: none; }
 
-    /* ABOUT TEASER */
-    .dark-sec{background:var(--dark-2)}
-    .ab-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-    @media(max-width:860px){.ab-layout{grid-template-columns:1fr;gap:40px}}
-    .ab-card{background:var(--dark-3);border:1px solid var(--line);border-radius:var(--r-xl);padding:32px}
-    .f-avatar{
-      width:68px;height:68px;border-radius:50%;border:2px solid var(--accent);
-      background:var(--dark-4);display:flex;align-items:center;justify-content:center;
-      font-size:22px;font-weight:700;color:var(--accent);margin-bottom:14px;overflow:hidden;
-    }
-    .f-avatar img{width:100%;height:100%;object-fit:cover}
-    .f-name{font-size:19px;font-weight:700;color:var(--white);margin:0 0 4px}
-    .f-role{font-size:13px;color:var(--accent);font-weight:500;margin:0 0 14px}
-    .f-bio{font-size:14px;color:var(--g2);line-height:1.7;margin:0 0 18px}
-    .f-links{display:flex;gap:10px}
-    .badge{
-      display:inline-flex;align-items:center;gap:6px;padding:6px 12px;
-      background:var(--accent-gl);border:1px solid rgba(0,212,168,.2);
-      border-radius:var(--r-md);font-size:12px;color:var(--accent);
-      text-decoration:none;transition:background .2s;
-    }
-    .badge:hover{background:rgba(0,212,168,.2)}
-    .ab-bullets{list-style:none;padding:0;margin:0 0 32px}
-    .ab-bullets li{
-      display:flex;align-items:flex-start;gap:12px;color:var(--g2);font-size:15px;
-      padding:10px 0;border-bottom:1px solid var(--line);
-    }
-    .ab-bullets li:last-child{border-bottom:none}
-    .ab-bullets li::before{
-      content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
-      flex-shrink:0;margin-top:9px;
-    }
+  /* ═══════════════════════════════════════════
+     NAV
+  ═══════════════════════════════════════════ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .nav.solid { border-bottom-color: var(--border); box-shadow: var(--sh-sm); }
+  .nav-wrap {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; height: 66px; padding: 0 24px; gap: 6px;
+  }
+  /* Brand */
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; }
+  .brand-icon {
+    width: 36px; height: 36px; border-radius: 9px;
+    background: var(--grad);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 900; font-size: 13px; letter-spacing: -.04em; flex-shrink: 0;
+  }
+  .brand-text .sub { font-size: 10px; color: var(--txt3); font-weight: 500; letter-spacing: .06em; display: block; }
+  /* Links */
+  .nav-links { display: flex; gap: 2px; margin-left: auto; }
+  .nav-links a {
+    padding: 8px 13px; border-radius: 8px;
+    font-size: 14px; font-weight: 500; color: var(--txt2);
+    transition: color .2s, background .2s;
+  }
+  .nav-links a:hover { color: var(--txt); background: var(--bg2); }
+  .nav-links a.active { color: var(--blue); }
+  /* Lang toggle */
+  .lang-pill {
+    display: flex; align-items: center; gap: 2px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 3px; margin-left: 6px;
+  }
+  .lang-btn {
+    padding: 4px 10px; border-radius: 16px;
+    font-size: 12px; font-weight: 700; color: var(--txt3);
+    background: transparent; transition: all .2s; cursor: pointer; border: none;
+  }
+  .lang-btn.on { background: #fff; color: var(--txt); box-shadow: var(--sh-sm); }
+  /* CTA */
+  .nav-cta {
+    margin-left: 10px; padding: 9px 20px; border-radius: 9px;
+    background: var(--blue); color: #fff;
+    font-size: 14px; font-weight: 600;
+    box-shadow: 0 2px 10px rgba(29,91,232,.28);
+    transition: all .2s; cursor: pointer;
+  }
+  .nav-cta:hover { background: var(--blue-dk); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(29,91,232,.38); }
+  /* Burger */
+  .burger {
+    display: none; flex-direction: column; gap: 5px;
+    padding: 8px; margin-left: auto; cursor: pointer;
+  }
+  .burger span { display: block; width: 22px; height: 2px; background: var(--txt); border-radius: 2px; transition: all .3s; }
+  /* Mobile menu */
+  .mob-menu {
+    position: fixed; inset: 66px 0 0 0;
+    background: #fff; z-index: 199; padding: 20px 20px 32px;
+    display: flex; flex-direction: column; gap: 6px;
+    transform: translateX(100%); transition: transform .3s; overflow-y: auto;
+  }
+  .mob-menu.open { transform: none; }
+  .mob-menu a {
+    display: block; padding: 13px 16px; border-radius: 10px;
+    font-size: 16px; font-weight: 500; color: var(--txt);
+    border: 1px solid transparent; transition: all .2s;
+  }
+  .mob-menu a:hover, .mob-menu a.active { background: var(--bg2); border-color: var(--border); }
+  .mob-cta {
+    margin-top: 6px; padding: 14px 16px; text-align: center;
+    background: var(--blue); color: #fff !important;
+    border-radius: 10px; font-weight: 600;
+  }
+  .mob-lang { margin-top: auto; padding-top: 20px; display: flex; justify-content: center; }
 
-    /* CTA BANNER */
-    .cta-box{
-      background:linear-gradient(135deg,var(--dark-3) 0%,rgba(0,212,168,.06) 100%);
-      border:1px solid rgba(0,212,168,.15);border-radius:var(--r-xl);
-      padding:56px 48px;text-align:center;
-    }
-    .cta-box h2{font-size:clamp(26px,3.5vw,42px);font-weight:800;letter-spacing:-.5px;margin:0 0 14px}
-    .cta-box p{font-size:17px;color:var(--g2);margin:0 0 34px;max-width:460px;margin-left:auto;margin-right:auto}
+  /* ═══════════════════════════════════════════
+     PAGE WRAPPER
+  ═══════════════════════════════════════════ */
+  .page { padding-top: 66px; min-height: 100vh; }
 
-    /* PROJECTS */
-    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
-    .proj-card{
-      background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-xl);
-      overflow:hidden;transition:border-color .25s,transform .25s;
-    }
-    .proj-card:hover{border-color:rgba(0,212,168,.3);transform:translateY(-4px)}
-    .proj-thumb{
-      height:180px;display:flex;align-items:center;justify-content:center;
-      font-size:42px;letter-spacing:-2px;font-weight:800;
-      background:var(--dark-3);border-bottom:1px solid var(--line);
-    }
-    .proj-body{padding:28px}
-    .proj-tag{
-      display:inline-block;padding:3px 10px;background:var(--accent-gl);
-      border-radius:999px;font-size:11px;font-weight:600;color:var(--accent);
-      letter-spacing:.06em;margin-bottom:14px;
-    }
-    .proj-title{font-size:20px;font-weight:700;color:var(--white);margin:0 0 10px}
-    .proj-desc{font-size:14px;color:var(--g3);line-height:1.65;margin:0 0 20px}
-    .proj-url{
-      display:inline-flex;align-items:center;gap:6px;font-size:13px;
-      color:var(--accent);text-decoration:none;font-weight:500;
-      transition:gap .2s;
-    }
-    .proj-url:hover{gap:10px}
+  /* ═══════════════════════════════════════════
+     HOME — HERO
+  ═══════════════════════════════════════════ */
+  .hero {
+    padding: 90px 24px 80px;
+    background: linear-gradient(160deg,#F0F5FF 0%,#FAFBFF 55%,#F5FFFD 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -180px; right: -150px;
+    width: 560px; height: 560px; border-radius: 50%;
+    background: radial-gradient(circle,rgba(29,91,232,.09) 0%,transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -80px; left: -80px;
+    width: 380px; height: 380px; border-radius: 50%;
+    background: radial-gradient(circle,rgba(11,185,162,.07) 0%,transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 20px;
+    background: #fff; border: 1px solid var(--border);
+    font-size: 12px; font-weight: 600; color: var(--txt2);
+    margin-bottom: 22px; box-shadow: var(--sh-sm);
+  }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #10B981; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.7;transform:scale(.85)} }
+  .hero h1 {
+    font-size: clamp(34px,5vw,58px); line-height: 1.07;
+    margin-bottom: 22px;
+  }
+  .hero-sub { font-size: 17px; color: var(--txt2); line-height: 1.75; margin-bottom: 36px; max-width: 460px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    /* SERVICES FULL PAGE */
-    .svc-full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
-    .svc-full-card{
-      background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-xl);padding:34px;
-      transition:border-color .25s;
-    }
-    .svc-full-card:hover{border-color:rgba(0,212,168,.25)}
-    .svc-tag{display:inline-block;padding:3px 10px;background:var(--accent-gl);border-radius:999px;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.06em;margin-bottom:18px}
-    .svc-full-t{font-size:20px;font-weight:700;color:var(--white);margin:0 0 12px}
-    .svc-full-d{font-size:15px;color:var(--g2);line-height:1.7;margin:0 0 18px}
-    .svc-pts{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
-    .svc-pts li{font-size:13px;color:var(--g3);padding-left:16px;position:relative}
-    .svc-pts li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+  /* Hero visual card */
+  .hero-card {
+    background: #fff; border-radius: var(--r-lg);
+    border: 1px solid var(--border); box-shadow: var(--sh-lg);
+    padding: 28px; position: relative;
+  }
+  .hero-card-label {
+    font-size: 11px; font-weight: 700; color: var(--txt3);
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 18px;
+  }
+  .svc-check-list { display: flex; flex-direction: column; gap: 11px; }
+  .svc-check {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--txt2);
+  }
+  .svc-check .ck {
+    width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+    background: var(--blue-lt); color: var(--blue);
+    display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px;
+  }
+  .hstat {
+    background: var(--bg2); border-radius: var(--r);
+    padding: 16px; text-align: center;
+  }
+  .hstat-num { font-size: 26px; font-weight: 900; }
+  .hstat-lbl { font-size: 11px; color: var(--txt2); margin-top: 2px; }
 
-    /* ABOUT PAGE */
-    .co-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-top:48px}
-    .co-card{background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 22px}
-    .co-label{font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--g3);text-transform:uppercase;margin-bottom:6px}
-    .co-val{font-size:15px;font-weight:600;color:var(--white)}
+  /* ═══════════════════════════════════════════
+     HOME — SERVICES PREVIEW
+  ═══════════════════════════════════════════ */
+  .svc-section { padding: 96px 24px; background: #fff; }
+  .svc-inner { max-width: 1200px; margin: 0 auto; }
+  .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .svc-card {
+    background: #fff; border-radius: var(--r-lg);
+    border: 1px solid var(--border); padding: 30px;
+    transition: all .3s; position: relative; overflow: hidden;
+  }
+  .svc-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--grad); opacity: 0; transition: opacity .3s;
+  }
+  .svc-card:hover { box-shadow: var(--sh-lg); transform: translateY(-4px); border-color: #d0dcff; }
+  .svc-card:hover::after { opacity: 1; }
+  .svc-ico {
+    width: 50px; height: 50px; border-radius: 13px;
+    background: var(--blue-lt);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 18px;
+  }
+  .svc-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .svc-card p { font-size: 13px; color: var(--txt2); line-height: 1.75; }
 
-    /* CONTACT */
-    .ct-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start}
-    @media(max-width:860px){.ct-layout{grid-template-columns:1fr;gap:40px}}
-    .ct-info h3{font-size:22px;font-weight:700;color:var(--white);margin:0 0 14px}
-    .ct-info p{color:var(--g2);line-height:1.7;margin:0 0 30px}
-    .ct-items{display:flex;flex-direction:column;gap:14px}
-    .ct-item{display:flex;align-items:center;gap:12px;color:var(--g2);font-size:14px}
-    .ct-ico{
-      width:36px;height:36px;background:var(--dark-3);border:1px solid var(--line);
-      border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;
-      color:var(--accent);flex-shrink:0;
-    }
-    .ct-sub{font-size:11px;color:var(--g3);margin-bottom:2px}
-    .ct-form{background:var(--dark-2);border:1px solid var(--line);border-radius:var(--r-xl);padding:34px}
-    .frow{margin-bottom:18px}
-    .frow label{display:block;font-size:13px;font-weight:500;color:var(--g2);margin-bottom:7px}
-    .frow input,.frow textarea,.frow select{
-      width:100%;background:var(--dark-3);border:1px solid var(--line2);
-      border-radius:var(--r-md);padding:12px 15px;font-size:15px;
-      color:var(--white);font-family:inherit;outline:none;transition:border-color .2s;
-    }
-    .frow input:focus,.frow textarea:focus{border-color:var(--accent)}
-    .frow textarea{resize:vertical;min-height:120px}
-    .frow input::placeholder,.frow textarea::placeholder{color:var(--g4)}
-    .frow select option{background:var(--dark-3)}
-    .f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media(max-width:520px){.f2{grid-template-columns:1fr}}
-    .fsub{
-      width:100%;background:var(--accent);color:var(--dark);border:none;
-      padding:13px;font-size:15px;font-weight:700;border-radius:var(--r-md);
-      cursor:pointer;transition:background .2s;font-family:inherit;
-    }
-    .fsub:hover:not(:disabled){background:var(--accent-dim)}
-    .fsub:disabled{opacity:.6;cursor:not-allowed}
-    .f-ok{text-align:center;padding:40px 20px}
-    .f-ok-ico{
-      width:54px;height:54px;background:var(--accent-gl);border:1px solid rgba(0,212,168,.3);
-      border-radius:50%;display:flex;align-items:center;justify-content:center;
-      color:var(--accent);margin:0 auto 14px;
-    }
-    .f-ok h3{font-size:20px;font-weight:700;color:var(--white);margin:0 0 8px}
-    .f-ok p{color:var(--g2);font-size:14px;margin:0}
+  /* ═══════════════════════════════════════════
+     HOME — ABOUT TEASER
+  ═══════════════════════════════════════════ */
+  .about-band { padding: 96px 24px; background: var(--bg2); }
+  .about-band-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+  }
+  .about-list { margin-top: 22px; display: flex; flex-direction: column; gap: 13px; }
+  .about-list li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: var(--txt2); }
+  .about-list .star { color: var(--blue); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .metric-card {
+    background: #fff; border-radius: var(--r); border: 1px solid var(--border);
+    padding: 22px; box-shadow: var(--sh-sm);
+  }
+  .metric-ico { font-size: 26px; margin-bottom: 10px; }
+  .metric-num { font-size: 28px; font-weight: 900; }
+  .metric-lbl { font-size: 12px; color: var(--txt2); margin-top: 3px; }
 
-    /* FOOTER */
-    .footer{background:var(--dark-2);border-top:1px solid var(--line);padding:48px var(--gap) 30px}
-    .footer-in{max-width:var(--max);margin:0 auto}
-    .ft-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:40px;flex-wrap:wrap}
-    .ft-tagline{font-size:13px;color:var(--g3);margin-top:8px;max-width:240px;line-height:1.6}
-    .ft-links{display:flex;gap:56px;flex-wrap:wrap}
-    .ft-col h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g3);margin:0 0 14px}
-    .ft-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
-    .ft-col ul li button,.ft-col ul li a{
-      background:none;border:none;cursor:pointer;padding:0;font-size:14px;
-      color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;font-family:inherit;
-    }
-    .ft-col ul li button:hover,.ft-col ul li a:hover{color:var(--white)}
-    .ft-bot{
-      border-top:1px solid var(--line);padding-top:22px;
-      display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
-    }
-    .ft-copy{font-size:13px;color:var(--g3)}
-    .ft-reg{font-size:12px;color:var(--g4)}
+  /* ═══════════════════════════════════════════
+     HOME — CTA BANNER
+  ═══════════════════════════════════════════ */
+  .cta-band { padding: 96px 24px; background: #fff; }
+  .cta-box {
+    max-width: 880px; margin: 0 auto; text-align: center;
+    background: var(--grad); border-radius: 22px;
+    padding: 60px 40px; position: relative; overflow: hidden;
+  }
+  .cta-box::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: rgba(255,255,255,.12); pointer-events: none;
+  }
+  .cta-box::after {
+    content: ''; position: absolute; bottom: -60px; left: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,.08); pointer-events: none;
+  }
+  .cta-box h2 { font-size: clamp(22px,3.5vw,38px); color: #fff; margin-bottom: 14px; }
+  .cta-box p { font-size: 17px; color: rgba(255,255,255,.82); margin-bottom: 34px; }
 
-    /* REVEAL */
-    .rv{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
-    .rv.vis{opacity:1;transform:none}
-    .pf{animation:pfIn .3s ease}
-    @keyframes pfIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  /* ═══════════════════════════════════════════
+     PAGE HERO (inner pages)
+  ═══════════════════════════════════════════ */
+  .pg-hero {
+    padding: 72px 24px 60px;
+    background: linear-gradient(160deg,#F0F5FF 0%,#FAFBFF 100%);
+    text-align: center;
+  }
+  .pg-hero h1 { font-size: clamp(30px,5vw,50px); margin-bottom: 14px; }
+  .pg-hero p { font-size: 17px; color: var(--txt2); max-width: 480px; margin: 0 auto; }
+
+  /* ═══════════════════════════════════════════
+     SERVICES PAGE
+  ═══════════════════════════════════════════ */
+  .sp-grid {
+    max-width: 1180px; margin: 0 auto; padding: 72px 24px;
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
+  }
+  .sp-card {
+    background: #fff; border-radius: var(--r-lg);
+    border: 1px solid var(--border); padding: 32px;
+    transition: all .3s;
+  }
+  .sp-card:hover { box-shadow: var(--sh-lg); transform: translateY(-4px); }
+  .sp-ico { width: 54px; height: 54px; border-radius: 14px; background: var(--blue-lt); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+  .sp-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 11px; }
+  .sp-card .desc { font-size: 13px; color: var(--txt2); line-height: 1.78; margin-bottom: 18px; }
+  .sp-feats { display: flex; flex-direction: column; gap: 8px; }
+  .sp-feat { display: flex; gap: 8px; font-size: 13px; color: var(--txt2); align-items: flex-start; }
+  .sp-feat .tick { color: var(--blue); font-weight: 800; flex-shrink: 0; }
+
+  /* ═══════════════════════════════════════════
+     PROJECTS PAGE
+  ═══════════════════════════════════════════ */
+  .proj-grid {
+    max-width: 860px; margin: 0 auto; padding: 72px 24px;
+    display: grid; grid-template-columns: repeat(2,1fr); gap: 22px;
+  }
+  .proj-card {
+    background: #fff; border-radius: var(--r-lg);
+    border: 1px solid var(--border); overflow: hidden;
+    box-shadow: var(--sh-sm); transition: all .3s;
+  }
+  .proj-card:hover { box-shadow: var(--sh-lg); transform: translateY(-4px); }
+  .proj-head {
+    height: 140px; display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+  }
+  .proj-body { padding: 24px; }
+  .proj-chip {
+    display: inline-flex; align-items: center;
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; letter-spacing: .05em;
+    margin-bottom: 10px;
+  }
+  .proj-card h3 { font-size: 19px; font-weight: 800; margin-bottom: 9px; }
+  .proj-card p { font-size: 13px; color: var(--txt2); line-height: 1.75; margin-bottom: 16px; }
+  .proj-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 700; transition: gap .2s;
+  }
+  .proj-link:hover { gap: 10px; }
+
+  /* ═══════════════════════════════════════════
+     ABOUT PAGE
+  ═══════════════════════════════════════════ */
+  .about-page { max-width: 980px; margin: 0 auto; padding: 72px 24px; }
+  .about-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 72px; }
+  .about-cols p { font-size: 15px; color: var(--txt2); line-height: 1.85; margin-bottom: 14px; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+  .info-box {
+    background: var(--bg2); border-radius: var(--r);
+    border: 1px solid var(--border); padding: 18px;
+  }
+  .info-box .lbl { font-size: 10px; font-weight: 700; color: var(--txt3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+  .info-box .val { font-size: 14px; font-weight: 700; color: var(--txt); }
+  .leader-card {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--r-lg);
+    padding: 30px; display: flex; align-items: flex-start; gap: 22px;
+    box-shadow: var(--sh-sm);
+  }
+  .avatar {
+    width: 70px; height: 70px; border-radius: 50%; flex-shrink: 0;
+    background: var(--grad);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 900; color: #fff; overflow: hidden;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .leader-name { font-size: 19px; font-weight: 800; margin-bottom: 3px; }
+  .leader-role { font-size: 13px; color: var(--blue); font-weight: 600; margin-bottom: 10px; }
+  .leader-bio { font-size: 14px; color: var(--txt2); line-height: 1.75; margin-bottom: 14px; }
+  .li-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px; border-radius: 8px;
+    border: 1.5px solid var(--border); color: var(--txt2);
+    font-size: 13px; font-weight: 600; transition: all .2s;
+  }
+  .li-link:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
+
+  /* ═══════════════════════════════════════════
+     CONTACT PAGE
+  ═══════════════════════════════════════════ */
+  .contact-page { max-width: 940px; margin: 0 auto; padding: 72px 24px; }
+  .contact-cols { display: grid; grid-template-columns: 1fr 1.6fr; gap: 44px; align-items: start; }
+  .contact-info h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+  .contact-info p { font-size: 14px; color: var(--txt2); line-height: 1.78; margin-bottom: 26px; }
+  .cinfo-list { display: flex; flex-direction: column; gap: 14px; }
+  .cinfo-row { display: flex; gap: 12px; align-items: flex-start; }
+  .cinfo-ico {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: var(--blue-lt); color: var(--blue);
+    display: flex; align-items: center; justify-content: center; font-size: 17px;
+  }
+  .cinfo-lbl { font-size: 10px; font-weight: 700; color: var(--txt3); letter-spacing: .07em; text-transform: uppercase; }
+  .cinfo-val { font-size: 14px; font-weight: 600; color: var(--txt); margin-top: 2px; }
+  .contact-form-box {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--r-lg);
+    padding: 34px; box-shadow: var(--sh);
+  }
+  .form-group { margin-bottom: 18px; }
+  .form-lbl { display: block; font-size: 13px; font-weight: 600; color: var(--txt); margin-bottom: 6px; }
+  .form-input, .form-select, .form-ta {
+    width: 100%; padding: 11px 13px; border-radius: 9px;
+    border: 1.5px solid var(--border); background: #fff;
+    font-size: 14px; font-family: inherit; color: var(--txt);
+    transition: border-color .2s, box-shadow .2s; outline: none;
+  }
+  .form-input:focus, .form-select:focus, .form-ta:focus {
+    border-color: var(--blue); box-shadow: 0 0 0 3px rgba(29,91,232,.1);
+  }
+  .form-ta { resize: vertical; min-height: 112px; }
+  .form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-btn {
+    width: 100%; padding: 13px; border-radius: 10px;
+    background: var(--blue); color: #fff;
+    font-size: 15px; font-weight: 700; border: none; cursor: pointer;
+    box-shadow: 0 4px 18px rgba(29,91,232,.26); transition: all .2s;
+  }
+  .form-btn:hover { background: var(--blue-dk); transform: translateY(-1px); }
+  .form-btn:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+  .form-success { text-align: center; padding: 30px 0; }
+  .succ-ico { font-size: 48px; margin-bottom: 12px; }
+  .succ-title { font-size: 18px; font-weight: 800; margin-bottom: 6px; color: #10B981; }
+  .succ-sub { font-size: 14px; color: var(--txt2); }
+  .form-err { font-size: 13px; color: #EF4444; margin-top: 10px; text-align: center; }
+
+  /* ═══════════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════════ */
+  .footer { background: #0D1526; color: #fff; padding: 60px 24px 28px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
+  .ft-logo { width: 38px; height: 38px; border-radius: 9px; background: var(--grad); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 13px; margin-bottom: 10px; }
+  .ft-name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .ft-tag { font-size: 13px; color: rgba(255,255,255,.42); line-height: 1.65; }
+  .ft-col h4 { font-size: 11px; font-weight: 700; color: rgba(255,255,255,.85); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
+  .ft-col ul { display: flex; flex-direction: column; gap: 9px; }
+  .ft-col li, .ft-col a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s; line-height: 1.5; }
+  .ft-col a:hover { color: rgba(255,255,255,.9); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.07); padding-top: 22px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    font-size: 12px; color: rgba(255,255,255,.3);
+  }
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════════ */
+  @media (max-width: 980px) {
+    .nav-links, .nav-cta, .nav-lang-wrap { display: none; }
+    .burger { display: flex; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-vis { display: none; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .about-band-inner { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .sp-grid { grid-template-columns: 1fr; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .about-cols { grid-template-columns: 1fr; gap: 32px; }
+    .contact-cols { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .info-grid, .form-row2, .metrics-grid { grid-template-columns: 1fr; }
+    .hero { padding: 56px 24px 56px; }
+    .cta-box { padding: 40px 22px; }
+  }
   </style>
 </head>
 <body>
 <div id="root"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
 <script type="text/babel">
-const { useState, useEffect, useRef, useContext, createContext } = React;
 
-/* ─── i18n ─── */
-const LangCtx = createContext({ lang:"en", setLang:()=>{} });
-function useLang(){ return useContext(LangCtx); }
-function T({ en, zh }){ const { lang } = useLang(); return lang==="zh" ? zh : en; }
-function tx(lang, en, zh){ return lang==="zh" ? zh : en; }
-function LanguageProvider({ children }){
-  const [lang, setL] = useState(()=>{ try{ return localStorage.getItem("mimo-lang")||"en"; }catch(e){ return "en"; } });
-  const setLang = l => {
-    setL(l);
-    try{ localStorage.setItem("mimo-lang",l); }catch(e){}
-    document.documentElement.setAttribute("data-lang",l);
-    document.documentElement.lang = l==="zh" ? "zh-Hans" : "en";
-  };
-  useEffect(()=>{ document.documentElement.setAttribute("data-lang",lang); },[lang]);
-  return <LangCtx.Provider value={{lang,setLang}}>{children}</LangCtx.Provider>;
+/* ─── i18n ─────────────────────────────────────────── */
+const LangCtx = React.createContext({ lang:"en", setLang:()=>{} });
+function LanguageProvider({ children }) {
+  const [lang, setL] = React.useState(() => localStorage.getItem("ms-lang") || "en");
+  const setLang = v => { setL(v); localStorage.setItem("ms-lang", v); };
+  return React.createElement(LangCtx.Provider, { value:{lang,setLang} }, children);
 }
-function LangToggle(){
-  const {lang,setLang} = useLang();
-  return (
-    <div className="ltoggle">
-      {["en","zh"].map(l=>(
-        <button key={l} className={lang===l?"on":"off"} onClick={()=>setLang(l)}>
-          {l==="en"?"EN":"中"}
-        </button>
-      ))}
-    </div>
+function useLang() { return React.useContext(LangCtx); }
+function T({ en, zh }) {
+  const { lang } = useLang();
+  return React.createElement(React.Fragment, null, lang==="zh" ? zh : en);
+}
+function tx(lang, en, zh) { return lang==="zh" ? zh : en; }
+function LangToggle() {
+  const { lang, setLang } = useLang();
+  return React.createElement("div", { className:"lang-pill" },
+    React.createElement("button", { className:"lang-btn"+(lang==="en"?" on":""), onClick:()=>setLang("en") }, "EN"),
+    React.createElement("button", { className:"lang-btn"+(lang==="zh"?" on":""), onClick:()=>setLang("zh") }, "中文")
   );
 }
 
-/* ─── Reveal hook ─── */
-function useReveal(){
-  useEffect(()=>{
-    const els = document.querySelectorAll(".rv");
-    const obs = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("vis"); obs.unobserve(e.target); } });
-    },{threshold:0.1});
-    els.forEach(el=>obs.observe(el));
-    return ()=>obs.disconnect();
-  },[]);
+/* ─── Hooks ─────────────────────────────────────────── */
+function useScrolled() {
+  const [s, set] = React.useState(false);
+  React.useEffect(() => {
+    const h = () => set(window.scrollY > 18);
+    window.addEventListener("scroll", h);
+    return () => window.removeEventListener("scroll", h);
+  }, []);
+  return s;
+}
+function useReveal() {
+  React.useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("v"); obs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    els.forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  });
 }
 
-/* ─── Icons ─── */
-const I = {
-  transform:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
-  web:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>,
-  cloud:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M18 17a4 4 0 0 0 0-8 6 6 0 0 0-11.6-1.6A4 4 0 0 0 6 17h12Z"/></svg>,
-  auto:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4"/><path d="m16.24 7.76 2.83-2.83"/><path d="M18 12h4"/><path d="m16.24 16.24 2.83 2.83"/><path d="M12 18v4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M2 12h4"/><path d="m4.93 4.93 2.83 2.83"/><circle cx="12" cy="12" r="4"/></svg>,
-  grant:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>,
-  shield:<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-  arrow:<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>,
-  check:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
-  mail:<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
-  pin:<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>,
-  wa:<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 5.55 5.55l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>,
-  li:<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>,
-  ext:<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>,
-};
+/* ─── SVG Icons ─────────────────────────────────────── */
+const ExtIcon = () => React.createElement("svg", { width:13, height:13, viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", strokeWidth:2.5, strokeLinecap:"round", strokeLinejoin:"round" },
+  React.createElement("path", { d:"M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" }),
+  React.createElement("polyline", { points:"15 3 21 3 21 9" }),
+  React.createElement("line", { x1:10, y1:14, x2:21, y2:3 })
+);
+const LIIcon = () => React.createElement("svg", { width:15, height:15, viewBox:"0 0 24 24", fill:"currentColor" },
+  React.createElement("path", { d:"M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" })
+);
 
-/* ─── NAV ─── */
-const PAGES = [
-  {id:"home",  en:"Home",     zh:"首页"},
-  {id:"services", en:"Services", zh:"服务"},
-  {id:"projects", en:"Projects", zh:"项目"},
-  {id:"about", en:"About",    zh:"关于"},
-  {id:"contact",en:"Contact", zh:"联系"},
+/* ─── Nav ────────────────────────────────────────────── */
+const LINKS = [
+  { id:"home",     en:"Home",     zh:"首页" },
+  { id:"services", en:"Services", zh:"服务" },
+  { id:"projects", en:"Projects", zh:"项目" },
+  { id:"about",    en:"About",    zh:"关于" },
+  { id:"contact",  en:"Contact",  zh:"联系" },
 ];
-function Nav({ page, setPage }){
-  const [scrolled,setScrolled] = useState(false);
-  const [mOpen,setMOpen] = useState(false);
-  const {lang} = useLang();
-  useEffect(()=>{
-    const fn=()=>setScrolled(window.scrollY>30);
-    fn(); window.addEventListener("scroll",fn,{passive:true});
-    return ()=>window.removeEventListener("scroll",fn);
-  },[]);
-  const go=id=>{ setPage(id); setMOpen(false); window.scrollTo({top:0,behavior:"instant"}); };
-  const solid = page!=="home"||scrolled;
-  return (
-    <>
-      <nav className={`nav ${solid?"solid":""}`}>
-        <div className="nav-inner">
-          <button className="brand" onClick={()=>go("home")} aria-label="Mimo Solutions home">
-            <div className="brand-mark">M</div>
-            <div>
-              <div className="brand-name">Mimo Solutions</div>
-              <div className="brand-sub">Digital Transformation · IT Services</div>
-            </div>
-          </button>
-          <div className="nav-links">
-            {PAGES.map(p=>(
-              <button key={p.id} className={page===p.id?"active":""} onClick={()=>go(p.id)}>
-                {lang==="zh"?p.zh:p.en}
-              </button>
-            ))}
-          </div>
-          <LangToggle/>
-          <button className="nav-cta" onClick={()=>go("contact")}>
-            <T en="Get in Touch" zh="联系我们"/>
-          </button>
-          <button className={`burger ${mOpen?"open":""}`} onClick={()=>setMOpen(o=>!o)} aria-label="Menu">
-            <span/><span/><span/>
-          </button>
-        </div>
-      </nav>
-      <div className={`mmenu ${mOpen?"open":""}`}>
-        {PAGES.map(p=>(
-          <button key={p.id} className={page===p.id?"active":""} onClick={()=>go(p.id)}>
-            {lang==="zh"?p.zh:p.en}
-          </button>
-        ))}
-        <button className="mmenu-cta" onClick={()=>go("contact")}>
-          <T en="Get in Touch" zh="联系我们"/>
-        </button>
-      </div>
-    </>
+function Nav({ page, setPage }) {
+  const scrolled = useScrolled();
+  const [open, setOpen] = React.useState(false);
+  const { lang } = useLang();
+  const go = id => { setPage(id); setOpen(false); window.scrollTo(0,0); };
+  return React.createElement(React.Fragment, null,
+    React.createElement("nav", { className:"nav"+(scrolled?" solid":"") },
+      React.createElement("div", { className:"nav-wrap" },
+        React.createElement("a", { className:"brand", href:"/", onClick:e=>{e.preventDefault();go("home");} },
+          React.createElement("div", { className:"brand-icon" }, "MS"),
+          React.createElement("div", { className:"brand-text" },
+            React.createElement("span", null, "Mimo Solutions"),
+            React.createElement("span", { className:"sub" }, "Digital Transformation")
+          )
+        ),
+        React.createElement("ul", { className:"nav-links" },
+          LINKS.map(l => React.createElement("li", { key:l.id },
+            React.createElement("a", { href:"/"+l.id, className:page===l.id?"active":"",
+              onClick:e=>{e.preventDefault();go(l.id);} },
+              lang==="zh" ? l.zh : l.en
+            )
+          ))
+        ),
+        React.createElement("div", { className:"nav-lang-wrap", style:{marginLeft:8} }, React.createElement(LangToggle)),
+        React.createElement("button", { className:"nav-cta", onClick:()=>go("contact") },
+          React.createElement(T, { en:"Get in Touch", zh:"联系我们" })
+        ),
+        React.createElement("button", { className:"burger", onClick:()=>setOpen(!open), "aria-label":"Menu" },
+          React.createElement("span"), React.createElement("span"), React.createElement("span")
+        )
+      )
+    ),
+    React.createElement("div", { className:"mob-menu"+(open?" open":"") },
+      LINKS.map(l => React.createElement("a", { key:l.id, href:"/"+l.id, className:page===l.id?"active":"",
+        onClick:e=>{e.preventDefault();go(l.id);} }, lang==="zh" ? l.zh : l.en)
+      ),
+      React.createElement("a", { href:"/contact", className:"mob-cta",
+        onClick:e=>{e.preventDefault();go("contact");} },
+        React.createElement(T, { en:"Get in Touch", zh:"联系我们" })
+      ),
+      React.createElement("div", { className:"mob-lang" }, React.createElement(LangToggle))
+    )
   );
 }
 
-/* ─── FOOTER ─── */
-function Footer({ setPage }){
-  const {lang} = useLang();
-  const go=id=>{ setPage(id); window.scrollTo({top:0,behavior:"instant"}); };
-  return (
-    <footer className="footer">
-      <div className="footer-in">
-        <div className="ft-top">
-          <div>
-            <div style={{display:"flex",alignItems:"center",gap:10}}>
-              <div className="brand-mark">M</div>
-              <div className="brand-name">Mimo Solutions</div>
-            </div>
-            <p className="ft-tagline">
-              <T en="Helping Malaysian businesses build for the digital era." zh="助力马来西亚企业迈向数字时代。"/>
-            </p>
-          </div>
-          <div className="ft-links">
-            <div className="ft-col">
-              <h4><T en="Navigation" zh="导航"/></h4>
-              <ul>
-                {PAGES.map(p=>(
-                  <li key={p.id}><button onClick={()=>go(p.id)}>{lang==="zh"?p.zh:p.en}</button></li>
-                ))}
-              </ul>
-            </div>
-            <div className="ft-col">
-              <h4><T en="Contact" zh="联系"/></h4>
-              <ul>
-                <li><a href="mailto:hello@mimos.digital">hello@mimos.digital</a></li>
-                <li><a href="https://wa.me/60192815191">+60 19-281 5191</a></li>
-                <li><span style={{color:"rgba(255,255,255,.45)",fontSize:14}}>Kuala Lumpur, Malaysia</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="ft-bot">
-          <span className="ft-copy">© 2026 Mimo Solutions. <T en="All rights reserved." zh="版权所有。"/></span>
-          <span className="ft-reg">Reg. 202603157683 · Malaysia</span>
-        </div>
-      </div>
-    </footer>
+/* ─── Footer ─────────────────────────────────────────── */
+function Footer({ setPage }) {
+  const go = id => { setPage(id); window.scrollTo(0,0); };
+  return React.createElement("footer", { className:"footer" },
+    React.createElement("div", { className:"footer-inner" },
+      React.createElement("div", { className:"footer-grid" },
+        React.createElement("div", null,
+          React.createElement("div", { className:"ft-logo" }, "MS"),
+          React.createElement("div", { className:"ft-name" }, "Mimo Solutions"),
+          React.createElement("div", { className:"ft-tag" },
+            React.createElement(T, { en:"Helping Malaysian businesses build\nfor the digital era.", zh:"助力马来西亚企业迈向数字化时代。" })
+          )
+        ),
+        React.createElement("div", { className:"ft-col" },
+          React.createElement("h4", null, React.createElement(T, { en:"Navigation", zh:"导航" })),
+          React.createElement("ul", null,
+            LINKS.map(l => React.createElement("li", { key:l.id },
+              React.createElement("a", { href:"/"+l.id, onClick:e=>{e.preventDefault();go(l.id);} },
+                React.createElement(T, { en:l.en, zh:l.zh })
+              )
+            ))
+          )
+        ),
+        React.createElement("div", { className:"ft-col" },
+          React.createElement("h4", null, React.createElement(T, { en:"Services", zh:"服务" })),
+          React.createElement("ul", null,
+            [{en:"Digital Transformation",zh:"数字化转型"},{en:"Cloud Solutions",zh:"云端解决方案"},{en:"Cybersecurity",zh:"网络安全"},{en:"Custom Development",zh:"定制开发"},{en:"IT Infrastructure",zh:"IT 基础设施"}]
+            .map((s,i) => React.createElement("li", { key:i }, React.createElement(T, s)))
+          )
+        ),
+        React.createElement("div", { className:"ft-col" },
+          React.createElement("h4", null, React.createElement(T, { en:"Contact", zh:"联系" })),
+          React.createElement("ul", null,
+            React.createElement("li", null, React.createElement("a", { href:"mailto:hello@mimos.digital" }, "hello@mimos.digital")),
+            React.createElement("li", null, React.createElement("a", { href:"https://wa.me/60192815191" }, "+60 19-281 5191")),
+            React.createElement("li", null, React.createElement(T, { en:"Kuala Lumpur, Malaysia", zh:"马来西亚 吉隆坡" }))
+          )
+        )
+      ),
+      React.createElement("div", { className:"footer-bottom" },
+        React.createElement("span", null, "© "+new Date().getFullYear()+" Mimo Solutions. ", React.createElement(T, { en:"All rights reserved.", zh:"版权所有。" })),
+        React.createElement("span", null, React.createElement(T, { en:"Digital Transformation · IT Services", zh:"数字化转型 · IT 服务" }))
+      )
+    )
   );
 }
 
-/* ─── HOME ─── */
-const HOME_SVCS = [
-  {n:"01",icon:I.transform, t:{en:"Digital Transformation",zh:"数字化转型"}, d:{en:"End-to-end strategy and execution to modernize your business operations and workflows.",zh:"端到端策略与执行，帮助企业实现业务运营与流程的现代化升级。"}},
-  {n:"02",icon:I.web,        t:{en:"Web & Mobile Development",zh:"网站与移动端开发"}, d:{en:"Custom websites, web apps, and mobile solutions built for performance and growth.",zh:"量身定制的网站、Web 应用与移动端解决方案，专为高效增长而设计。"}},
-  {n:"03",icon:I.cloud,      t:{en:"Cloud Solutions",zh:"云端解决方案"}, d:{en:"Cloud migration, infrastructure management, and hybrid cloud for SMEs.",zh:"面向中小企业的云迁移、基础设施管理与混合云架构。"}},
-  {n:"04",icon:I.auto,       t:{en:"Process Automation",zh:"流程自动化"}, d:{en:"AI-powered automation to reduce manual work and accelerate business workflows.",zh:"借助 AI 自动化工具，减少人工操作，提升业务效率。"}},
-  {n:"05",icon:I.grant,      t:{en:"SME Digital Grant",zh:"中小企业数字补贴"}, d:{en:"Malaysia government grant consultation and application support for digital adoption.",zh:"马来西亚政府数字化补贴咨询与申请协助。"}},
-  {n:"06",icon:I.shield,     t:{en:"IT Strategy & Security",zh:"IT 战略与安全"}, d:{en:"Technology roadmapping, vendor selection, and PDPA compliance advisory.",zh:"技术路线图、供应商选型，以及 PDPA 合规咨询。"}},
+/* ─── Services Data ──────────────────────────────────── */
+const SVCS = [
+  { ico:"🔄", en:"Digital Transformation", zh:"数字化转型",
+    desc:{en:"End-to-end strategy and execution to modernize your business operations.",zh:"端到端战略与执行，推动企业运营现代化。"},
+    feats:[{en:"Process automation & workflow design",zh:"流程自动化与工作流设计"},{en:"Digital strategy consulting",zh:"数字化战略咨询"},{en:"Change management & training",zh:"变革管理与员工培训"}] },
+  { ico:"☁️", en:"Cloud Solutions", zh:"云端解决方案",
+    desc:{en:"Architect, migrate, and manage cloud infrastructure on AWS, Azure, or GCP.",zh:"在 AWS、Azure 或 GCP 上架构、迁移和管理云基础设施。"},
+    feats:[{en:"Cloud migration & architecture",zh:"云迁移与架构设计"},{en:"Managed cloud operations",zh:"云托管运维"},{en:"Cost & performance optimization",zh:"成本与性能优化"}] },
+  { ico:"🔒", en:"Cybersecurity", zh:"网络安全",
+    desc:{en:"Protect your business with comprehensive security audits, tools, and monitoring.",zh:"通过安全审计、工具与监控全面保护企业资产。"},
+    feats:[{en:"Penetration testing & audits",zh:"渗透测试与安全审计"},{en:"Endpoint & network protection",zh:"终端与网络防护"},{en:"24/7 monitoring & response",zh:"24/7 监控与响应"}] },
+  { ico:"💻", en:"Custom Development", zh:"定制开发",
+    desc:{en:"Web apps, mobile apps, and enterprise software built precisely for your needs.",zh:"量身打造 Web 应用、移动应用及企业软件。"},
+    feats:[{en:"Web & mobile application development",zh:"Web 与移动应用开发"},{en:"API integration & microservices",zh:"API 集成与微服务"},{en:"Legacy system modernization",zh:"遗留系统现代化"}] },
+  { ico:"🖥️", en:"IT Infrastructure", zh:"IT 基础设施",
+    desc:{en:"Design, deploy, and manage reliable network and server environments.",zh:"设计、部署和管理可靠的网络与服务器环境。"},
+    feats:[{en:"Network design & deployment",zh:"网络设计与部署"},{en:"Server & storage management",zh:"服务器与存储管理"},{en:"IT helpdesk & support",zh:"IT 帮助台与支持"}] },
+  { ico:"📊", en:"Data & Analytics", zh:"数据与分析",
+    desc:{en:"Turn raw data into competitive advantage with BI, dashboards, and pipelines.",zh:"借助 BI、仪表板与数据管道，将数据转化为竞争优势。"},
+    feats:[{en:"Business intelligence dashboards",zh:"商业智能仪表板"},{en:"Data pipeline & ETL",zh:"数据管道与 ETL"},{en:"Predictive analytics & reporting",zh:"预测分析与报告"}] },
 ];
 
-function HomePage({ setPage }){
+/* ─── Home Page ──────────────────────────────────────── */
+function HomePage({ setPage }) {
   useReveal();
-  const {lang} = useLang();
-  const go=id=>{ setPage(id); window.scrollTo({top:0}); };
-  return (
-    <div className="pf">
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-bg"/>
-        <div className="hero-grid"/>
-        <div className="hero-inner">
-          <div className="hero-pill">
-            <div className="pill-dot"/>
-            <T en="Based in Kuala Lumpur · Serving Malaysia & ASEAN" zh="立足吉隆坡 · 服务马来西亚与东南亚"/>
-          </div>
-          <h1>
-            <T
-              en={<>Build Your <span className="ac">Digital</span> Future.</>}
-              zh={<>构建您的<span className="ac">数字</span>未来。</>}
-            />
-          </h1>
-          <p className="hero-sub">
-            <T
-              en="Mimo Solutions helps Malaysian businesses and startups accelerate digital transformation — from strategy to execution, web to cloud, automation to advisory."
-              zh="Mimo Solutions 助力马来西亚企业与初创公司加速数字化转型——从战略到执行，从网站到云端，从自动化到顾问服务。"
-            />
-          </p>
-          <div className="ctas">
-            <button className="btn btn-p" onClick={()=>go("services")}>
-              <T en="Explore Services" zh="了解服务"/> {I.arrow}
-            </button>
-            <button className="btn btn-o" onClick={()=>go("contact")}>
-              <T en="Talk to Us" zh="与我们沟通"/>
-            </button>
-          </div>
-          <div className="hero-stats">
-            <div><div className="stat-n">6+</div><div className="stat-l"><T en="Service categories" zh="服务类别"/></div></div>
-            <div><div className="stat-n">MY</div><div className="stat-l"><T en="Malaysia registered" zh="马来西亚注册"/></div></div>
-            <div><div className="stat-n">100%</div><div className="stat-l"><T en="Client-focused delivery" zh="以客户为中心"/></div></div>
-          </div>
-        </div>
-      </section>
+  const go = id => { setPage(id); window.scrollTo(0,0); };
+  return React.createElement("div", { className:"page" },
 
-      {/* SERVICES PREVIEW */}
-      <section className="sec">
-        <div className="sec-in">
-          <div className="sec-label rv"><T en="What We Do" zh="我们的服务"/></div>
-          <h2 className="sec-title rv"><T en="Digital Services for the Modern Business" zh="为现代企业提供的数字化服务"/></h2>
-          <p className="sec-desc rv"><T en="From building your first website to migrating enterprise systems to the cloud — we cover the full digital spectrum." zh="从搭建第一个网站，到将企业系统迁移至云端——我们覆盖完整的数字化服务链。"/></p>
-          <div className="svc-grid">
-            {HOME_SVCS.map(s=>(
-              <div key={s.n} className="svc-card rv">
-                <div className="svc-icon">{s.icon}</div>
-                <div className="svc-num">{s.n}</div>
-                <div className="svc-t">{s.t[lang]}</div>
-                <p className="svc-d">{s.d[lang]}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    /* Hero */
+    React.createElement("section", { className:"hero" },
+      React.createElement("div", { className:"hero-inner" },
+        React.createElement("div", { className:"hero-content" },
+          React.createElement("div", { className:"hero-badge" },
+            React.createElement("span", { className:"live-dot" }),
+            React.createElement(T, { en:"Malaysia's Digital Partner", zh:"马来西亚数字化伙伴" })
+          ),
+          React.createElement("h1", null,
+            React.createElement(T, { en:"Transform Your Business", zh:"数字化转型" }),
+            React.createElement("br"),
+            React.createElement("span", { className:"grad-text" },
+              React.createElement(T, { en:"for the Digital Era", zh:"赋能企业未来" })
+            )
+          ),
+          React.createElement("p", { className:"hero-sub" },
+            React.createElement(T, {
+              en:"We help Malaysian SMEs and enterprises digitalize operations, secure infrastructure, and grow through technology.",
+              zh:"我们帮助马来西亚中小企业和大型企业实现数字化运营、保障基础设施安全，并通过技术实现持续增长。"
+            })
+          ),
+          React.createElement("div", { className:"hero-actions" },
+            React.createElement("button", { className:"btn btn-blue", onClick:()=>go("contact") },
+              React.createElement(T, { en:"Start Your Project →", zh:"开始项目 →" })
+            ),
+            React.createElement("button", { className:"btn btn-ghost", onClick:()=>go("services") },
+              React.createElement(T, { en:"Our Services", zh:"了解服务" })
+            )
+          )
+        ),
+        React.createElement("div", { className:"hero-vis" },
+          React.createElement("div", { className:"hero-card" },
+            React.createElement("div", { className:"hero-card-label" },
+              React.createElement(T, { en:"What We Deliver", zh:"我们交付什么" })
+            ),
+            React.createElement("ul", { className:"svc-check-list" },
+              SVCS.map((s,i) => React.createElement("li", { key:i, className:"svc-check" },
+                React.createElement("span", { className:"ck" }, "✓"),
+                React.createElement(T, { en:s.en, zh:s.zh })
+              ))
+            ),
+            React.createElement("div", { className:"hero-stats" },
+              React.createElement("div", { className:"hstat" },
+                React.createElement("div", { className:"hstat-num grad-text" }, "50+"),
+                React.createElement("div", { className:"hstat-lbl" }, React.createElement(T, { en:"Projects Delivered", zh:"已交付项目" }))
+              ),
+              React.createElement("div", { className:"hstat" },
+                React.createElement("div", { className:"hstat-num grad-text" }, "5+"),
+                React.createElement("div", { className:"hstat-lbl" }, React.createElement(T, { en:"Years Experience", zh:"年行业经验" }))
+              )
+            )
+          )
+        )
+      )
+    ),
 
-      {/* ABOUT TEASER */}
-      <section className="sec dark-sec">
-        <div className="sec-in">
-          <div className="ab-layout">
-            <div>
-              <div className="sec-label rv"><T en="About Mimo Solutions" zh="关于 Mimo Solutions"/></div>
-              <h2 className="sec-title rv"><T en="Technology that works for your business" zh="让科技真正为您的业务服务"/></h2>
-              <p className="rv" style={{color:"var(--g2)",lineHeight:1.8,margin:"0 0 20px"}}>
-                <T en="Mimo Solutions is a Malaysia-registered IT services company focused on helping SMEs and growing businesses adopt technology that makes a real difference." zh="Mimo Solutions 是一家在马来西亚注册的 IT 服务公司，专注于帮助中小企业和成长型企业采用真正有实效的数字化解决方案。"/>
-              </p>
-              <ul className="ab-bullets">
-                {[
-                  {en:"Practical, business-first approach to digital transformation",zh:"以业务优先的务实数字化转型方法"},
-                  {en:"Malaysia SME digital grant guidance and application support",zh:"马来西亚中小企业数字化补贴申请指导"},
-                  {en:"End-to-end delivery: strategy → design → build → deploy",zh:"端到端交付：战略→设计→建设→部署"},
-                  {en:"ASEAN market knowledge and regional technology network",zh:"东南亚市场洞察与区域技术网络"},
-                ].map((item,i)=>(
-                  <li key={i} className="rv">{item[lang]}</li>
-                ))}
-              </ul>
-              <button className="btn btn-p rv" onClick={()=>go("about")}>
-                <T en="Learn More" zh="了解更多"/>
-              </button>
-            </div>
-            <div className="rv">
-              <div className="ab-card">
-                <div className="f-avatar"><span>T</span></div>
-                <div className="f-name">Tom See</div>
-                <div className="f-role"><T en="Founder & Director" zh="创始人 & 总监"/></div>
-                <p className="f-bio">
-                  <T en="IoT adoption specialist and digital growth strategist with experience driving enterprise technology partnerships and market entry across ASEAN." zh="物联网应用专家与数字增长策略师，在推动东南亚企业技术合作与市场拓展方面拥有丰富经验。"/>
-                </p>
-                <div className="f-links">
-                  <a href="https://www.linkedin.com/in/tomsee" target="_blank" rel="noreferrer" className="badge">{I.li} LinkedIn</a>
-                  <a href="mailto:hello@mimos.digital" className="badge">{I.mail} Email</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    /* Services preview */
+    React.createElement("section", { className:"svc-section" },
+      React.createElement("div", { className:"svc-inner" },
+        React.createElement("div", { className:"section-header reveal", style:{marginBottom:48} },
+          React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Our Services", zh:"我们的服务" })),
+          React.createElement("h2", { className:"section-title" },
+            React.createElement(T, { en:"Everything You Need to Go Digital", zh:"全方位数字化解决方案" })
+          ),
+          React.createElement("p", { className:"section-sub" },
+            React.createElement(T, {
+              en:"End-to-end technology solutions tailored for the Malaysian market — from strategy to support.",
+              zh:"从战略到支持，为马来西亚市场量身定制的端到端技术解决方案。"
+            })
+          )
+        ),
+        React.createElement("div", { className:"svc-grid" },
+          SVCS.map((s,i) => React.createElement("div", { key:i, className:"svc-card reveal", style:{transitionDelay:i*.07+"s"} },
+            React.createElement("div", { className:"svc-ico" }, s.ico),
+            React.createElement("h3", null, React.createElement(T, { en:s.en, zh:s.zh })),
+            React.createElement("p", null, React.createElement(T, s.desc))
+          ))
+        ),
+        React.createElement("div", { style:{textAlign:"center",marginTop:44} },
+          React.createElement("button", { className:"btn btn-ghost reveal", onClick:()=>go("services") },
+            React.createElement(T, { en:"View All Services →", zh:"查看所有服务 →" })
+          )
+        )
+      )
+    ),
 
-      {/* CTA */}
-      <section className="sec">
-        <div className="sec-in">
-          <div className="cta-box rv">
-            <h2><T en="Ready to transform your business?" zh="准备好开始数字化转型了吗？"/></h2>
-            <p><T en="Let's talk about your digital goals. No jargon, just practical solutions." zh="一起探讨您的数字化目标。不说废话，只给实用方案。"/></p>
-            <button className="btn btn-p" onClick={()=>go("contact")}>
-              <T en="Start the Conversation" zh="开启对话"/>
-            </button>
-          </div>
-        </div>
-      </section>
-    </div>
+    /* About band */
+    React.createElement("section", { className:"about-band" },
+      React.createElement("div", { className:"about-band-inner" },
+        React.createElement("div", { className:"reveal" },
+          React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"About Us", zh:"关于我们" })),
+          React.createElement("h2", { className:"section-title" },
+            React.createElement(T, { en:"Your Trusted Tech Partner in Malaysia", zh:"您在马来西亚的可信赖技术伙伴" })
+          ),
+          React.createElement("p", { className:"section-sub" },
+            React.createElement(T, {
+              en:"Mimo Solutions is a KL-based IT services company helping businesses navigate digital transformation with clarity and confidence.",
+              zh:"Mimo Solutions 是一家位于吉隆坡的 IT 服务公司，帮助企业以清晰的方向和信心推进数字化转型。"
+            })
+          ),
+          React.createElement("ul", { className:"about-list" },
+            [
+              {en:"Proven track record across Malaysia & Southeast Asia",zh:"在马来西亚及东南亚拥有丰富成功案例"},
+              {en:"End-to-end delivery — strategy through ongoing support",zh:"从战略规划到持续支持的全流程交付"},
+              {en:"Industry expertise in fintech, retail, F&B, and more",zh:"深耕金融科技、零售、餐饮等多个行业"},
+            ].map((item,i) => React.createElement("li", { key:i },
+              React.createElement("span", { className:"star" }, "✦"),
+              React.createElement(T, item)
+            ))
+          ),
+          React.createElement("button", { className:"btn btn-blue", style:{marginTop:28}, onClick:()=>go("about") },
+            React.createElement(T, { en:"Learn More About Us", zh:"了解更多" })
+          )
+        ),
+        React.createElement("div", { className:"metrics-grid reveal" },
+          [
+            {ico:"🏢",num:"50+",lbl:{en:"Clients Served",zh:"服务客户"}},
+            {ico:"🌏",num:"5+",lbl:{en:"Years in Market",zh:"市场经验年"}},
+            {ico:"⚡",num:"100%",lbl:{en:"Project Success",zh:"项目成功率"}},
+            {ico:"🤝",num:"24/7",lbl:{en:"Support Available",zh:"全天候支持"}},
+          ].map((m,i) => React.createElement("div", { key:i, className:"metric-card" },
+            React.createElement("div", { className:"metric-ico" }, m.ico),
+            React.createElement("div", { className:"metric-num grad-text" }, m.num),
+            React.createElement("div", { className:"metric-lbl" }, React.createElement(T, m.lbl))
+          ))
+        )
+      )
+    ),
+
+    /* CTA */
+    React.createElement("section", { className:"cta-band" },
+      React.createElement("div", { className:"cta-box reveal" },
+        React.createElement("h2", null, React.createElement(T, { en:"Ready to Digitalize Your Business?", zh:"准备好开启数字化转型了吗？" })),
+        React.createElement("p", null, React.createElement(T, {
+          en:"Let's talk about your goals. Our team is ready to help you build for the future.",
+          zh:"与我们探讨您的目标，我们的团队随时准备帮助您布局未来。"
+        })),
+        React.createElement("button", { className:"btn btn-white", onClick:()=>go("contact") },
+          React.createElement(T, { en:"Get a Free Consultation →", zh:"获取免费咨询 →" })
+        )
+      )
+    )
   );
 }
 
-/* ─── SERVICES PAGE ─── */
-const SVCS_FULL = [
-  {
-    tag:"Core", icon:I.transform,
-    t:{en:"Digital Transformation Consulting",zh:"数字化转型咨询"},
-    d:{en:"We help you build a clear digital transformation roadmap — assessing where you are, identifying quick wins, and planning long-term technology adoption aligned with your business goals.",zh:"我们帮助您制定清晰的数字化转型路线图，评估现状、识别快速收益点，并规划与业务目标一致的长期技术采用计划。"},
-    pts:[
-      {en:"Digital maturity assessment",zh:"数字化成熟度评估"},
-      {en:"Technology roadmap development",zh:"技术路线图制定"},
-      {en:"Change management and adoption planning",zh:"变革管理与推广计划"},
-      {en:"ROI and business case development",zh:"投资回报率与商业案例"},
-    ]
-  },
-  {
-    tag:"Core", icon:I.web,
-    t:{en:"Web & Mobile Development",zh:"网站与移动端开发"},
-    d:{en:"Custom-built websites and web applications designed for performance, conversion, and scale. From company landing pages to full-stack web apps.",zh:"量身定制的网站与 Web 应用，聚焦性能、转化与可扩展性。从企业官网到全栈 Web 应用一应俱全。"},
-    pts:[
-      {en:"Corporate websites and landing pages",zh:"企业官网与落地页"},
-      {en:"E-commerce and marketplace development",zh:"电商与平台开发"},
-      {en:"Progressive web apps (PWA)",zh:"渐进式网页应用（PWA）"},
-      {en:"API integration and backend systems",zh:"API 集成与后端系统"},
-    ]
-  },
-  {
-    tag:"Infrastructure", icon:I.cloud,
-    t:{en:"Cloud Migration & Management",zh:"云迁移与云管理"},
-    d:{en:"Move your business to the cloud with confidence. We assess your infrastructure, plan a smooth migration path, and manage your cloud environment for reliability and cost-efficiency.",zh:"放心迁移云端。我们评估基础设施、规划平滑迁移路径，并管理云环境以确保可靠性与成本效益。"},
-    pts:[
-      {en:"Cloud readiness assessment",zh:"云迁移就绪评估"},
-      {en:"AWS, GCP, Azure and Huawei Cloud",zh:"AWS、GCP、Azure 及华为云"},
-      {en:"Hybrid cloud architecture design",zh:"混合云架构设计"},
-      {en:"Ongoing monitoring and cost optimization",zh:"持续监控与成本优化"},
-    ]
-  },
-  {
-    tag:"Automation", icon:I.auto,
-    t:{en:"Process Automation & AI Tools",zh:"流程自动化与 AI 工具"},
-    d:{en:"Identify and automate repetitive business processes using AI and no-code tools. Reduce manual work and free your team to focus on what matters.",zh:"利用 AI 和无代码工具识别并自动化重复性业务流程，减少人工操作，让团队专注于更有价值的工作。"},
-    pts:[
-      {en:"Business process analysis and mapping",zh:"业务流程分析与梳理"},
-      {en:"RPA and no-code automation implementation",zh:"RPA 与无代码自动化实施"},
-      {en:"AI-powered document and data processing",zh:"AI 驱动的文件与数据处理"},
-      {en:"System integration and workflow automation",zh:"系统集成与工作流自动化"},
-    ]
-  },
-  {
-    tag:"Advisory", icon:I.grant,
-    t:{en:"Malaysia SME Digital Grant Support",zh:"马来西亚中小企业数字补贴"},
-    d:{en:"Navigate Malaysia's SME digital transformation grants including MDEC and SME Corp programs. We help identify eligible grants, prepare documentation, and submit applications.",zh:"协助申请马来西亚中小企业数字化转型补贴，包括 MDEC 和 SME Corp 项目，覆盖资格评估、文件准备与申请提交全流程。"},
-    pts:[
-      {en:"Grant eligibility assessment",zh:"补贴资格评估"},
-      {en:"Application documentation preparation",zh:"申请文件准备"},
-      {en:"MDEC and SME Corp programs",zh:"MDEC 与 SME Corp 项目"},
-      {en:"Post-approval compliance support",zh:"获批后合规支持"},
-    ]
-  },
-  {
-    tag:"Advisory", icon:I.shield,
-    t:{en:"IT Strategy & Security",zh:"IT 战略与安全"},
-    d:{en:"Technology roadmapping, vendor selection, digital maturity assessments, and PDPA compliance advisory for Malaysian businesses.",zh:"技术路线图规划、供应商选型、数字化成熟度评估，以及面向马来西亚企业的 PDPA 合规咨询。"},
-    pts:[
-      {en:"IT strategy and technology roadmap",zh:"IT 战略与技术路线图"},
-      {en:"Vendor evaluation and selection",zh:"供应商评估与选型"},
-      {en:"PDPA compliance advisory",zh:"PDPA 合规咨询"},
-      {en:"Basic security audit and gap analysis",zh:"基础安全审计与差距分析"},
-    ]
-  },
-];
-
-function ServicesPage(){
+/* ─── Services Page ──────────────────────────────────── */
+function ServicesPage() {
   useReveal();
-  const {lang} = useLang();
-  return (
-    <div className="pf">
-      <section className="sec" style={{paddingTop:140}}>
-        <div className="sec-in">
-          <div className="sec-label rv"><T en="Our Services" zh="服务范围"/></div>
-          <h1 className="sec-title rv" style={{fontSize:"var(--h1)"}}>
-            <T en="Full-Spectrum Digital Services" zh="全方位数字化服务"/>
-          </h1>
-          <p className="sec-desc rv">
-            <T en="From consulting to delivery — we cover every stage of your digital journey." zh="从咨询到交付，覆盖您数字化旅程的每一个阶段。"/>
-          </p>
-          <div className="svc-full-grid">
-            {SVCS_FULL.map((s,i)=>(
-              <div key={i} className="svc-full-card rv">
-                <div style={{display:"flex",alignItems:"center",gap:14,marginBottom:18}}>
-                  <div className="svc-icon" style={{flexShrink:0}}>{s.icon}</div>
-                  <span className="svc-tag">{s.tag}</span>
-                </div>
-                <h3 className="svc-full-t">{s.t[lang]}</h3>
-                <p className="svc-full-d">{s.d[lang]}</p>
-                <ul className="svc-pts">
-                  {s.pts.map((p,j)=><li key={j}>{p[lang]}</li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+  return React.createElement("div", { className:"page" },
+    React.createElement("div", { className:"pg-hero" },
+      React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Services", zh:"服务" })),
+      React.createElement("h1", null, React.createElement(T, { en:"What We Offer", zh:"我们提供什么" })),
+      React.createElement("p", null, React.createElement(T, {
+        en:"Comprehensive IT and digital transformation services tailored for Malaysian businesses.",
+        zh:"为马来西亚企业量身定制的全面 IT 与数字化转型服务。"
+      }))
+    ),
+    React.createElement("div", { className:"sp-grid" },
+      SVCS.map((s,i) => React.createElement("div", { key:i, className:"sp-card reveal", style:{transitionDelay:i*.07+"s"} },
+        React.createElement("div", { className:"sp-ico" }, s.ico),
+        React.createElement("h3", null, React.createElement(T, { en:s.en, zh:s.zh })),
+        React.createElement("p", { className:"desc" }, React.createElement(T, s.desc)),
+        React.createElement("ul", { className:"sp-feats" },
+          s.feats.map((f,j) => React.createElement("li", { key:j, className:"sp-feat" },
+            React.createElement("span", { className:"tick" }, "✓"),
+            React.createElement(T, f)
+          ))
+        )
+      ))
+    )
   );
 }
 
-/* ─── PROJECTS PAGE ─── */
+/* ─── Projects Page ──────────────────────────────────── */
 const PROJECTS = [
-  {
-    name:"MJC Leisure",
-    url:"https://mjcleisure.com",
-    domain:"mjcleisure.com",
-    emoji:"M",
-    tag:{en:"Web Development",zh:"网站开发"},
-    t:{en:"MJC Leisure",zh:"MJC Leisure"},
-    d:{
-      en:"Corporate website for MJC Leisure, a Malaysia-based leisure and entertainment business. Full-stack web development including brand identity integration, responsive design, and content management.",
-      zh:"MJC Leisure（马来西亚休闲娱乐企业）官网开发，涵盖品牌形象整合、响应式设计与内容管理系统全栈交付。"
-    },
-    color:"#1a2a1a",
-    accent:"#4ade80",
-  },
-  {
-    name:"Zixi Metaphysics",
-    url:"https://www.c13191413.com",
-    domain:"c13191413.com",
-    emoji:"☯",
-    tag:{en:"Web Development",zh:"网站开发"},
-    t:{en:"Zixi Metaphysics",zh:"紫希玄学"},
-    d:{
-      en:"Full website build for Zixi Metaphysics, a Chinese metaphysics and fortune-reading consultancy. Delivered a clean, culturally-attuned web presence with bilingual content and service booking integration.",
-      zh:"为紫希玄学咨询服务打造官方网站，呈现文化底蕴与专业形象，包含双语内容与服务预约功能。"
-    },
-    color:"#1a1a2a",
-    accent:"#a78bfa",
-  },
+  { emoji:"M", name:{en:"MJC Leisure",zh:"MJC Leisure"}, url:"https://mjcleisure.com", domain:"mjcleisure.com",
+    tag:{en:"Web Development",zh:"网站开发"}, bg:"#EBF5FF", color:"#1D5BE8",
+    desc:{en:"Corporate website for MJC Leisure, a Malaysia-based leisure and entertainment business. Full-stack web development including brand identity integration, responsive design, and content management.",
+          zh:"为 MJC Leisure（马来西亚休闲娱乐企业）开发官网，包括品牌整合、响应式设计与内容管理。"} },
+  { emoji:"☯", name:{en:"Zixi Metaphysics",zh:"紫希玄学"}, url:"https://www.c13191413.com", domain:"c13191413.com",
+    tag:{en:"Web Development",zh:"网站开发"}, bg:"#F3F0FF", color:"#7C3AED",
+    desc:{en:"Full website build for Zixi Metaphysics, a Chinese metaphysics and fortune-reading consultancy. Custom design with bilingual content and appointment booking integration.",
+          zh:"为紫希玄学咨询服务打造官方网站，自定义设计，支持双语内容与预约功能。"} },
 ];
-
-function ProjectsPage(){
+function ProjectsPage() {
   useReveal();
-  const {lang} = useLang();
-  return (
-    <div className="pf">
-      <section className="sec" style={{paddingTop:140}}>
-        <div className="sec-in">
-          <div className="sec-label rv"><T en="Projects" zh="项目案例"/></div>
-          <h1 className="sec-title rv" style={{fontSize:"var(--h1)"}}>
-            <T en="Work We've Delivered" zh="我们交付的项目"/>
-          </h1>
-          <p className="sec-desc rv">
-            <T en="A selection of websites and digital solutions built for our clients." zh="为客户打造的网站与数字化解决方案精选。"/>
-          </p>
-          <div className="proj-grid">
-            {PROJECTS.map((p,i)=>(
-              <div key={i} className="proj-card rv">
-                <div className="proj-thumb" style={{background:`linear-gradient(135deg, ${p.color} 0%, #0d1427 100%)`}}>
-                  <span style={{color:p.accent}}>{p.emoji}</span>
-                </div>
-                <div className="proj-body">
-                  <span className="proj-tag">{p.tag[lang]}</span>
-                  <h3 className="proj-title">{p.t[lang]}</h3>
-                  <p className="proj-desc">{p.d[lang]}</p>
-                  <a href={p.url} target="_blank" rel="noreferrer" className="proj-url">
-                    {p.domain} {I.ext}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+  return React.createElement("div", { className:"page" },
+    React.createElement("div", { className:"pg-hero" },
+      React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Projects", zh:"项目" })),
+      React.createElement("h1", null, React.createElement(T, { en:"Our Work", zh:"我们的作品" })),
+      React.createElement("p", null, React.createElement(T, {
+        en:"Selected client projects we've built and delivered.",
+        zh:"我们构建并交付的部分客户项目。"
+      }))
+    ),
+    React.createElement("div", { className:"proj-grid" },
+      PROJECTS.map((p,i) => React.createElement("div", { key:i, className:"proj-card reveal", style:{transitionDelay:i*.1+"s"} },
+        React.createElement("div", { className:"proj-head",
+          style:{ background:p.bg, color:p.color, fontSize: p.emoji.length===1 ? "72px" : "52px" }
+        }, p.emoji),
+        React.createElement("div", { className:"proj-body" },
+          React.createElement("div", { className:"proj-chip", style:{background:p.bg,color:p.color} },
+            React.createElement(T, p.tag)
+          ),
+          React.createElement("h3", null, React.createElement(T, p.name)),
+          React.createElement("p", null, React.createElement(T, p.desc)),
+          React.createElement("a", { href:p.url, target:"_blank", rel:"noreferrer", className:"proj-link", style:{color:p.color} },
+            p.domain, " ", React.createElement(ExtIcon)
+          )
+        )
+      ))
+    )
   );
 }
 
-/* ─── ABOUT PAGE ─── */
-const CO_INFO = [
-  {label:{en:"Incorporated",zh:"注册时间"}, val:{en:"2026, Malaysia",zh:"2026 年，马来西亚"}},
-  {label:{en:"Reg. No.",zh:"注册编号"},    val:{en:"202603157683",zh:"202603157683"}},
-  {label:{en:"Structure",zh:"公司类型"},   val:{en:"Sole Proprietor",zh:"独资经营"}},
-  {label:{en:"Location",zh:"所在地"},      val:{en:"Kuala Lumpur, MY",zh:"马来西亚吉隆坡"}},
-  {label:{en:"Email",zh:"邮箱"},           val:{en:"hello@mimos.digital",zh:"hello@mimos.digital"}},
-  {label:{en:"Website",zh:"网站"},         val:{en:"mimos.digital",zh:"mimos.digital"}},
-];
-
-function AboutPage({ setPage }){
+/* ─── About Page ─────────────────────────────────────── */
+function AboutPage() {
   useReveal();
-  const {lang} = useLang();
-  const go=id=>{ setPage(id); window.scrollTo({top:0}); };
-  return (
-    <div className="pf">
-      <section className="sec" style={{paddingTop:140}}>
-        <div className="sec-in">
-          <div className="sec-label rv"><T en="About Us" zh="关于我们"/></div>
-          <h1 className="sec-title rv" style={{fontSize:"var(--h1)",maxWidth:620}}>
-            <T en="A lean, focused digital services partner" zh="精专而专注的数字化服务伙伴"/>
-          </h1>
-          <p className="rv" style={{color:"var(--g2)",lineHeight:1.8,maxWidth:580,margin:"0 0 18px",fontSize:17}}>
-            <T en="Mimo Solutions was founded with a simple belief: businesses of all sizes deserve access to quality digital expertise that's practical, affordable, and outcome-driven." zh="Mimo Solutions 的成立源于一个简单的信念：无论规模大小，企业都应获得务实、可负担且以结果为导向的优质数字化专业服务。"/>
-          </p>
-          <p className="rv" style={{color:"var(--g2)",lineHeight:1.8,maxWidth:580,margin:"0 0 52px"}}>
-            <T en="We work with SMEs, startups, and established businesses across Malaysia to cut through the noise and adopt technologies that genuinely improve their operations." zh="我们与马来西亚的中小企业、初创公司和成熟企业合作，帮助他们找准方向，采用真正能提升运营效率的技术。"/>
-          </p>
-
-          {/* Founder Card */}
-          <div className="rv" style={{background:"var(--dark-2)",border:"1px solid var(--line)",borderRadius:"var(--r-xl)",padding:36,maxWidth:620,marginBottom:48}}>
-            <div style={{display:"flex",alignItems:"flex-start",gap:20}}>
-              <div className="f-avatar" style={{width:78,height:78,fontSize:26,flexShrink:0}}><span>T</span></div>
-              <div>
-                <div className="f-name" style={{fontSize:22}}>Tom See</div>
-                <div className="f-role"><T en="Founder & Director" zh="创始人 & 总监"/></div>
-                <p className="f-bio" style={{marginTop:12}}>
-                  <T
-                    en="Tom brings experience in IoT adoption, business development, and digital growth strategy across ASEAN. With a background in enterprise technology partnerships and regional market entry, he founded Mimo Solutions to make quality digital services accessible to Malaysian businesses of all sizes."
-                    zh="Tom 在物联网应用、商业拓展和东南亚数字增长战略方面拥有丰富经验。凭借企业技术合作与区域市场拓展的背景，他创立了 Mimo Solutions，致力于让各规模的马来西亚企业都能享受到优质数字化服务。"
-                  />
-                </p>
-                <div className="f-links">
-                  <a href="https://www.linkedin.com/in/tomsee" target="_blank" rel="noreferrer" className="badge">{I.li} LinkedIn</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Company Info */}
-          <div className="sec-label rv"><T en="Company Details" zh="公司信息"/></div>
-          <div className="co-grid rv">
-            {CO_INFO.map((item,i)=>(
-              <div key={i} className="co-card">
-                <div className="co-label">{item.label[lang]||item.label.en}</div>
-                <div className="co-val">{item.val[lang]||item.val.en}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="rv" style={{marginTop:56}}>
-            <button className="btn btn-p" onClick={()=>go("contact")}>
-              <T en="Work With Us" zh="与我们合作"/> {I.arrow}
-            </button>
-          </div>
-        </div>
-      </section>
-    </div>
+  return React.createElement("div", { className:"page" },
+    React.createElement("div", { className:"pg-hero" },
+      React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"About", zh:"关于" })),
+      React.createElement("h1", null, React.createElement(T, { en:"Who We Are", zh:"我们是谁" })),
+      React.createElement("p", null, React.createElement(T, {
+        en:"A Malaysia-based team passionate about helping businesses grow through technology.",
+        zh:"一支总部位于马来西亚、致力于通过技术推动企业增长的团队。"
+      }))
+    ),
+    React.createElement("div", { className:"about-page" },
+      React.createElement("div", { className:"about-cols reveal" },
+        React.createElement("div", null,
+          React.createElement("p", null, React.createElement(T, {
+            en:"Mimo Solutions is a digital transformation and IT services company headquartered in Kuala Lumpur, Malaysia. We partner with businesses across Malaysia and Southeast Asia to modernize operations, build technology infrastructure, and unlock growth through digital tools.",
+            zh:"Mimo Solutions 是一家总部位于马来西亚吉隆坡的数字化转型与 IT 服务公司。我们与马来西亚及东南亚各地企业合作，推动运营现代化、搭建技术基础设施，并通过数字工具释放增长潜力。"
+          })),
+          React.createElement("p", null, React.createElement(T, {
+            en:"Our team brings deep expertise in cloud computing, cybersecurity, custom development, and IT infrastructure — delivering practical, cost-effective solutions that create real business impact.",
+            zh:"我们的团队在云计算、网络安全、定制开发和 IT 基础设施方面拥有深厚专业经验，提供切实可行、具有成本效益的解决方案，创造真实商业价值。"
+          }))
+        ),
+        React.createElement("div", { className:"info-grid" },
+          [
+            {lbl:{en:"Founded",zh:"成立年份"}, val:{en:"2019",zh:"2019"}},
+            {lbl:{en:"Headquarters",zh:"总部"}, val:{en:"Kuala Lumpur, MY",zh:"马来西亚 吉隆坡"}},
+            {lbl:{en:"Focus",zh:"专注"}, val:{en:"Digital Transformation",zh:"数字化转型"}},
+            {lbl:{en:"Market",zh:"市场"}, val:{en:"Malaysia & SEA",zh:"马来西亚及东南亚"}},
+          ].map((item,i) => React.createElement("div", { key:i, className:"info-box" },
+            React.createElement("div", { className:"lbl" }, React.createElement(T, item.lbl)),
+            React.createElement("div", { className:"val" }, React.createElement(T, item.val))
+          ))
+        )
+      ),
+      React.createElement("div", { className:"leadership reveal", style:{marginTop:40} },
+        React.createElement("h2", { style:{fontSize:22,fontWeight:800,marginBottom:20} },
+          React.createElement(T, { en:"Leadership", zh:"领导团队" })
+        ),
+        React.createElement("div", { className:"leader-card" },
+          React.createElement("div", { className:"avatar" },
+            React.createElement("img", { src:"assets/team/tom-see.png", alt:"Tom See",
+              onError:e=>{ e.target.style.display="none"; } }),
+            "T"
+          ),
+          React.createElement("div", null,
+            React.createElement("div", { className:"leader-name" }, "Tom See"),
+            React.createElement("div", { className:"leader-role" },
+              React.createElement(T, { en:"Founder & Managing Director", zh:"创始人兼董事总经理" })
+            ),
+            React.createElement("p", { className:"leader-bio" }, React.createElement(T, {
+              en:"IoT adoption, business development, and digital growth strategy across ASEAN — driving enterprise partnerships and regional market entry for technology ventures.",
+              zh:"推动东盟地区 IoT 应用落地、业务拓展及数字增长战略，促成企业合作与区域市场进入。"
+            })),
+            React.createElement("a", { className:"li-link", href:"https://www.linkedin.com/in/tomsee", target:"_blank", rel:"noreferrer" },
+              React.createElement(LIIcon), "LinkedIn"
+            )
+          )
+        )
+      )
+    )
   );
 }
 
-/* ─── CONTACT PAGE ─── */
-function ContactPage(){
+/* ─── Contact Page ───────────────────────────────────── */
+function ContactPage() {
   useReveal();
-  const {lang} = useLang();
-  const [form,setForm] = useState({name:"",email:"",company:"",service:"",message:""});
-  const [status,setStatus] = useState("idle");
-  const set=(k,v)=>setForm(f=>({...f,[k]:v}));
-
-  const submit = async e => {
+  const { lang } = useLang();
+  const [form, setForm] = React.useState({ name:"", email:"", company:"", service:"", message:"" });
+  const [status, setStatus] = React.useState("idle");
+  const set = k => e => setForm(f => ({...f, [k]:e.target.value}));
+  const submit = e => {
     e.preventDefault();
     setStatus("loading");
-    try {
-      const res = await fetch("https://api.web3forms.com/submit",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({
-          access_key:"REPLACE_WITH_YOUR_WEB3FORMS_KEY",
-          subject:`Inquiry from ${form.name} — ${form.company||"mimos.digital"}`,
-          from_name:form.name,
-          ...form,
-        }),
-      });
-      const data = await res.json();
-      setStatus(data.success?"success":"error");
-    } catch { setStatus("error"); }
+    const fd = new FormData();
+    fd.append("access_key", "REPLACE_WITH_YOUR_WEB3FORMS_KEY");
+    fd.append("subject", "New inquiry from "+form.name+" — Mimo Solutions");
+    fd.append("from_name", "Mimo Solutions Website");
+    Object.entries(form).forEach(([k,v]) => fd.append(k,v));
+    fetch("https://api.web3forms.com/submit", { method:"POST", body:fd })
+      .then(r => r.json())
+      .then(d => setStatus(d.success ? "sent" : "error"))
+      .catch(() => setStatus("error"));
   };
-
-  return (
-    <div className="pf">
-      <section className="sec" style={{paddingTop:140}}>
-        <div className="sec-in">
-          <div className="sec-label rv"><T en="Contact Us" zh="联系我们"/></div>
-          <h1 className="sec-title rv" style={{fontSize:"var(--h1)"}}>
-            <T en="Let's Talk" zh="一起聊聊"/>
-          </h1>
-          <div className="ct-layout">
-            <div className="ct-info rv">
-              <h3><T en="Get in touch" zh="联系我们"/></h3>
-              <p><T en="Have a project in mind, or want to explore how digital transformation can benefit your business? We'd love to hear from you." zh="有项目想法，或想探讨数字化转型如何让您的业务受益？欢迎随时联系我们。"/></p>
-              <div className="ct-items">
-                <div className="ct-item">
-                  <div className="ct-ico">{I.mail}</div>
-                  <div>
-                    <div className="ct-sub"><T en="Email" zh="邮箱"/></div>
-                    <a href="mailto:hello@mimos.digital" style={{color:"var(--white)",textDecoration:"none"}}>hello@mimos.digital</a>
-                  </div>
-                </div>
-                <div className="ct-item">
-                  <div className="ct-ico">{I.wa}</div>
-                  <div>
-                    <div className="ct-sub">WhatsApp</div>
-                    <a href="https://wa.me/60192815191" style={{color:"var(--white)",textDecoration:"none"}}>+60 19-281 5191</a>
-                  </div>
-                </div>
-                <div className="ct-item">
-                  <div className="ct-ico">{I.pin}</div>
-                  <div>
-                    <div className="ct-sub"><T en="Location" zh="所在地"/></div>
-                    <span>Kuala Lumpur, Malaysia</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="ct-form rv">
-              {status==="success" ? (
-                <div className="f-ok">
-                  <div className="f-ok-ico">{I.check}</div>
-                  <h3><T en="Message Sent!" zh="消息已发送！"/></h3>
-                  <p><T en="Thank you! We'll get back to you within 1-2 business days." zh="感谢您的来信，我们将在 1-2 个工作日内回复。"/></p>
-                </div>
-              ):(
-                <form onSubmit={submit}>
-                  <div className="f2">
-                    <div className="frow">
-                      <label><T en="Full Name *" zh="姓名 *"/></label>
-                      <input required value={form.name} onChange={e=>set("name",e.target.value)} placeholder={tx(lang,"Your name","您的姓名")}/>
-                    </div>
-                    <div className="frow">
-                      <label><T en="Email *" zh="邮箱 *"/></label>
-                      <input required type="email" value={form.email} onChange={e=>set("email",e.target.value)} placeholder="your@email.com"/>
-                    </div>
-                  </div>
-                  <div className="frow">
-                    <label><T en="Company" zh="公司"/></label>
-                    <input value={form.company} onChange={e=>set("company",e.target.value)} placeholder={tx(lang,"Your company (optional)","公司名称（选填）")}/>
-                  </div>
-                  <div className="frow">
-                    <label><T en="Service Interested In" zh="感兴趣的服务"/></label>
-                    <select value={form.service} onChange={e=>set("service",e.target.value)}>
-                      <option value="">{tx(lang,"Select a service...","选择服务...")}</option>
-                      <option value="Digital Transformation">{tx(lang,"Digital Transformation Consulting","数字化转型咨询")}</option>
-                      <option value="Web Development">{tx(lang,"Web & Mobile Development","网站与移动端开发")}</option>
-                      <option value="Cloud Solutions">{tx(lang,"Cloud Solutions","云端解决方案")}</option>
-                      <option value="Process Automation">{tx(lang,"Process Automation","流程自动化")}</option>
-                      <option value="SME Grant">{tx(lang,"SME Digital Grant","中小企业数字补贴")}</option>
-                      <option value="IT Advisory">{tx(lang,"IT Strategy & Security","IT 战略与安全")}</option>
-                      <option value="Other">{tx(lang,"Other / Not sure yet","其他 / 待定")}</option>
-                    </select>
-                  </div>
-                  <div className="frow">
-                    <label><T en="Message *" zh="留言 *"/></label>
-                    <textarea required value={form.message} onChange={e=>set("message",e.target.value)} placeholder={tx(lang,"Tell us about your project or question...","告诉我们您的项目或问题...")}/>
-                  </div>
-                  <button type="submit" className="fsub" disabled={status==="loading"}>
-                    {status==="loading"?tx(lang,"Sending...","发送中…"):tx(lang,"Send Message","发送消息")}
-                  </button>
-                  {status==="error"&&(
-                    <p style={{color:"#ef4444",fontSize:13,marginTop:8,textAlign:"center"}}>
-                      <T en="Something went wrong. Please email hello@mimos.digital directly." zh="出错了，请直接发邮件至 hello@mimos.digital"/>
-                    </p>
-                  )}
-                </form>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+  const SOPTS = [
+    {en:"Digital Transformation",zh:"数字化转型"},{en:"Cloud Solutions",zh:"云端解决方案"},
+    {en:"Cybersecurity",zh:"网络安全"},{en:"Custom Development",zh:"定制开发"},
+    {en:"IT Infrastructure",zh:"IT 基础设施"},{en:"Data & Analytics",zh:"数据与分析"},
+    {en:"Other",zh:"其他"},
+  ];
+  return React.createElement("div", { className:"page" },
+    React.createElement("div", { className:"pg-hero" },
+      React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Contact", zh:"联系" })),
+      React.createElement("h1", null, React.createElement(T, { en:"Get in Touch", zh:"联系我们" })),
+      React.createElement("p", null, React.createElement(T, {
+        en:"Tell us about your project. We'll reply within 24 hours.",
+        zh:"告诉我们您的项目需求，我们将在 24 小时内回复。"
+      }))
+    ),
+    React.createElement("div", { className:"contact-page" },
+      React.createElement("div", { className:"contact-cols reveal" },
+        React.createElement("div", { className:"contact-info" },
+          React.createElement("h3", null, React.createElement(T, { en:"Let's build something together.", zh:"让我们共同构建未来。" })),
+          React.createElement("p", null, React.createElement(T, {
+            en:"Whether you're starting a new digital project, need IT support, or exploring transformation options — we're here to help.",
+            zh:"无论您是启动新的数字项目、需要 IT 支持，还是探索转型方案，我们都随时为您服务。"
+          })),
+          React.createElement("ul", { className:"cinfo-list" },
+            [
+              {ico:"✉️",lbl:{en:"Email",zh:"邮箱"},val:"hello@mimos.digital"},
+              {ico:"📱",lbl:{en:"WhatsApp",zh:"WhatsApp"},val:"+60 19-281 5191"},
+              {ico:"📍",lbl:{en:"Location",zh:"地址"},val:tx(lang,"Kuala Lumpur, Malaysia","马来西亚 吉隆坡")},
+            ].map((c,i) => React.createElement("li", { key:i, className:"cinfo-row" },
+              React.createElement("div", { className:"cinfo-ico" }, c.ico),
+              React.createElement("div", null,
+                React.createElement("div", { className:"cinfo-lbl" }, React.createElement(T, c.lbl)),
+                React.createElement("div", { className:"cinfo-val" }, c.val)
+              )
+            ))
+          )
+        ),
+        React.createElement("div", { className:"contact-form-box" },
+          status==="sent"
+            ? React.createElement("div", { className:"form-success" },
+                React.createElement("div", { className:"succ-ico" }, "✅"),
+                React.createElement("div", { className:"succ-title" }, React.createElement(T, { en:"Message Sent!", zh:"消息已发送！" })),
+                React.createElement("div", { className:"succ-sub" }, React.createElement(T, { en:"We'll get back to you within 24 hours.", zh:"我们将在 24 小时内回复您。" }))
+              )
+            : React.createElement("form", { onSubmit:submit },
+                React.createElement("div", { className:"form-row2" },
+                  React.createElement("div", { className:"form-group" },
+                    React.createElement("label", { className:"form-lbl" }, React.createElement(T, { en:"Your Name *", zh:"姓名 *" })),
+                    React.createElement("input", { className:"form-input", required:true, value:form.name, onChange:set("name"), placeholder:tx(lang,"John Doe","张三") })
+                  ),
+                  React.createElement("div", { className:"form-group" },
+                    React.createElement("label", { className:"form-lbl" }, React.createElement(T, { en:"Email *", zh:"邮箱 *" })),
+                    React.createElement("input", { className:"form-input", type:"email", required:true, value:form.email, onChange:set("email"), placeholder:"you@company.com" })
+                  )
+                ),
+                React.createElement("div", { className:"form-group" },
+                  React.createElement("label", { className:"form-lbl" }, React.createElement(T, { en:"Company", zh:"公司" })),
+                  React.createElement("input", { className:"form-input", value:form.company, onChange:set("company"), placeholder:tx(lang,"Your Company Name","您的公司名称") })
+                ),
+                React.createElement("div", { className:"form-group" },
+                  React.createElement("label", { className:"form-lbl" }, React.createElement(T, { en:"Service Interested In", zh:"感兴趣的服务" })),
+                  React.createElement("select", { className:"form-select", value:form.service, onChange:set("service") },
+                    React.createElement("option", { value:"" }, tx(lang,"Select a service...","选择服务...")),
+                    SOPTS.map((s,i) => React.createElement("option", { key:i, value:s.en }, tx(lang,s.en,s.zh)))
+                  )
+                ),
+                React.createElement("div", { className:"form-group" },
+                  React.createElement("label", { className:"form-lbl" }, React.createElement(T, { en:"Message *", zh:"留言 *" })),
+                  React.createElement("textarea", { className:"form-ta", required:true, value:form.message, onChange:set("message"), placeholder:tx(lang,"Tell us about your project...","请描述您的项目...") })
+                ),
+                status==="error" && React.createElement("div", { className:"form-err" },
+                  React.createElement(T, { en:"Something went wrong. Please try again.", zh:"提交失败，请重试。" })
+                ),
+                React.createElement("button", { className:"form-btn", type:"submit", disabled:status==="loading" },
+                  status==="loading"
+                    ? React.createElement(T, { en:"Sending…", zh:"发送中…" })
+                    : React.createElement(T, { en:"Send Message →", zh:"发送消息 →" })
+                )
+              )
+        )
+      )
+    )
   );
 }
 
-/* ─── APP ─── */
-function App(){
-  const [page,setPage] = useState("home");
-  return (
-    <LanguageProvider>
-      <Nav page={page} setPage={setPage}/>
-      {page==="home"     && <HomePage     setPage={setPage}/>}
-      {page==="services" && <ServicesPage/>}
-      {page==="projects" && <ProjectsPage/>}
-      {page==="about"    && <AboutPage    setPage={setPage}/>}
-      {page==="contact"  && <ContactPage/>}
-      <Footer setPage={setPage}/>
-    </LanguageProvider>
+/* ─── App ────────────────────────────────────────────── */
+function App() {
+  const [page, setPage] = React.useState(() => {
+    const p = window.location.pathname.replace(/^\//, "") || "home";
+    return ["home","services","projects","about","contact"].includes(p) ? p : "home";
+  });
+  React.useEffect(() => {
+    window.history.pushState({}, "", page==="home" ? "/" : "/"+page);
+    document.title = {
+      home:"Mimo Solutions — Digital Transformation & IT Services",
+      services:"Services — Mimo Solutions",
+      projects:"Projects — Mimo Solutions",
+      about:"About — Mimo Solutions",
+      contact:"Contact — Mimo Solutions",
+    }[page] || "Mimo Solutions";
+  }, [page]);
+  React.useEffect(() => {
+    const fn = () => {
+      const p = window.location.pathname.replace(/^\//, "") || "home";
+      setPage(["home","services","projects","about","contact"].includes(p) ? p : "home");
+    };
+    window.addEventListener("popstate", fn);
+    return () => window.removeEventListener("popstate", fn);
+  }, []);
+  const PAGES = { home:HomePage, services:ServicesPage, projects:ProjectsPage, about:AboutPage, contact:ContactPage };
+  const Page = PAGES[page] || HomePage;
+  return React.createElement(LanguageProvider, null,
+    React.createElement(Nav, { page, setPage }),
+    React.createElement(Page, { setPage }),
+    React.createElement(Footer, { setPage })
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
 </script>
 </body>
 </html>
