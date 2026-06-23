@@ -881,14 +881,16 @@ function ServicesPage() {
 /* ─── Projects Page ──────────────────────────────────── */
 const PROJECTS = [
   { logo:"assets/mjc-logo.png", emoji:"M", name:{en:"MJC Leisure Sdn Bhd",zh:"MJC Leisure Sdn Bhd"}, url:"https://mjcleisure.com", domain:"mjcleisure.com",
-    tag:{en:"Web Development",zh:"网站开发"}, bg:"#EBF5FF", color:"#1D5BE8",
+    tags:[{en:"Web Development",zh:"网站开发"},{en:"AI & Automation",zh:"AI 与自动化"},{en:"Backend Digitisation",zh:"后台数字化"}],
+    bg:"#EBF5FF", color:"#1D5BE8",
     desc:{
       en:"Your Professional Malaysia Inbound DMC Partner. 20 years serving Mandarin-speaking inbound group travel. GIT tours, golf programs, corporate MICE — one reliable DMC partner for travel agents across China, Hong Kong and Taiwan entering Malaysia.",
       zh:"马来西亚入境团体旅游专业地接伙伴。20 年深耕华语入境旅游市场。专注 GIT 团体旅游、高尔夫行程、企业 MICE 及全程中文服务，是中国、香港、台湾旅行社进入马来西亚市场的首选地接伙伴。"
     }
   },
   { logo:"assets/zixi-logo.png", emoji:"茜", name:{en:"Zixi Metaphysics",zh:"紫茜玄学"}, url:"https://www.c13191413.com", domain:"c13191413.com",
-    tag:{en:"Web Development",zh:"网站开发"}, bg:"#F3F0FF", color:"#7C3AED",
+    tags:[{en:"Web Development",zh:"网站开发"},{en:"AI & Automation",zh:"AI 与自动化"},{en:"Backend Infrastructure",zh:"后台基础设施"}],
+    bg:"#F3F0FF", color:"#7C3AED",
     desc:{
       en:"Zixi Metaphysics — your trusted spiritual home for Chinese metaphysical services and merit-making in Malaysia. We offer a full range of authentic practices including 拜虎爷, 点灯, 择日, 化解太岁, and ceremonial 法事 consultations — guided by an experienced 师傅 with deep roots in traditional Chinese spiritual tradition.",
       zh:"紫茜玄学 — 您在马来西亚最值得信赖的中华玄学与功德服务平台。提供一站式玄学服务，包括拜虎爷、点灯祈福、择日合婚、化解太岁、法事咨询，由经验深厚的师傅亲自主持，每一项仪式皆以传统智慧与虔诚心意为根基。"
@@ -914,8 +916,10 @@ function ProjectsPage() {
             : React.createElement("span", { style:{ color:p.color, fontSize: p.emoji.length===1 ? "72px" : "48px", fontWeight:900 } }, p.emoji)
         ),
         React.createElement("div", { className:"proj-body" },
-          React.createElement("div", { className:"proj-chip", style:{background:p.bg,color:p.color} },
-            React.createElement(T, p.tag)
+          React.createElement("div", { style:{display:"flex",flexWrap:"wrap",gap:"6px",marginBottom:"12px"} },
+            p.tags.map((tag,j) => React.createElement("span", { key:j, className:"proj-chip", style:{background:p.bg,color:p.color,marginBottom:0} },
+              React.createElement(T, tag)
+            ))
           ),
           React.createElement("h3", null, React.createElement(T, p.name)),
           React.createElement("p", null, React.createElement(T, p.desc)),
