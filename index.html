@@ -880,14 +880,20 @@ function ServicesPage() {
 
 /* ─── Projects Page ──────────────────────────────────── */
 const PROJECTS = [
-  { emoji:"M", name:{en:"MJC Leisure",zh:"MJC Leisure"}, url:"https://mjcleisure.com", domain:"mjcleisure.com",
+  { logo:null, emoji:"M", name:{en:"MJC Leisure Sdn Bhd",zh:"MJC Leisure Sdn Bhd"}, url:"https://mjcleisure.com", domain:"mjcleisure.com",
     tag:{en:"Web Development",zh:"网站开发"}, bg:"#EBF5FF", color:"#1D5BE8",
-    desc:{en:"Corporate website for MJC Leisure, a Malaysia-based leisure and entertainment business. Full-stack web development including brand identity integration, responsive design, and content management.",
-          zh:"为 MJC Leisure（马来西亚休闲娱乐企业）开发官网，包括品牌整合、响应式设计与内容管理。"} },
-  { emoji:"☯", name:{en:"Zixi Metaphysics",zh:"紫希玄学"}, url:"https://www.c13191413.com", domain:"c13191413.com",
+    desc:{
+      en:"Your Professional Malaysia Inbound DMC Partner. 20 years serving Mandarin-speaking inbound group travel. GIT tours, golf programs, corporate MICE — one reliable DMC partner for travel agents across China, Hong Kong and Taiwan entering Malaysia.",
+      zh:"马来西亚入境团体旅游专业地接伙伴。20 年深耕华语入境旅游市场。专注 GIT 团体旅游、高尔夫行程、企业 MICE 及全程中文服务，是中国、香港、台湾旅行社进入马来西亚市场的首选地接伙伴。"
+    }
+  },
+  { logo:null, emoji:"茜", name:{en:"Zixi Metaphysics",zh:"紫茜玄学"}, url:"https://www.c13191413.com", domain:"c13191413.com",
     tag:{en:"Web Development",zh:"网站开发"}, bg:"#F3F0FF", color:"#7C3AED",
-    desc:{en:"Full website build for Zixi Metaphysics, a Chinese metaphysics and fortune-reading consultancy. Custom design with bilingual content and appointment booking integration.",
-          zh:"为紫希玄学咨询服务打造官方网站，自定义设计，支持双语内容与预约功能。"} },
+    desc:{
+      en:"Zixi Metaphysics — your trusted spiritual home for Chinese metaphysical services and merit-making in Malaysia. We offer a full range of authentic practices including 拜虎爷, 点灯, 择日, 化解太岁, and ceremonial 法事 consultations — guided by an experienced 师傅 with deep roots in traditional Chinese spiritual tradition.",
+      zh:"紫茜玄学 — 您在马来西亚最值得信赖的中华玄学与功德服务平台。提供一站式玄学服务，包括拜虎爷、点灯祈福、择日合婚、化解太岁、法事咨询，由经验深厚的师傅亲自主持，每一项仪式皆以传统智慧与虔诚心意为根基。"
+    }
+  },
 ];
 function ProjectsPage() {
   useReveal();
@@ -902,9 +908,11 @@ function ProjectsPage() {
     ),
     React.createElement("div", { className:"proj-grid" },
       PROJECTS.map((p,i) => React.createElement("div", { key:i, className:"proj-card reveal", style:{transitionDelay:i*.1+"s"} },
-        React.createElement("div", { className:"proj-head",
-          style:{ background:p.bg, color:p.color, fontSize: p.emoji.length===1 ? "72px" : "52px" }
-        }, p.emoji),
+        React.createElement("div", { className:"proj-head", style:{ background:p.bg } },
+          p.logo
+            ? React.createElement("img", { src:p.logo, alt:p.name.en, style:{maxHeight:"80px",maxWidth:"80%",objectFit:"contain"} })
+            : React.createElement("span", { style:{ color:p.color, fontSize: p.emoji.length===1 ? "72px" : "48px", fontWeight:900 } }, p.emoji)
+        ),
         React.createElement("div", { className:"proj-body" },
           React.createElement("div", { className:"proj-chip", style:{background:p.bg,color:p.color} },
             React.createElement(T, p.tag)
