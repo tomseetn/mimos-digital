@@ -1,0 +1,27 @@
+# Mimo Solutions
+
+> Mimo Solutions (mimos.digital) is a digital transformation and IT services company based in Malaysia, serving businesses across Southeast Asia. We help SMEs and enterprises build websites, automate workflows with AI, digitise backend operations, and improve online visibility through SEO.
+
+## About
+
+Mimo Solutions was founded in 2026. We work with clients in Malaysia and the broader Southeast Asia region (including Indonesia and Singapore). Our team speaks English and Chinese (Mandarin). Contact us at hello@mimos.digital.
+
+## Services
+
+- **Web Development** — Custom website design and development tailored for Malaysian and Southeast Asian businesses.
+- **AI & Automation** — AI-powered systems, chatbots, and workflow automation to reduce manual work and improve efficiency.
+- **Digital Transformation** — Strategy and implementation to bring businesses into the digital age.
+- **Backend Digitisation** — Converting manual admin, records, and operational processes into digital systems.
+- **SEO (Search Engine Optimisation)** — Improving organic search rankings and online visibility for businesses in Malaysia.
+
+## Client Projects
+
+- **MJC Leisure Sdn Bhd** (mjcleisure.com) — Malaysia's professional inbound DMC for Mandarin-speaking group travel. Services: Web Development, AI & Automation, Backend Digitisation.
+- **Zixi Metaphysics 紫茜玄学** (c13191413.com) — Chinese metaphysical and merit-making services in Malaysia. Services: Web Development, AI & Automation, Backend Infrastructure.
+- **PERSATUAN DEWAN KHAI CHIANG SENG-ONG-HU MALAYSIA** (mkca1419.com) — Malaysia's premier cultural heritage association preserving the legacy of General Chen Yuanguang. Services: Web Development, Digital Transformation.
+- **Green Honey by NS Field Sdn Bhd** (greenhoney.com.my) — Rare natural Borneo green honey, 100% raw and bioactive. Services: Web Development, SEO.
+
+## Contact
+
+- Website: https://mimos.digital
+- Email: hello@mimos.digital
