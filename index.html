@@ -555,6 +555,24 @@
   }
 
   /* ═══════════════════════════════════════════
+     MODULE CHECKBOXES (Contact Form)
+  ═══════════════════════════════════════════ */
+  .mod-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 6px;
+  }
+  .mod-check-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 11px; border-radius: 9px;
+    border: 1.5px solid var(--border); background: #fff;
+    cursor: pointer; transition: all .18s;
+    font-size: 12px; font-weight: 500; color: var(--txt2);
+    user-select: none; line-height: 1.3;
+  }
+  .mod-check-item:hover { border-color: var(--border2); background: var(--bg2); }
+  .mod-check-item.selected { font-weight: 600; }
+  .mod-ico-sm { font-size: 15px; flex-shrink: 0; }
+
+  /* ═══════════════════════════════════════════
      HOW IT WORKS (Services Page)
   ═══════════════════════════════════════════ */
   .how-strip {
@@ -613,6 +631,7 @@
     .hero { padding: 56px 24px 56px; }
     .cta-box { padding: 40px 22px; }
     .steps-row { grid-template-columns: 1fr; }
+    .mod-grid { grid-template-columns: 1fr 1fr; }
   }
   </style>
 </head>
@@ -1172,28 +1191,31 @@ function AboutPage() {
 function ContactPage() {
   useReveal();
   const { lang } = useLang();
-  const [form, setForm] = React.useState({ name:"", email:"", company:"", service:"", message:"" });
+  const [form, setForm] = React.useState({ name:"", email:"", company:"", modules:[], message:"" });
   const [status, setStatus] = React.useState("idle");
   const set = k => e => setForm(f => ({...f, [k]:e.target.value}));
+  const toggleMod = mod => setForm(f => ({
+    ...f,
+    modules: f.modules.includes(mod) ? f.modules.filter(m=>m!==mod) : [...f.modules, mod]
+  }));
   const submit = e => {
     e.preventDefault();
     setStatus("loading");
     const fd = new FormData();
     fd.append("access_key", "845cc7b6-7b7d-40a4-ab42-44931c3aa30e");
-    fd.append("subject", "New inquiry from "+form.name+" — Mimo Solutions");
+    const modStr = form.modules.length ? form.modules.join(", ") : "Not specified";
+    fd.append("subject", "New inquiry from "+form.name+" ["+modStr+"] — Mimo Solutions");
     fd.append("from_name", "Mimo Solutions Website");
-    Object.entries(form).forEach(([k,v]) => fd.append(k,v));
+    fd.append("name", form.name);
+    fd.append("email", form.email);
+    fd.append("company", form.company || "Not provided");
+    fd.append("modules_interested", modStr);
+    fd.append("message", form.message);
     fetch("https://api.web3forms.com/submit", { method:"POST", body:fd })
       .then(r => r.json())
       .then(d => setStatus(d.success ? "sent" : "error"))
       .catch(() => setStatus("error"));
   };
-  const SOPTS = [
-    {en:"Digital Transformation",zh:"数字化转型"},{en:"Cloud Solutions",zh:"云端解决方案"},
-    {en:"Cybersecurity",zh:"网络安全"},{en:"Custom Development",zh:"定制开发"},
-    {en:"IT Infrastructure",zh:"IT 基础设施"},{en:"Data & Analytics",zh:"数据与分析"},
-    {en:"Other",zh:"其他"},
-  ];
   return React.createElement("div", { className:"page" },
     React.createElement("div", { className:"pg-hero" },
       React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Contact", zh:"联系" })),
@@ -1208,8 +1230,8 @@ function ContactPage() {
         React.createElement("div", { className:"contact-info" },
           React.createElement("h3", null, React.createElement(T, { en:"Let's build something together.", zh:"让我们共同构建未来。" })),
           React.createElement("p", null, React.createElement(T, {
-            en:"Whether you're starting a new digital project, need IT support, or exploring transformation options — we're here to help.",
-            zh:"无论您是启动新的数字项目、需要 IT 支持，还是探索转型方案，我们都随时为您服务。"
+            en:"Tell us which modules interest you and your business challenge. We'll recommend the right combination and give you a quote.",
+            zh:"告诉我们您感兴趣的模块和业务痛点，我们会推荐合适的组合并提供报价。"
           })),
           React.createElement("ul", { className:"cinfo-list" },
             [
@@ -1248,10 +1270,25 @@ function ContactPage() {
                   React.createElement("input", { className:"form-input", value:form.company, onChange:set("company"), placeholder:tx(lang,"Your Company Name","您的公司名称") })
                 ),
                 React.createElement("div", { className:"form-group" },
-                  React.createElement("label", { className:"form-lbl" }, React.createElement(T, { en:"Service Interested In", zh:"感兴趣的服务" })),
-                  React.createElement("select", { className:"form-select", value:form.service, onChange:set("service") },
-                    React.createElement("option", { value:"" }, tx(lang,"Select a service...","选择服务...")),
-                    SOPTS.map((s,i) => React.createElement("option", { key:i, value:s.en }, tx(lang,s.en,s.zh)))
+                  React.createElement("label", { className:"form-lbl" },
+                    React.createElement(T, { en:"Which modules are you interested in?", zh:"您对哪些模块感兴趣？" }),
+                    React.createElement("span", { style:{fontWeight:400,color:"var(--txt3)",marginLeft:6} },
+                      React.createElement(T, { en:"(Select all that apply)", zh:"（可多选）" })
+                    )
+                  ),
+                  React.createElement("div", { className:"mod-grid" },
+                    SVCS.map((s,i) => {
+                      const sel = form.modules.includes(s.en);
+                      return React.createElement("div", {
+                        key:i,
+                        className:"mod-check-item"+(sel?" selected":""),
+                        style: sel ? {borderColor:s.clr, background:s.bg, color:s.clr} : {},
+                        onClick:()=>toggleMod(s.en)
+                      },
+                        React.createElement("span", { className:"mod-ico-sm" }, s.ico),
+                        React.createElement("span", null, React.createElement(T, { en:s.en, zh:s.zh }))
+                      );
+                    })
                   )
                 ),
                 React.createElement("div", { className:"form-group" },
