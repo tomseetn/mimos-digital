@@ -1,18 +1,22 @@
 # Mimo Solutions
 
-> Mimo Solutions (mimos.digital) is a digital transformation and IT services company based in Malaysia, serving businesses across Southeast Asia. We help SMEs and enterprises build websites, automate workflows with AI, digitise backend operations, and improve online visibility through SEO.
+> Mimo Solutions (mimos.digital) is a modular digital solutions company based in Malaysia. We build custom digital systems for Malaysian SMEs — customers pick only the modules they need (WhatsApp payment automation, CRM, ERP, KPI dashboards, attendance, ISO compliance, web development, AI automation, SEO). One-time implementation fee, low monthly maintenance, no per-user SaaS fees. Local team, bilingual support (English and Mandarin Chinese).
 
 ## About
 
-Mimo Solutions was founded in 2026. We work with clients in Malaysia and the broader Southeast Asia region (including Indonesia and Singapore). Our team speaks English and Chinese (Mandarin). Contact us at hello@mimos.digital.
+Mimo Solutions was founded in 2026. We work with SME clients in Malaysia and Southeast Asia. Unlike SaaS platforms like Odoo or Jodoo that charge per user per month, Mimo builds custom-fitted modules once and maintains them locally. Our team speaks English and Chinese (Mandarin). Contact us at hello@mimos.digital.
 
-## Services
+## Services (Modular — Pick What You Need)
 
-- **Web Development** — Custom website design and development tailored for Malaysian and Southeast Asian businesses.
-- **AI & Automation** — AI-powered systems, chatbots, and workflow automation to reduce manual work and improve efficiency.
-- **Digital Transformation** — Strategy and implementation to bring businesses into the digital age.
-- **Backend Digitisation** — Converting manual admin, records, and operational processes into digital systems.
-- **SEO (Search Engine Optimisation)** — Improving organic search rankings and online visibility for businesses in Malaysia.
+- **WhatsApp + Payment Automation** — Customers order via WhatsApp; the system auto-generates a Stripe payment link and sends it back instantly. Built on Meta Cloud API + Stripe. No manual follow-up needed.
+- **CRM + AI Chatbot** — Customer relationship management with a built-in AI chatbot that handles inquiries, qualifies leads, and escalates to a human agent. Includes customer database and follow-up tracking.
+- **ERP Module** — Inventory, procurement, and operations management custom-built around the client's workflow. Covers stock management, purchase orders, supplier tracking, and production records.
+- **KPI Dashboard** — Real-time business performance dashboard with custom KPI cards, multi-department data views, and management report exports. Shows key business numbers at a glance.
+- **Attendance Module** — Digital staff attendance tracking with check-in/check-out, leave application and approval workflow, shift scheduling, and payroll-ready reports. Replaces manual registers.
+- **ISO & Compliance Module** — Document version control, audit trail, activity logs, and ISO workflow templates. Designed to support ISO certification readiness.
+- **Web Development** — Custom websites and landing pages. Mobile-first, fast-loading, bilingual (EN/ZH), and SEO-ready. Built for the Malaysian market.
+- **AI Automation** — Automates repetitive business processes: data entry, approval workflows, document processing, and system integrations via API.
+- **Digital Marketing & SEO** — On-page and technical SEO, AI search (GEO) optimisation, and content strategy. Helps Malaysian businesses rank on Google and get discovered by AI tools like ChatGPT, Claude, and Gemini.
 
 ## Client Projects
 
