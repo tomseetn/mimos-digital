@@ -609,6 +609,28 @@
   .sp-cta-box p { font-size: 16px; color: rgba(255,255,255,.82); line-height: 1.75; margin-bottom: 32px; }
 
   /* ═══════════════════════════════════════════
+     ASSESSMENT TRIGGER + MODAL
+  ═══════════════════════════════════════════ */
+  .assess-trigger { padding: 72px 24px; background: #F8FAFC; text-align: center; border-top: 1px solid #E2E8F0; }
+  .assess-trigger-inner { max-width: 640px; margin: 0 auto; }
+  .assess-chip { display: inline-flex; align-items: center; gap: 8px; background: #EFF6FF; color: #2563EB; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 20px; letter-spacing: .03em; }
+  .assess-trigger h2 { font-size: clamp(22px,4vw,34px); font-weight: 900; color: #1E293B; margin-bottom: 14px; line-height: 1.25; }
+  .assess-trigger > div > p { font-size: 16px; color: #64748B; line-height: 1.75; margin-bottom: 30px; }
+  .btn-assess { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg,#2563EB,#0891B2); color: #fff; border: none; padding: 16px 34px; border-radius: 12px; font-size: 16px; font-weight: 800; cursor: pointer; transition: opacity .2s; box-shadow: 0 4px 20px rgba(37,99,235,.3); }
+  .btn-assess:hover { opacity: .9; transform: translateY(-1px); }
+  .assess-meta { display: flex; justify-content: center; gap: 20px; margin-top: 18px; flex-wrap: wrap; }
+  .assess-meta span { font-size: 13px; color: #94A3B8; font-weight: 500; }
+  /* Modal overlay */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,.7); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(6px); animation: mFadeIn .2s ease; }
+  .modal-frame-wrap { position: relative; width: 100%; max-width: 620px; background: #F8FAFC; border-radius: 22px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.3); animation: mSlideUp .3s ease; display: flex; flex-direction: column; }
+  .modal-close { position: absolute; top: 12px; right: 14px; z-index: 10; background: rgba(255,255,255,.95); border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.15); color: #475569; transition: background .15s; }
+  .modal-close:hover { background: #fff; color: #1E293B; }
+  .modal-iframe { border: none; width: 100%; height: 82vh; max-height: 720px; display: block; }
+  @keyframes mFadeIn { from{opacity:0} to{opacity:1} }
+  @keyframes mSlideUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+  @media (max-width: 600px) { .modal-frame-wrap { border-radius: 14px; } .modal-iframe { height: 88vh; } }
+
+  /* ═══════════════════════════════════════════
      RESPONSIVE
   ═══════════════════════════════════════════ */
   @media (max-width: 980px) {
@@ -1037,8 +1059,15 @@ function HomePage({ setPage }) {
 /* ─── Services Page ──────────────────────────────────── */
 function ServicesPage({ setPage }) {
   useReveal();
+  const [showModal, setShowModal] = React.useState(false);
   const go = id => { setPage(id); window.scrollTo(0,0); };
-  return React.createElement("div", { className:"page" },
+  React.useEffect(() => {
+    const onKey = e => { if (e.key === 'Escape') setShowModal(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+  return React.createElement(React.Fragment, null,
+  React.createElement("div", { className:"page" },
 
     /* Page Hero */
     React.createElement("div", { className:"pg-hero" },
@@ -1084,6 +1113,27 @@ function ServicesPage({ setPage }) {
       ))
     ),
 
+    /* Assessment Trigger */
+    React.createElement("div", { className:"assess-trigger" },
+      React.createElement("div", { className:"assess-trigger-inner reveal" },
+        React.createElement("div", { className:"assess-chip" }, "🔬 ", React.createElement(T, { en:"Free Assessment", zh:"免费评估" })),
+        React.createElement("h2", null, React.createElement(T, { en:"Are You Ready to Go Digital?", zh:"你的企业数字化准备好了吗？" })),
+        React.createElement("p", null, React.createElement(T, {
+          en:"Take our 2-minute Digital Maturity Check and get a personalised module recommendation — instantly, no sign-up needed.",
+          zh:"完成2分钟数字成熟度评估，立即获得专属模块推荐——无需注册。"
+        })),
+        React.createElement("button", { className:"btn-assess", onClick:()=>setShowModal(true) },
+          "🚀 ", React.createElement(T, { en:"Start Free Assessment →", zh:"开始免费评估 →" })
+        ),
+        React.createElement("div", { className:"assess-meta" },
+          React.createElement("span", null, "⏱ ", React.createElement(T, { en:"2 minutes", zh:"2分钟" })),
+          React.createElement("span", null, "❓ ", React.createElement(T, { en:"5 questions", zh:"5个问题" })),
+          React.createElement("span", null, "📊 ", React.createElement(T, { en:"Free report", zh:"免费报告" })),
+          React.createElement("span", null, "🎯 ", React.createElement(T, { en:"Module match", zh:"模块推荐" }))
+        )
+      )
+    ),
+
     /* Bottom CTA */
     React.createElement("div", { className:"sp-cta-band" },
       React.createElement("div", { className:"sp-cta-box reveal" },
@@ -1097,6 +1147,22 @@ function ServicesPage({ setPage }) {
         )
       )
     )
+  ),
+
+  /* Assessment Modal */
+  showModal ? React.createElement("div", {
+    className: "modal-overlay",
+    onClick: e => { if (e.target.className === 'modal-overlay') setShowModal(false); }
+  },
+    React.createElement("div", { className:"modal-frame-wrap" },
+      React.createElement("button", { className:"modal-close", onClick:()=>setShowModal(false), "aria-label":"Close" }, "✕"),
+      React.createElement("iframe", {
+        className: "modal-iframe",
+        src: "/Digital-Maturity-Check.html",
+        title: "Digital Maturity Check — Mimo Solutions"
+      })
+    )
+  ) : null
   );
 }
 
