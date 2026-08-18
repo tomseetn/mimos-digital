@@ -633,6 +633,35 @@
     .steps-row { grid-template-columns: 1fr; }
     .mod-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ═══════════════════════════════════════════
+     LEGAL PAGES
+  ═══════════════════════════════════════════ */
+  .legal-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+  .legal-intro { background: #F0F4FF; border-left: 4px solid var(--blue); border-radius: 8px; padding: 18px 20px; margin-bottom: 40px; font-size: 14px; color: var(--txt2); line-height: 1.7; }
+  .legal-section { margin-bottom: 40px; }
+  .legal-h2 { font-size: 18px; font-weight: 800; color: var(--txt); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #EEF2FF; }
+  .legal-p { font-size: 15px; color: var(--txt2); line-height: 1.85; margin-bottom: 12px; }
+
+  /* ═══════════════════════════════════════════
+     PRICING PAGE
+  ═══════════════════════════════════════════ */
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
+  .price-card { background: #fff; border: 1.5px solid #E8EDF5; border-radius: 16px; padding: 24px; transition: box-shadow .2s, border-color .2s; }
+  .price-card:hover { box-shadow: 0 8px 28px rgba(29,91,232,.10); border-color: var(--blue); }
+  .price-ico-lg { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 14px; }
+  .price-name { font-size: 15px; font-weight: 800; color: var(--txt); margin-bottom: 8px; line-height: 1.35; }
+  .price-val { font-size: 26px; font-weight: 900; color: var(--blue); margin: 10px 0 2px; }
+  .price-val.contact { font-size: 18px; color: var(--txt2); font-weight: 700; }
+  .price-from { font-size: 11px; color: var(--txt3); margin-bottom: 10px; }
+  .price-note { font-size: 13px; color: var(--txt2); line-height: 1.65; margin-top: 6px; }
+  .price-contact-band { max-width: 1100px; margin: 0 auto 60px; padding: 0 24px; }
+  .price-contact-box { background: linear-gradient(135deg,#1D5BE8 0%,#0BB9A2 100%); border-radius: 16px; padding: 36px 40px; color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .price-contact-box h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .price-contact-box p { font-size: 14px; color: rgba(255,255,255,.85); max-width: 500px; line-height: 1.7; }
+  .price-disclaimer { text-align: center; padding: 0 24px 60px; color: var(--txt2); font-size: 13px; line-height: 1.8; max-width: 700px; margin: 0 auto; }
+  @media (max-width: 980px) { .price-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .price-grid { grid-template-columns: 1fr; } .price-contact-box { text-align: center; } }
   </style>
 </head>
 <body>
@@ -702,6 +731,7 @@ const LINKS = [
   { id:"projects", en:"Projects", zh:"项目" },
   { id:"about",    en:"About",    zh:"关于" },
   { id:"contact",  en:"Contact",  zh:"联系" },
+  { id:"pricing",  en:"Pricing",  zh:"报价" },
 ];
 function Nav({ page, setPage }) {
   const scrolled = useScrolled();
@@ -789,7 +819,17 @@ function Footer({ setPage }) {
       ),
       React.createElement("div", { className:"footer-bottom" },
         React.createElement("span", null, "© "+new Date().getFullYear()+" Mimo Solutions. ", React.createElement(T, { en:"All rights reserved.", zh:"版权所有。" })),
-        React.createElement("span", null, React.createElement(T, { en:"Modular Digital Solutions for Malaysian SMEs", zh:"马来西亚中小企业模块化数字系统" }))
+        React.createElement("span", { style:{display:"flex",gap:"16px",flexWrap:"wrap",alignItems:"center"} },
+          React.createElement("a", { href:"/terms", style:{color:"rgba(255,255,255,.5)",fontSize:"12px",textDecoration:"none"}, onClick:e=>{e.preventDefault();go("terms");} },
+            React.createElement(T, { en:"Terms & Conditions", zh:"条款与条件" })
+          ),
+          React.createElement("a", { href:"/privacy", style:{color:"rgba(255,255,255,.5)",fontSize:"12px",textDecoration:"none"}, onClick:e=>{e.preventDefault();go("privacy");} },
+            React.createElement(T, { en:"Privacy Policy", zh:"隐私政策" })
+          ),
+          React.createElement("a", { href:"/refund", style:{color:"rgba(255,255,255,.5)",fontSize:"12px",textDecoration:"none"}, onClick:e=>{e.preventDefault();go("refund");} },
+            React.createElement(T, { en:"Refund Policy", zh:"退款政策" })
+          )
+        )
       )
     )
   );
@@ -829,10 +869,18 @@ const SVCS = [
     clr:"#7C3AED", bg:"#EDE9FE",
     desc:{en:"Automate repetitive business processes with AI — from data entry to approval workflows, document processing, and system integration.",zh:"用 AI 自动化重复性业务流程，从数据录入、审批工作流到文件处理与系统集成。"},
     feats:[{en:"Workflow automation design",zh:"工作流自动化设计"},{en:"AI document processing",zh:"AI 文件处理"},{en:"System integration & API",zh:"系统集成与 API 对接"}] },
-  { ico:"📈", en:"Digital Marketing & SEO", zh:"数字营销与 SEO",
+  { ico:"📈", en:"Digital Marketing & SEO/AEO", zh:"数字营销与 SEO/AEO",
     clr:"#059669", bg:"#D1FAE5",
-    desc:{en:"Grow your organic visibility on Google and AI search tools with proven SEO strategies tailored for Malaysian businesses.",zh:"通过专业 SEO 策略提升 Google 与 AI 搜索工具的自然排名，面向马来西亚市场量身定制。"},
-    feats:[{en:"On-page & technical SEO",zh:"站内 SEO 与技术优化"},{en:"AI search (GEO) optimisation",zh:"AI 搜索可见度优化 (GEO)"},{en:"Content strategy & execution",zh:"内容策略与执行"}] },
+    desc:{en:"Grow your organic visibility on Google and AI search tools with proven SEO/AEO strategies tailored for Malaysian businesses.",zh:"通过专业 SEO/AEO 策略提升 Google 与 AI 搜索工具的自然排名，面向马来西亚市场量身定制。"},
+    feats:[{en:"On-page & technical SEO",zh:"站内 SEO 与技术优化"},{en:"AI search / AEO optimisation",zh:"AI 搜索可见度优化 (AEO)"},{en:"Content strategy & execution",zh:"内容策略与执行"}] },
+  { ico:"🚛", en:"Telematics System", zh:"物流管理系统",
+    clr:"#0EA5E9", bg:"#E0F2FE",
+    desc:{en:"Fleet tracking and driver safety monitoring — real-time GPS, route optimisation, driver behaviour alerts, and compliance reporting for logistics operations.",zh:"车队追踪与驾驶安全监控系统 — 实时 GPS 定位、路线优化、驾驶行为预警与合规报告，专为物流运营设计。"},
+    feats:[{en:"Real-time GPS fleet tracking",zh:"实时 GPS 车队追踪"},{en:"Driver behaviour & safety alerts",zh:"驾驶行为与安全预警"},{en:"Route optimisation & reporting",zh:"路线优化与合规报告"}] },
+  { ico:"📧", en:"Web & Email Hosting", zh:"网站与邮箱托管",
+    clr:"#6366F1", bg:"#EEF2FF",
+    desc:{en:"Professional web hosting and branded email setup — fast, secure, and locally supported for Malaysian businesses.",zh:"专业网站托管与品牌邮箱配置，快速安全，面向马来西亚企业提供本地化支持。"},
+    feats:[{en:"Domain + web hosting setup",zh:"域名与网站托管配置"},{en:"Branded email (you@yourbrand.com)",zh:"品牌邮箱（you@yourbrand.com）"},{en:"SSL certificate & security",zh:"SSL 证书与安全防护"}] },
 ];
 
 /* ─── Home Page ──────────────────────────────────────── */
@@ -884,7 +932,7 @@ function HomePage({ setPage }) {
             ),
             React.createElement("div", { className:"hero-stats" },
               React.createElement("div", { className:"hstat" },
-                React.createElement("div", { className:"hstat-num grad-text" }, "9"),
+                React.createElement("div", { className:"hstat-num grad-text" }, "11"),
                 React.createElement("div", { className:"hstat-lbl" }, React.createElement(T, { en:"Ready Modules", zh:"可选模块" }))
               ),
               React.createElement("div", { className:"hstat" },
@@ -997,8 +1045,8 @@ function ServicesPage({ setPage }) {
       React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Our Modules", zh:"我们的模块" })),
       React.createElement("h1", null, React.createElement(T, { en:"Pick & Match for Your Business", zh:"按需选择，灵活组合" })),
       React.createElement("p", null, React.createElement(T, {
-        en:"9 ready-to-deploy modules. Start with one, stack more as you grow. Each module is custom-built around your workflow.",
-        zh:"9 个即可部署的模块。从一个开始，随业务增长灵活叠加。每个模块均根据您的业务流程定制开发。"
+        en:"11 ready-to-deploy modules. Start with one, stack more as you grow. Each module is custom-built around your workflow.",
+        zh:"11 个即可部署的模块。从一个开始，随业务增长灵活叠加。每个模块均根据您的业务流程定制开发。"
       }))
     ),
 
@@ -1084,6 +1132,14 @@ const PROJECTS = [
     desc:{
       en:"Rare natural raw honey from the ancient forests of Borneo. 100% bioactive, cold filtered, and unprocessed — with protein levels 4–6× higher than local honey. Backed by joint UTM & UMS research, and certified Halal & MESTI. By NS Field Sdn Bhd, Sabah.",
       zh:"来自婆罗洲原始雨林的珍稀天然蜂蜜。100% 生态活性、冷过滤、未经加工处理，蛋白质含量是本地蜂蜜的 4–6 倍。由马来西亚理工大学（UTM）与马来西亚沙巴大学（UMS）联合研究认证，并获 Halal 及 MESTI 双重认证。由沙巴 NS Field Sdn Bhd 出品。"
+    }
+  },
+  { emoji:"🌳", name:{en:"Durian Lab",zh:"榴莲乐"}, url:"https://www.durianlab.com.my", domain:"durianlab.com.my",
+    tags:[{en:"Web Development",zh:"网站开发"},{en:"SEO",zh:"搜索引擎优化"}],
+    bg:"#F0FDF4", color:"#16A34A",
+    desc:{
+      en:"Malaysia's old-tree durian collective — sourcing and exporting premium heritage durian varieties to China, Hong Kong, Australia, and Indonesia. Bilingual digital presence with Google Search Console verified.",
+      zh:"马来西亚老树榴莲产业联合体，出口中国、香港、澳洲及印尼。中英双语网站，已通过 Google Search Console 验证。"
     }
   },
 ];
@@ -1310,11 +1366,253 @@ function ContactPage() {
   );
 }
 
+/* ─── Pricing Data ───────────────────────────────────── */
+const PRICING = [
+  { ico:"💬", en:"WhatsApp + Payment Automation", zh:"WhatsApp 收款自动化",
+    price:{en:"RM 3,000",zh:"RM 3,000"}, from:false, contact:false, clr:"#25D366", bg:"#E8FAF0",
+    note:{en:"One-time setup. Includes Meta Cloud API + Stripe integration and WhatsApp bot configuration.",zh:"一次性费用，含 Meta Cloud API + Stripe 集成及 WhatsApp 机器人配置。"} },
+  { ico:"🤖", en:"CRM + AI Chatbot", zh:"CRM + AI 客服机器人",
+    price:{en:"RM 5,000",zh:"RM 5,000"}, from:false, contact:false, clr:"#1D5BE8", bg:"#EBF0FD",
+    note:{en:"One-time setup. Includes customer database, AI chatbot, and lead tracking module.",zh:"一次性费用，含客户数据库、AI 聊天机器人与潜在客户跟踪模块。"} },
+  { ico:"📦", en:"ERP Module", zh:"ERP 管理系统",
+    price:{en:"From RM 6,000",zh:"RM 6,000 起"}, from:true, contact:false, clr:"#7C3AED", bg:"#F3F0FF",
+    note:{en:"Final price depends on scope and modules required. Includes inventory, procurement, and operations.",zh:"最终报价根据功能范围及模块数量而定，含库存、采购与运营管理。"} },
+  { ico:"🌐", en:"Web Development", zh:"网站开发",
+    price:{en:"From RM 5,000",zh:"RM 5,000 起"}, from:true, contact:false, clr:"#2563EB", bg:"#EBF0FD",
+    note:{en:"Price depends on design complexity and number of pages. Mobile-first, bilingual, SEO-ready.",zh:"价格因设计复杂度与页面数量而定，移动端优先，中英双语，自带 SEO 优化。"} },
+  { ico:"📊", en:"KPI Dashboard", zh:"KPI 数据仪表板",
+    price:{en:"From RM 5,000",zh:"RM 5,000 起"}, from:true, contact:false, clr:"#0BB9A2", bg:"#E5F8F5",
+    note:{en:"Custom KPI setup with multi-department data integration and management reporting.",zh:"自定义 KPI 配置，支持多部门数据集成与管理层报告。"} },
+  { ico:"🕐", en:"Attendance System", zh:"考勤管理系统",
+    price:{en:"From RM 5,000",zh:"RM 5,000 起"}, from:true, contact:false, clr:"#D97706", bg:"#FEF3C7",
+    note:{en:"Digital attendance with leave management, shift scheduling, and payroll-ready reports.",zh:"数字化考勤，含请假管理、排班与薪资报告。"} },
+  { ico:"📧", en:"Web & Email Hosting", zh:"网站与邮箱托管",
+    price:{en:"From RM 1,000",zh:"RM 1,000 起"}, from:true, contact:false, clr:"#6366F1", bg:"#EEF2FF",
+    note:{en:"Includes domain setup, web hosting, branded email, and SSL certificate.",zh:"含域名配置、网站托管、品牌邮箱与 SSL 证书。"} },
+  { ico:"🚛", en:"Telematics System", zh:"物流管理系统",
+    price:{en:"From RM 5,000",zh:"RM 5,000 起"}, from:true, contact:false, clr:"#0EA5E9", bg:"#E0F2FE",
+    note:{en:"Fleet GPS tracking, driver behaviour monitoring, route optimisation, and compliance reporting.",zh:"车队 GPS 追踪、驾驶行为监控、路线优化与合规报告。"} },
+  { ico:"⚡", en:"AI Automation", zh:"AI 流程自动化",
+    price:{en:"Contact Us",zh:"联系询价"}, from:false, contact:true, clr:"#7C3AED", bg:"#EDE9FE",
+    note:{en:"Pricing depends on automation complexity and integrations. Contact us for a custom quote.",zh:"报价因自动化复杂度与集成需求而定，请联系我们获取定制报价。"} },
+  { ico:"📈", en:"Digital Marketing & SEO/AEO", zh:"数字营销与 SEO/AEO",
+    price:{en:"Contact Us",zh:"联系询价"}, from:false, contact:true, clr:"#059669", bg:"#D1FAE5",
+    note:{en:"Strategy and scope vary by project. Contact us for a tailored plan and pricing.",zh:"策略与范围因项目而异，请联系我们获取定制方案与报价。"} },
+];
+
+/* ─── Pricing Page ───────────────────────────────────── */
+function PricingPage({ setPage }) {
+  useReveal();
+  const go = id => { setPage(id); window.scrollTo(0,0); };
+  return React.createElement("div", { className:"page" },
+    React.createElement("div", { className:"pg-hero" },
+      React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Pricing", zh:"产品报价" })),
+      React.createElement("h1", null, React.createElement(T, { en:"Transparent Module Pricing", zh:"清晰透明的模块报价" })),
+      React.createElement("p", null, React.createElement(T, {
+        en:"One-time implementation fees — no per-user monthly SaaS traps. Pay once, own it.",
+        zh:"一次性实施费用，无按用户计费的 SaaS 月费陷阱。一次付清，永久拥有。"
+      }))
+    ),
+    React.createElement("div", { className:"price-grid" },
+      PRICING.map((p,i) => React.createElement("div", { key:i, className:"price-card reveal", style:{transitionDelay:i*.05+"s"} },
+        React.createElement("div", { className:"price-ico-lg", style:{background:p.bg} }, p.ico),
+        React.createElement("div", { className:"price-name" }, React.createElement(T, { en:p.en, zh:p.zh })),
+        React.createElement("div", { className:p.contact ? "price-val contact" : "price-val" },
+          React.createElement(T, p.price)
+        ),
+        p.from && React.createElement("div", { className:"price-from" },
+          React.createElement(T, { en:"Starting from (final price based on scope)", zh:"起步价（最终报价按需定制）" })
+        ),
+        React.createElement("p", { className:"price-note" }, React.createElement(T, p.note))
+      ))
+    ),
+    React.createElement("div", { className:"price-contact-band" },
+      React.createElement("div", { className:"price-contact-box reveal" },
+        React.createElement("div", null,
+          React.createElement("h3", null, React.createElement(T, { en:"Monthly Subscription Available (SaaS Model)", zh:"支持按月订阅（SaaS 模式）" })),
+          React.createElement("p", null, React.createElement(T, {
+            en:"All modules above are also available as a monthly subscription — hosted, maintained, and updated by Mimo Solutions. Contact us for SaaS pricing.",
+            zh:"以上所有模块均支持按月订阅模式，由 Mimo Solutions 负责托管、维护与更新。如需 SaaS 报价，请联系我们。"
+          }))
+        ),
+        React.createElement("button", { className:"btn btn-white", style:{flexShrink:0}, onClick:()=>go("contact") },
+          React.createElement(T, { en:"Get a Quote →", zh:"获取报价 →" })
+        )
+      )
+    ),
+    React.createElement("p", { className:"price-disclaimer" },
+      React.createElement(T, {
+        en:"All prices are in Malaysian Ringgit (MYR) and exclude SST where applicable. Final pricing is confirmed in writing before project commencement. Contact us at hello@mimos.digital for a detailed quote.",
+        zh:"所有价格以马来西亚令吉（MYR）计，适用时不含消费税（SST）。最终报价在项目开始前以书面形式确认。如需详细报价，请联系 hello@mimos.digital。"
+      })
+    )
+  );
+}
+
+/* ─── Legal Page Helper ─────────────────────────────── */
+function LegalPageLayout({ chip, title, titleZh, updated, sections }) {
+  useReveal();
+  return React.createElement("div", { className:"page" },
+    React.createElement("div", { className:"pg-hero" },
+      React.createElement("div", { className:"section-chip" }, chip),
+      React.createElement("h1", null, React.createElement(T, { en:title, zh:titleZh })),
+      React.createElement("p", null, React.createElement(T, { en:"Last updated: "+updated, zh:"最后更新："+updated }))
+    ),
+    React.createElement("div", { className:"legal-wrap" },
+      React.createElement("div", { className:"legal-intro" },
+        React.createElement(T, {
+          en:"Please read this document carefully. By using Mimo Solutions services, you agree to these terms. Questions? Email us at hello@mimos.digital.",
+          zh:"请仔细阅读本文件。使用 Mimo Solutions 服务即表示您同意本条款。如有疑问，请发邮件至 hello@mimos.digital。"
+        })
+      ),
+      sections.map((sec, i) => React.createElement("div", { key:i, className:"legal-section" },
+        React.createElement("h2", { className:"legal-h2" }, React.createElement(T, { en:sec.en, zh:sec.zh })),
+        sec.paras.map((para, j) => React.createElement("p", { key:j, className:"legal-p" }, React.createElement(T, { en:para.en, zh:para.zh })))
+      ))
+    )
+  );
+}
+
+/* ─── Terms & Conditions Page ───────────────────────── */
+function TermsPage() {
+  const TERMS = [
+    { en:"1. Agreement to Terms", zh:"1. 条款协议", paras:[
+      { en:"By engaging Mimo Solutions for any service, accessing mimos.digital, or entering into any service agreement, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.", zh:"通过委托 Mimo Solutions 提供任何服务、访问 mimos.digital 或签署任何服务协议，即表示您同意受本条款与条件的约束。如您不同意，请停止使用我们的服务。" },
+      { en:"These Terms apply to all clients of Mimo Solutions. Our company operates under the laws of Malaysia.", zh:"本条款适用于 Mimo Solutions 的所有客户。本公司依据马来西亚法律运营。" }
+    ]},
+    { en:"2. Services", zh:"2. 服务说明", paras:[
+      { en:"Mimo Solutions provides digital transformation and IT services including but not limited to: web development, ERP systems, CRM solutions, AI automation, WhatsApp payment integration, KPI dashboards, attendance management, telematics systems, web & email hosting, and digital marketing (SEO/AEO).", zh:"Mimo Solutions 提供数字化转型与 IT 服务，包括但不限于：网站开发、ERP 系统、CRM 解决方案、AI 自动化、WhatsApp 收款集成、KPI 仪表板、考勤管理、物流管理系统、网站与邮箱托管、数字营销（SEO/AEO）。" },
+      { en:"All services are custom-built to client specifications. Scope, deliverables, and timelines are defined in a separate Service Agreement or Statement of Work (SOW) issued to each client.", zh:"所有服务均根据客户需求定制开发。服务范围、交付成果和时间表在向每位客户单独签发的服务协议或工作说明书（SOW）中明确规定。" }
+    ]},
+    { en:"3. Pricing & Payment", zh:"3. 价格与付款", paras:[
+      { en:"All prices are quoted in Malaysian Ringgit (MYR) and exclude applicable taxes (SST) unless stated otherwise. Indicative prices are available on our Pricing page; final pricing is confirmed in a written quotation before project commencement.", zh:"所有价格以马来西亚令吉（MYR）报价，除非另有说明，均不含适用税费（SST）。参考价格可在报价页面查看；最终价格在项目开始前以书面报价形式确认。" },
+      { en:"Payment terms are specified in the individual Service Agreement. Typically, a 50% deposit is required upon agreement signing, with the balance due upon project completion or as otherwise agreed in writing.", zh:"付款条款以各服务协议规定为准。通常需要在签署协议时支付 50% 定金，余款在项目完成时或按书面约定支付。" },
+      { en:"Late payments may incur an interest charge of 1.5% per month or the maximum rate permitted under Malaysian law, whichever is lower.", zh:"逾期付款可能产生每月 1.5% 的利息，或马来西亚法律允许的最高利率（以较低者为准）。" }
+    ]},
+    { en:"4. Project Delivery", zh:"4. 项目交付", paras:[
+      { en:"Project timelines are estimates and may vary based on client responsiveness, scope changes, and third-party dependencies. We will communicate any material delays promptly.", zh:"项目时间表为估算时间，可能因客户响应速度、范围变更和第三方依赖而有所不同。我们将及时沟通任何重大延误。" },
+      { en:"Clients are responsible for providing timely feedback, approvals, content, and access required for project completion. Delays caused by the client may affect agreed timelines.", zh:"客户负责及时提供项目完成所需的反馈、审批、内容和访问权限。客户原因造成的延误可能影响约定时间表。" }
+    ]},
+    { en:"5. Intellectual Property", zh:"5. 知识产权", paras:[
+      { en:"Upon full payment, clients receive ownership of the custom deliverables created for them (source code, designs, content). Mimo Solutions retains the right to showcase completed work in our portfolio unless the client requests confidentiality in writing.", zh:"全额付款后，客户获得为其创建的定制交付成果（源代码、设计、内容）的所有权。除非客户书面要求保密，Mimo Solutions 保留在作品集中展示已完成项目的权利。" },
+      { en:"Third-party tools, libraries, or software integrated into your solution remain subject to their respective licences.", zh:"集成到您解决方案中的第三方工具、库或软件仍受其各自许可证约束。" }
+    ]},
+    { en:"6. Confidentiality", zh:"6. 保密", paras:[
+      { en:"Both parties agree to keep confidential any proprietary business information shared during the engagement. This obligation survives termination of the service agreement.", zh:"双方同意对合作过程中共享的任何专有业务信息保密。该义务在服务协议终止后继续有效。" }
+    ]},
+    { en:"7. Limitation of Liability", zh:"7. 责任限制", paras:[
+      { en:"To the maximum extent permitted by law, Mimo Solutions' total liability to any client shall not exceed the total fees paid by that client for the specific service giving rise to the claim in the twelve (12) months preceding the claim.", zh:"在法律允许的最大范围内，Mimo Solutions 对任何客户的总责任不超过该客户在索赔前十二（12）个月内为产生索赔的具体服务所支付的总费用。" },
+      { en:"We are not liable for any indirect, consequential, special, or incidental damages including loss of profits, data, or business opportunities.", zh:"我们不对任何间接、后果性、特殊或附带损害负责，包括利润损失、数据丢失或商业机会损失。" }
+    ]},
+    { en:"8. Termination", zh:"8. 终止", paras:[
+      { en:"Either party may terminate a service engagement with 30 days' written notice. Fees for work completed to date shall remain payable. Please refer to our Refund & Cancellation Policy for details.", zh:"任何一方可提前 30 天书面通知终止服务合作。截至终止日期已完成工作的费用仍须支付。详情请参阅我们的退款与取消政策。" }
+    ]},
+    { en:"9. Governing Law", zh:"9. 适用法律", paras:[
+      { en:"These Terms and Conditions are governed by and construed in accordance with the laws of Malaysia. Any disputes shall be subject to the exclusive jurisdiction of the courts of Malaysia.", zh:"本条款与条件受马来西亚法律管辖并依其解释。任何争议均受马来西亚法院专属管辖。" }
+    ]},
+    { en:"10. Contact", zh:"10. 联系方式", paras:[
+      { en:"For questions about these Terms, contact us: Email: hello@mimos.digital | WhatsApp: +60 19-281 5191 | Kuala Lumpur, Malaysia.", zh:"如对本条款有疑问，请联系我们：邮箱：hello@mimos.digital | WhatsApp：+60 19-281 5191 | 马来西亚吉隆坡。" }
+    ]},
+  ];
+  return React.createElement(LegalPageLayout, {
+    chip: React.createElement(T, { en:"Legal", zh:"法律条款" }),
+    title:"Terms & Conditions", titleZh:"条款与条件",
+    updated:"August 2026", sections:TERMS
+  });
+}
+
+/* ─── Privacy Policy Page ───────────────────────────── */
+function PrivacyPage() {
+  const PRIVACY = [
+    { en:"1. Introduction", zh:"1. 简介", paras:[
+      { en:"Mimo Solutions is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and protect data when you visit mimos.digital or engage our services, in accordance with Malaysia's Personal Data Protection Act 2010 (PDPA).", zh:"Mimo Solutions 致力于保护您的个人信息。本隐私政策根据马来西亚《2010 年个人数据保护法》（PDPA），说明我们在您访问 mimos.digital 或使用我们服务时如何收集、使用和保护数据。" }
+    ]},
+    { en:"2. Information We Collect", zh:"2. 我们收集的信息", paras:[
+      { en:"Contact information you provide: name, email address, phone number, company name — collected when you submit our contact form, send us an email, or engage our services.", zh:"您提供的联系信息：姓名、电子邮件地址、电话号码、公司名称 — 在您提交联系表单、发送电子邮件或使用我们的服务时收集。" },
+      { en:"Project-related information: business requirements, workflow documentation, and other materials you share with us during the course of a project.", zh:"项目相关信息：您在项目过程中与我们共享的业务需求、工作流程文档和其他材料。" },
+      { en:"Website usage data: pages visited, time on site, and browser/device type — collected automatically via standard web analytics. This data is aggregated and not personally identifiable.", zh:"网站使用数据：访问页面、停留时间及浏览器/设备类型 — 通过标准网站分析自动收集。此类数据为汇总数据，不含个人身份信息。" }
+    ]},
+    { en:"3. How We Use Your Information", zh:"3. 我们如何使用您的信息", paras:[
+      { en:"To respond to your inquiries and provide the services you request. To communicate about project progress, updates, and support. To send occasional service-related communications (you may opt out at any time). To improve our website and service offerings.", zh:"用于回应您的咨询并提供您请求的服务。用于就项目进展、更新和支持进行沟通。用于发送偶发性的服务相关通讯（您可随时选择退订）。用于改善我们的网站和服务。" }
+    ]},
+    { en:"4. Information Sharing", zh:"4. 信息共享", paras:[
+      { en:"We do not sell, rent, or trade your personal information to third parties. We may share information with trusted service providers (e.g., email delivery, cloud hosting) strictly for delivering our services, under confidentiality agreements.", zh:"我们不会向第三方出售、出租或交易您的个人信息。我们可能在保密协议约束下，与受信任的服务提供商（例如邮件发送、云托管）共享信息，仅用于提供我们的服务。" },
+      { en:"We may disclose information if required by law, regulation, or court order in Malaysia.", zh:"如马来西亚法律、法规或法院命令要求，我们可能披露相关信息。" }
+    ]},
+    { en:"5. Data Security", zh:"5. 数据安全", paras:[
+      { en:"We implement reasonable technical and organisational measures to protect your personal data from unauthorised access, loss, or disclosure. No internet transmission is 100% secure.", zh:"我们采取合理的技术和组织措施，保护您的个人数据免遭未经授权的访问、丢失或披露。互联网传输并非 100% 安全。" }
+    ]},
+    { en:"6. Cookies", zh:"6. Cookie", paras:[
+      { en:"Our website uses only essential cookies (e.g., language preference). We do not use tracking or advertising cookies. You may disable cookies in your browser settings, though this may affect site functionality.", zh:"我们的网站仅使用必要 Cookie（如语言偏好）。我们不使用跟踪或广告 Cookie。您可在浏览器设置中禁用 Cookie，但这可能影响网站功能。" }
+    ]},
+    { en:"7. Your Rights (PDPA)", zh:"7. 您的权利（PDPA）", paras:[
+      { en:"Under Malaysia's Personal Data Protection Act 2010, you have the right to: access your personal data we hold; request correction of inaccurate data; withdraw consent to processing; and request we stop processing your data for direct marketing. To exercise these rights, contact hello@mimos.digital.", zh:"根据马来西亚《2010 年个人数据保护法》，您有权：访问我们持有的您的个人数据；要求更正不准确数据；撤回处理同意；以及要求停止为直接营销目的处理您的数据。如需行使上述权利，请联系 hello@mimos.digital。" }
+    ]},
+    { en:"8. Third-Party Services", zh:"8. 第三方服务", paras:[
+      { en:"Our website uses Web3Forms for contact form submission. Our services may integrate third-party platforms (Stripe, Meta Cloud API, etc.) for client projects. Each third party operates under its own privacy policy.", zh:"我们的网站使用 Web3Forms 处理联系表单提交。我们的服务可能为客户项目集成第三方平台（Stripe、Meta Cloud API 等）。每个第三方均依据其自身隐私政策运营。" }
+    ]},
+    { en:"9. Changes to This Policy", zh:"9. 政策变更", paras:[
+      { en:"We may update this Privacy Policy from time to time. The latest version will always be available at mimos.digital/privacy. Continued use of our services after changes constitutes acceptance of the updated policy.", zh:"我们可能不时更新本隐私政策。最新版本将始终可在 mimos.digital/privacy 查阅。在变更后继续使用我们的服务即表示接受更新后的政策。" }
+    ]},
+    { en:"10. Contact", zh:"10. 联系方式", paras:[
+      { en:"For privacy-related inquiries or to exercise your PDPA rights: Email: hello@mimos.digital | WhatsApp: +60 19-281 5191 | Kuala Lumpur, Malaysia.", zh:"如有隐私相关咨询或需行使 PDPA 权利：邮箱：hello@mimos.digital | WhatsApp：+60 19-281 5191 | 马来西亚吉隆坡。" }
+    ]},
+  ];
+  return React.createElement(LegalPageLayout, {
+    chip: React.createElement(T, { en:"Legal", zh:"法律条款" }),
+    title:"Privacy Policy", titleZh:"隐私政策",
+    updated:"August 2026", sections:PRIVACY
+  });
+}
+
+/* ─── Refund & Cancellation Policy Page ─────────────── */
+function RefundPage() {
+  const REFUND = [
+    { en:"1. Overview", zh:"1. 概述", paras:[
+      { en:"Mimo Solutions provides custom IT and digital services. Due to the bespoke nature of our work, refunds are handled on a case-by-case basis in accordance with this policy and any specific terms agreed in your Service Agreement.", zh:"Mimo Solutions 提供定制化 IT 与数字服务。由于我们工作的定制性质，退款根据本政策及您的服务协议中约定的具体条款逐案处理。" }
+    ]},
+    { en:"2. Deposit (Down Payment)", zh:"2. 定金（首付款）", paras:[
+      { en:"Deposits paid to commence a project are generally non-refundable, as they secure our team's time and resources. Exceptions may apply if Mimo Solutions is unable to commence the project due to our own fault.", zh:"为启动项目而支付的定金通常不予退还，因其用于保留我们团队的时间和资源分配。若因 Mimo Solutions 自身原因无法启动项目，可能适用例外情况。" }
+    ]},
+    { en:"3. Cancellation Before Project Start", zh:"3. 项目开始前取消", paras:[
+      { en:"If you cancel an engagement before any work has commenced, we will refund any payment received beyond the non-refundable deposit, minus any documented preparation costs incurred by Mimo Solutions.", zh:"如您在任何工作开始前取消合作，我们将退还不可退还定金以外的所有已收款项，扣除 Mimo Solutions 已产生的有据可查的准备费用。" }
+    ]},
+    { en:"4. Cancellation During an Active Project", zh:"4. 项目进行中取消", paras:[
+      { en:"If you cancel during an active project, you are responsible for payment of all work completed to the date of cancellation, calculated at the pro-rated value of the agreed project fee. No refund is issued for work already completed.", zh:"如您在项目进行中取消，您须按约定项目费用的比例支付截至取消日期已完成的所有工作费用。已完成工作的费用不予退还。" },
+      { en:"Any excess payments above the value of completed work will be refunded within 14 business days.", zh:"超出已完成工作价值的任何多余款项将在 14 个工作日内退还。" }
+    ]},
+    { en:"5. Refund Eligibility", zh:"5. 退款资格", paras:[
+      { en:"A refund may be issued if: (a) Mimo Solutions fails to deliver the agreed scope within a materially reasonable timeframe due to our own fault; or (b) both parties mutually agree in writing to cancel before commencement.", zh:"在以下情况下可申请退款：（a）因 Mimo Solutions 自身原因，未能在合理时间内交付约定范围；或（b）双方在项目开始前书面同意取消。" }
+    ]},
+    { en:"6. Monthly Subscriptions (SaaS)", zh:"6. 按月订阅（SaaS）", paras:[
+      { en:"For monthly subscription services, you may cancel at any time by providing 30 days' written notice. The final invoice covers services up to the end of the notice period. No partial refunds are provided for unused days within a billing month.", zh:"对于按月订阅服务，您可随时提前 30 天书面通知取消。最终账单将涵盖至通知期结束的服务费用。不提供计费月内未使用天数的部分退款。" }
+    ]},
+    { en:"7. Non-Refundable Items", zh:"7. 不予退款项目", paras:[
+      { en:"The following are non-refundable: (a) initial project deposits; (b) third-party costs incurred on your behalf (domain registration, API subscriptions, software licences, cloud hosting fees); (c) work already delivered and accepted by the client.", zh:"以下项目不予退款：（a）项目初始定金；（b）代您产生的第三方费用（域名注册、API 订阅、软件许可证、云托管费用）；（c）已交付并获客户验收的工作。" }
+    ]},
+    { en:"8. Refund Process", zh:"8. 退款流程", paras:[
+      { en:"To request a refund, email us at hello@mimos.digital with your project name, the reason for cancellation, and supporting documentation. We will respond within 5 business days.", zh:"如需申请退款，请发送电子邮件至 hello@mimos.digital，注明您的项目名称、取消原因及相关证明文件。我们将在 5 个工作日内回复。" },
+      { en:"Approved refunds will be processed within 14 business days via the original payment method or bank transfer.", zh:"已批准的退款将在 14 个工作日内通过原始付款方式或银行转账处理。" }
+    ]},
+    { en:"9. Dispute Resolution", zh:"9. 争议解决", paras:[
+      { en:"We encourage clients to contact us directly to resolve concerns. If a dispute cannot be resolved amicably, it shall be referred to mediation under the Malaysian Mediation Act 2012 before any legal proceedings are initiated.", zh:"我们鼓励客户直接联系我们解决问题。如无法友好解决争议，在启动任何法律程序前，应根据马来西亚《2012 年调解法》提交调解。" }
+    ]},
+    { en:"10. Contact", zh:"10. 联系方式", paras:[
+      { en:"For refund requests or cancellation notices: Email: hello@mimos.digital | WhatsApp: +60 19-281 5191 | Kuala Lumpur, Malaysia.", zh:"如需申请退款或发出取消通知：邮箱：hello@mimos.digital | WhatsApp：+60 19-281 5191 | 马来西亚吉隆坡。" }
+    ]},
+  ];
+  return React.createElement(LegalPageLayout, {
+    chip: React.createElement(T, { en:"Legal", zh:"法律条款" }),
+    title:"Refund & Cancellation Policy", titleZh:"退款与取消政策",
+    updated:"August 2026", sections:REFUND
+  });
+}
+
 /* ─── App ────────────────────────────────────────────── */
 function App() {
   const [page, setPage] = React.useState(() => {
     const p = window.location.pathname.replace(/^\//, "") || "home";
-    return ["home","services","projects","about","contact"].includes(p) ? p : "home";
+    return ["home","services","projects","about","contact","pricing","terms","privacy","refund"].includes(p) ? p : "home";
   });
   React.useEffect(() => {
     window.history.pushState({}, "", page==="home" ? "/" : "/"+page);
@@ -1324,17 +1622,21 @@ function App() {
       projects:"Projects — Mimo Solutions",
       about:"About — Mimo Solutions",
       contact:"Contact — Mimo Solutions",
+      pricing:"Pricing — Mimo Solutions",
+      terms:"Terms & Conditions — Mimo Solutions",
+      privacy:"Privacy Policy — Mimo Solutions",
+      refund:"Refund Policy — Mimo Solutions",
     }[page] || "Mimo Solutions";
   }, [page]);
   React.useEffect(() => {
     const fn = () => {
       const p = window.location.pathname.replace(/^\//, "") || "home";
-      setPage(["home","services","projects","about","contact"].includes(p) ? p : "home");
+      setPage(["home","services","projects","about","contact","pricing","terms","privacy","refund"].includes(p) ? p : "home");
     };
     window.addEventListener("popstate", fn);
     return () => window.removeEventListener("popstate", fn);
   }, []);
-  const PAGES = { home:HomePage, services:ServicesPage, projects:ProjectsPage, about:AboutPage, contact:ContactPage };
+  const PAGES = { home:HomePage, services:ServicesPage, projects:ProjectsPage, about:AboutPage, contact:ContactPage, pricing:PricingPage, terms:TermsPage, privacy:PrivacyPage, refund:RefundPage };
   const Page = PAGES[page] || HomePage;
   return React.createElement(LanguageProvider, null,
     React.createElement(Nav, { page, setPage }),
