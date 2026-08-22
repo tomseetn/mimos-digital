@@ -910,8 +910,9 @@ function Footer({ setPage }) {
 const SVCS = [
   { ico:"💬", en:"WhatsApp + Payment", zh:"WhatsApp 收款自动化",
     clr:"#25D366", bg:"#E8FAF0",
-    desc:{en:"Customers order via WhatsApp — bot auto-generates a Stripe payment link and sends it back instantly. No manual follow-up needed.",zh:"客户在 WhatsApp 下单，系统自动生成 Stripe 付款链接发送回客户，无需人工操作，全程自动化。"},
-    feats:[{en:"Meta Cloud API + Stripe integration",zh:"Meta Cloud API + Stripe 集成"},{en:"Auto payment link generation",zh:"自动生成付款链接"},{en:"Payment confirmation via WhatsApp",zh:"付款成功后自动发送确认"}] },
+    demo:"https://demo.mimos.digital/demo/whatsapp",
+    desc:{en:"Customers order on WhatsApp — the bot collects the details one question at a time, sends bank details and a DuitNow QR, then auto-matches the receipt screenshot to the right order. No more scrolling through transfer screenshots at night.",zh:"客户在 WhatsApp 下单，机器人一次问一个问题收齐资料，自动发出银行资料与 DuitNow QR，再把收据截图自动对到正确的订单。晚上不用再一张一张翻转帐截图。"},
+    feats:[{en:"Guided ordering on WhatsApp",zh:"WhatsApp 引导式下单"},{en:"Auto receipt reconciliation",zh:"收据自动对帐"},{en:"Never guesses when amounts collide",zh:"金额撞号时绝不乱猜"}] },
   { ico:"🤖", en:"CRM + AI Chatbot", zh:"CRM + AI 客服机器人",
     clr:"#1D5BE8", bg:"#EBF0FD",
     desc:{en:"Customer database with a built-in AI chatbot that handles inquiries, qualifies leads, and escalates to your team automatically.",zh:"集客户关系管理与 AI 聊天机器人于一体，自动处理咨询、筛选潜在客户，超出范围自动转人工。"},
