@@ -17,6 +17,14 @@ Mimo Solutions was founded in 2026. We work with SME clients in Malaysia and Sou
 - **Web Development** — Custom websites and landing pages. Mobile-first, fast-loading, bilingual (EN/ZH), and SEO-ready. Built for the Malaysian market.
 - **AI Automation** — Automates repetitive business processes: data entry, approval workflows, document processing, and system integrations via API.
 - **Digital Marketing & SEO** — On-page and technical SEO, AI search (GEO) optimisation, and content strategy. Helps Malaysian businesses rank on Google and get discovered by AI tools like ChatGPT, Claude, and Gemini.
+- **Telematics / Logistics & Fleet Management** — Real-time GPS fleet tracking, driver behaviour and safety alerts, trip logs, and a mobile driver app. Includes the full Malaysian APAD / JPJ (formerly SPAD) compliance workflow: printable vehicle QR check-in, Lampiran A2 daily driver checklist, Lampiran B daily vehicle checklist, Kod 11 driving-hour and rest-break enforcement (4-hour continuous / 8-hour daily limits), Kod 17 safety-equipment inventory that adapts to bus vs. passenger van, electronic Buku Log, and a printable monthly compliance matrix for APAD audits. Built for bus operators, school and tuition transport, tour coaches, and goods-vehicle fleets.
+
+## Live Product Demos
+
+Anyone can try our modules without signing up or booking a sales call. All demo data is simulated.
+
+- **Logistics & Fleet Management demo** — https://demo.mimos.digital/demo/logistics — login shown on screen (demo@mimos.digital / demo1234). Includes the live map, safety alerts, APAD compliance console, vehicle QR stickers, and the mobile driver app with the full scan-to-checkout flow.
+- Demo index: https://demo.mimos.digital
 
 ## Client Projects
 
@@ -24,6 +32,7 @@ Mimo Solutions was founded in 2026. We work with SME clients in Malaysia and Sou
 - **Zixi Metaphysics 紫茜玄学** (c13191413.com) — Chinese metaphysical and merit-making services in Malaysia. Services: Web Development, AI & Automation, Backend Infrastructure.
 - **PERSATUAN DEWAN KHAI CHIANG SENG-ONG-HU MALAYSIA** (mkca1419.com) — Malaysia's premier cultural heritage association preserving the legacy of General Chen Yuanguang. Services: Web Development, Digital Transformation.
 - **Green Honey by NS Field Sdn Bhd** (greenhoney.com.my) — Rare natural Borneo green honey, 100% raw and bioactive. Services: Web Development, SEO.
+- **Durian Lab** (durianlab.com.my) — Malaysian old-tree durian industry consortium exporting to China, Hong Kong, Australia and Indonesia. Bilingual site. Services: Web Development, SEO.
 
 ## Contact
 

@@ -422,6 +422,34 @@
   .sp-feat { display: flex; gap: 8px; font-size: 13px; color: var(--txt2); align-items: flex-start; }
   .sp-feat .tick { color: var(--blue); font-weight: 800; flex-shrink: 0; }
 
+  /* Live demo 按钮（只有做了 demo 的模块才出现） */
+  .sp-demo {
+    margin-top: 20px; display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 16px; border-radius: 999px; border: 1px solid;
+    font-size: 13px; font-weight: 700; text-decoration: none;
+    transition: all .25s;
+  }
+  .sp-demo:hover { transform: translateX(3px); filter: brightness(.96); }
+  .sp-demo-dot {
+    width: 7px; height: 7px; border-radius: 999px; flex-shrink: 0;
+    animation: spDemoPulse 1.8s ease-in-out infinite;
+  }
+  .sp-demo-arrow { font-weight: 800; }
+  @keyframes spDemoPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.78)} }
+
+  /* 首页服务卡上的 LIVE DEMO 标签与连结 */
+  .svc-demo-tag {
+    margin-left: 8px; padding: 2px 7px; border-radius: 5px;
+    font-size: 9px; font-weight: 800; letter-spacing: .06em;
+    vertical-align: middle; white-space: nowrap;
+  }
+  .svc-demo-link {
+    display: inline-block; margin-top: 10px;
+    font-size: 12.5px; font-weight: 700; text-decoration: none;
+    transition: transform .2s;
+  }
+  .svc-demo-link:hover { transform: translateX(3px); }
+
   /* ═══════════════════════════════════════════
      PROJECTS PAGE
   ═══════════════════════════════════════════ */
@@ -918,8 +946,9 @@ const SVCS = [
     feats:[{en:"On-page & technical SEO",zh:"站内 SEO 与技术优化"},{en:"AI search / AIEO optimisation",zh:"AI 搜索可见度优化（AIEO）"},{en:"Content strategy & execution",zh:"内容策略与执行"}] },
   { ico:"🚛", en:"Telematics System", zh:"物流管理系统",
     clr:"#0EA5E9", bg:"#E0F2FE",
-    desc:{en:"Fleet tracking and driver safety monitoring — real-time GPS, route optimisation, driver behaviour alerts, and compliance reporting for logistics operations.",zh:"车队追踪与驾驶安全监控系统 — 实时 GPS 定位、路线优化、驾驶行为预警与合规报告，专为物流运营设计。"},
-    feats:[{en:"Real-time GPS fleet tracking",zh:"实时 GPS 车队追踪"},{en:"Driver behaviour & safety alerts",zh:"驾驶行为与安全预警"},{en:"Route optimisation & reporting",zh:"路线优化与合规报告"}] },
+    demo:"https://demo.mimos.digital/demo/logistics",
+    desc:{en:"Fleet tracking, driver safety monitoring and full APAD / JPJ compliance — real-time GPS, vehicle QR check-in, Lampiran A2 & B, Kod 11 driving-hour limits, and audit-ready reports.",zh:"车队追踪、驾驶安全监控，并内建完整 APAD / JPJ 合规流程 — 实时 GPS、车辆 QR 开工、Lampiran A2 与 B、Kod 11 驾驶时限管控，以及可直接应付查稽的报表。"},
+    feats:[{en:"Real-time GPS fleet tracking",zh:"实时 GPS 车队追踪"},{en:"APAD / JPJ compliance built in",zh:"内建 APAD / JPJ 合规"},{en:"Driver app with QR check-in",zh:"司机端 QR 扫码开工"}] },
   { ico:"📧", en:"Web & Email Hosting", zh:"网站与邮箱托管",
     clr:"#6366F1", bg:"#EEF2FF",
     desc:{en:"Professional web hosting and branded email setup — fast, secure, and locally supported for Malaysian businesses.",zh:"专业网站托管与品牌邮箱配置，快速安全，面向马来西亚企业提供本地化支持。"},
@@ -1013,8 +1042,15 @@ function HomePage({ setPage }) {
         React.createElement("div", { className:"svc-grid" },
           SVCS.map((s,i) => React.createElement("div", { key:i, className:"svc-card reveal", style:{transitionDelay:i*.07+"s"} },
             React.createElement("div", { className:"svc-ico", style:{background:s.bg, fontSize:"22px"} }, s.ico),
-            React.createElement("h3", null, React.createElement(T, { en:s.en, zh:s.zh })),
-            React.createElement("p", null, React.createElement(T, s.desc))
+            React.createElement("h3", null,
+              React.createElement(T, { en:s.en, zh:s.zh }),
+              s.demo ? React.createElement("span", { className:"svc-demo-tag", style:{color:s.clr, background:s.bg} }, "LIVE DEMO") : null
+            ),
+            React.createElement("p", null, React.createElement(T, s.desc)),
+            s.demo ? React.createElement("a", {
+              className:"svc-demo-link", href:s.demo, target:"_blank", rel:"noreferrer",
+              style:{ color:s.clr }, onClick:e=>e.stopPropagation()
+            }, React.createElement(T, { en:"Try it now →", zh:"立即试用 →" })) : null
           ))
         ),
         React.createElement("div", { style:{textAlign:"center",marginTop:44} },
@@ -1132,7 +1168,16 @@ function ServicesPage({ setPage }) {
             React.createElement("span", { className:"tick", style:{color:s.clr} }, "✓"),
             React.createElement(T, f)
           ))
-        )
+        ),
+        /* 有 live demo 的模块，直接给客户点进去玩 */
+        s.demo ? React.createElement("a", {
+          className:"sp-demo", href:s.demo, target:"_blank", rel:"noreferrer",
+          style:{ color:s.clr, borderColor:s.clr+"55", background:s.bg }
+        },
+          React.createElement("span", { className:"sp-demo-dot", style:{background:s.clr} }),
+          React.createElement(T, { en:"Try the live demo", zh:"试用线上 Demo" }),
+          React.createElement("span", { className:"sp-demo-arrow" }, "→")
+        ) : null
       ))
     ),
 
@@ -1465,7 +1510,7 @@ const PRICING = [
     note:{en:"Includes domain setup, web hosting, branded email, and SSL certificate.",zh:"含域名配置、网站托管、品牌邮箱与 SSL 证书。"} },
   { ico:"🚛", en:"Telematics System", zh:"物流管理系统",
     price:{en:"From RM 5,000",zh:"RM 5,000 起"}, from:true, contact:false, clr:"#0EA5E9", bg:"#E0F2FE",
-    note:{en:"Fleet GPS tracking, driver behaviour monitoring, route optimisation, and compliance reporting.",zh:"车队 GPS 追踪、驾驶行为监控、路线优化与合规报告。"} },
+    note:{en:"Fleet GPS tracking, driver behaviour monitoring, and full APAD / JPJ compliance — vehicle QR check-in, Lampiran A2 & B, Kod 11 driving-hour limits, audit-ready reports.",zh:"车队 GPS 追踪、驾驶行为监控，内建完整 APAD / JPJ 合规 — 车辆 QR 开工、Lampiran A2 与 B、Kod 11 驾驶时限、查稽用报表。"} },
   { ico:"⚡", en:"AI Automation", zh:"AI 流程自动化",
     price:{en:"Contact Us",zh:"联系询价"}, from:false, contact:true, clr:"#7C3AED", bg:"#EDE9FE",
     note:{en:"Pricing depends on automation complexity and integrations. Contact us for a custom quote.",zh:"报价因自动化复杂度与集成需求而定，请联系我们获取定制报价。"} },
