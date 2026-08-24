@@ -1019,7 +1019,7 @@ function HomePage({ setPage }) {
             ),
             React.createElement("div", { className:"hero-stats" },
               React.createElement("div", { className:"hstat" },
-                React.createElement("div", { className:"hstat-num grad-text" }, "11"),
+                React.createElement("div", { className:"hstat-num grad-text" }, String(SVCS.length)),
                 React.createElement("div", { className:"hstat-lbl" }, React.createElement(T, { en:"Ready Modules", zh:"可选模块" }))
               ),
               React.createElement("div", { className:"hstat" },
@@ -1141,8 +1141,8 @@ function ServicesPage({ setPage }) {
       React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Our Modules", zh:"我们的模块" })),
       React.createElement("h1", null, React.createElement(T, { en:"Pick & Match for Your Business", zh:"按需选择，灵活组合" })),
       React.createElement("p", null, React.createElement(T, {
-        en:"11 ready-to-deploy modules. Start with one, stack more as you grow. Each module is custom-built around your workflow.",
-        zh:"11 个即可部署的模块。从一个开始，随业务增长灵活叠加。每个模块均根据您的业务流程定制开发。"
+        en:`${SVCS.length} ready-to-deploy modules. Start with one, stack more as you grow. Each module is custom-built around your workflow.`,
+        zh:`${SVCS.length} 个即可部署的模块。从一个开始，随业务增长灵活叠加。每个模块均根据您的业务流程定制开发。`
       }))
     ),
 
