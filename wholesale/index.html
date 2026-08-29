@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>批发配送数字化 · Mimo Solutions | Wholesale Distribution, One System</title>
+<meta name="description" content="给马来西亚批发/配送 SME:一张单从下单、信用检查、一客一价、派车、送达签收到回冲额度,全跑在一套系统里。按需选模块,无按用户月费。">
+<style>
+  :root{
+    --blue:#2563EB; --cyan:#0891B2; --ink:#0f172a; --ink2:#475569; --ink3:#94a3b8;
+    --line:#e5e7eb; --bg:#f8fafc; --soft:#eff6ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  /* 双语切换 */
+  body:not(.en) [data-en]{display:none}
+  body.en [data-zh]{display:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  a{color:inherit;text-decoration:none}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:14px 22px;font-weight:700;font-size:15px;transition:.15s;cursor:pointer;border:none}
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-primary:hover{background:#1d4ed8;transform:translateY(-1px)}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--soft)}
+  .btn-wa{background:#25D366;color:#fff}
+  .btn-wa:hover{background:#1eb959;transform:translateY(-1px)}
+
+  /* 顶栏 */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-weight:800;font-size:19px;letter-spacing:-.02em}
+  .logo span{color:var(--blue)}
+  .lang{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer}
+
+  /* hero */
+  .hero{background:linear-gradient(160deg,#eff6ff 0%,#ecfeff 60%,#fff 100%);padding:72px 0 64px;border-bottom:1px solid var(--line)}
+  .kicker{display:inline-block;background:#fff;border:1px solid var(--line);color:var(--blue);
+    font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:20px}
+  h1{font-size:44px;line-height:1.15;letter-spacing:-.03em;font-weight:800;max-width:16em}
+  .lead{font-size:18px;color:var(--ink2);margin-top:18px;max-width:34em}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero-note{margin-top:16px;font-size:13px;color:var(--ink3)}
+
+  section{padding:64px 0}
+  .eyebrow{color:var(--blue);font-weight:700;font-size:14px;letter-spacing:.02em;margin-bottom:10px}
+  h2{font-size:30px;letter-spacing:-.02em;font-weight:800;line-height:1.2}
+  .sub{color:var(--ink2);font-size:17px;margin-top:12px;max-width:38em}
+
+  /* 痛点 */
+  .pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:34px}
+  .pain{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+  .pain b{display:block;font-size:16px;margin-bottom:6px}
+  .pain p{color:var(--ink2);font-size:14px}
+
+  /* 一条龙 */
+  .flow{background:var(--ink);color:#fff;border-radius:24px;padding:40px;margin-top:34px}
+  .flow h3{font-size:22px;font-weight:800}
+  .flow .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px}
+  .step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px}
+  .step .n{font-size:12px;color:#93c5fd;font-weight:700}
+  .step .t{font-weight:700;margin-top:4px;font-size:15px}
+  .step .d{color:#cbd5e1;font-size:12.5px;margin-top:4px}
+  .step.gate{border-color:#f59e0b;background:rgba(245,158,11,.12)}
+  .flow .kick{margin-top:24px;font-size:15px;color:#e2e8f0}
+  .flow .kick b{color:#fff}
+
+  /* 模块网格 */
+  .mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:34px}
+  .mod{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;transition:.15s;display:block}
+  .mod:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.08)}
+  .mod .ic{font-size:24px}
+  .mod b{display:block;margin-top:10px;font-size:15.5px}
+  .mod p{color:var(--ink2);font-size:13px;margin-top:4px}
+  .mod .go{color:var(--blue);font-size:12.5px;font-weight:700;margin-top:10px;display:inline-block}
+
+  /* 为什么 */
+  .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:34px}
+  .why-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+  .why-card .ic{width:40px;height:40px;border-radius:12px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+  .why-card b{font-size:16px}
+  .why-card p{color:var(--ink2);font-size:14px;margin-top:6px}
+
+  /* 试用 */
+  .try{background:linear-gradient(160deg,#eff6ff,#ecfeff);border:1px solid var(--line);border-radius:24px;padding:40px;text-align:center;margin-top:34px}
+  .try .cred{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 18px;margin-top:16px;font-size:13.5px;color:var(--ink2)}
+  .try .cred code{background:var(--soft);padding:2px 8px;border-radius:6px;font-weight:700;color:var(--blue)}
+
+  /* CTA */
+  .cta{background:var(--ink);color:#fff;border-radius:24px;padding:48px 40px;text-align:center;margin:34px 0}
+  .cta h2{color:#fff}
+  .cta p{color:#cbd5e1;margin-top:12px;font-size:17px}
+  .cta .cta-row{justify-content:center}
+
+  footer{padding:40px 0;border-top:1px solid var(--line);color:var(--ink3);font-size:13.5px}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center}
+
+  @media(max-width:640px){ h1{font-size:32px} h2{font-size:24px} section{padding:48px 0} .flow,.cta,.try{padding:28px 20px} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Mimo<span>Solutions</span></div>
+    <button class="lang" onclick="document.body.classList.toggle('en')">
+      <span data-zh>EN</span><span data-en>中文</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="kicker"><span data-zh>批发 · 配送 SME 数字化</span><span data-en>Wholesale · Distribution SMEs</span></span>
+    <h1>
+      <span data-zh>一张单,一套系统,走完整个批发配送。</span>
+      <span data-en>One order. One system. From quote to delivered.</span>
+    </h1>
+    <p class="lead">
+      <span data-zh>下单、信用检查、一客一价、派车、送达签收、回冲额度 —— 全挂在同一张单上。不用在六个 app 之间重打一次,不用等月底才发现漏单、超额出货、收不回签收。</span>
+      <span data-en>Order, credit check, per-customer pricing, dispatch, proof of delivery, credit settled — all on the same order. No re-keying across six apps, no discovering missed orders, over-limit shipments or unsigned deliveries at month-end.</span>
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-wa" href="https://wa.me/60XXXXXXXXX?text=Hi%20Mimo%2C%20I%27d%20like%20to%20know%20more%20about%20the%20wholesale%20distribution%20system" target="_blank" rel="noopener">
+        <span data-zh>💬 WhatsApp 聊聊</span><span data-en>💬 Chat on WhatsApp</span>
+      </a>
+      <a class="btn btn-ghost" href="https://demo.mimos.digital/demo/crm/flow" target="_blank" rel="noopener">
+        <span data-zh>▶ 看「一条龙」现场演示</span><span data-en>▶ See the one-flow demo</span>
+      </a>
+    </div>
+    <p class="hero-note">
+      <span data-zh>线上 demo 直接点进去玩,无需注册。所有资料为模拟产生。</span>
+      <span data-en>Try the live demo hands-on, no sign-up. All data is simulated.</span>
+    </p>
+  </div>
+</div>
+
+<!-- 痛点 -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span data-zh>批发老闆的日常</span><span data-en>A distributor's daily reality</span></div>
+    <h2><span data-zh>钱不是漏在没生意,是漏在环节之间</span><span data-en>The money leaks between the steps, not from lack of orders</span></h2>
+    <div class="pains">
+      <div class="pain">
+        <b><span data-zh>报价靠翻本子</span><span data-en>Prices live in a notebook</span></b>
+        <p><span data-zh>同一样货 粒/箱/捆 不同价,一客一价,业务每次都要问、都可能报错。</span><span data-en>Same goods by unit/carton/bundle, a different price per customer — sales ask every time, and get it wrong.</span></p>
+      </div>
+      <div class="pain">
+        <b><span data-zh>超额还继续出货</span><span data-en>Shipping past the credit limit</span></b>
+        <p><span data-zh>客人已经欠太多、帐期逾期,货照送 —— 送出去才发现钱收不回。</span><span data-en>The customer already owes too much and is overdue, yet goods still go out — and the cash never comes back.</span></p>
+      </div>
+      <div class="pain">
+        <b><span data-zh>送了货,没凭证</span><span data-en>Delivered, but no proof</span></b>
+        <p><span data-zh>「到底送了没、谁签的、有没有破损?」争议时各说各话,输的是你。</span><span data-en>"Was it delivered? Who signed? Any damage?" In a dispute it's your word against theirs — and you lose.</span></p>
+      </div>
+      <div class="pain">
+        <b><span data-zh>每个环节各一个 app</span><span data-en>One app per step</span></b>
+        <p><span data-zh>报价、收款、派车、签收、记帐各用一套,同一笔资料重打好几次,月底对不上。</span><span data-en>Quoting, payment, dispatch, sign-off, books — a separate tool each, the same data re-keyed, and it never reconciles.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 一条龙 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow"><span data-zh>Mimo 的解法</span><span data-en>The Mimo answer</span></div>
+    <h2><span data-zh>把六个环节串成一条龙 —— 钱没清,货不动</span><span data-en>Six steps on one thread — money not cleared, goods don't move</span></h2>
+    <div class="flow">
+      <h3><span data-zh>一张批发单在一套系统里怎么走完</span><span data-en>How one wholesale order runs end to end</span></h3>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div class="t"><span data-zh>🧾 下单</span><span data-en>🧾 Order in</span></div><div class="d"><span data-zh>选客户、货品、包装、数量</span><span data-en>Customer, product, pack, qty</span></div></div>
+        <div class="step gate"><div class="n">2 · <span data-zh>闸门</span><span data-en>GATE</span></div><div class="t"><span data-zh>💳 信用检查</span><span data-en>💳 Credit check</span></div><div class="d"><span data-zh>超额或逾期 → 自动扣住</span><span data-en>Over-limit or overdue → auto-held</span></div></div>
+        <div class="step"><div class="n">3</div><div class="t"><span data-zh>🏷️ 一客一价</span><span data-en>🏷️ Their price</span></div><div class="d"><span data-zh>按等级 + 包装换算</span><span data-en>By tier + pack conversion</span></div></div>
+        <div class="step"><div class="n">4</div><div class="t"><span data-zh>🚦 派车</span><span data-en>🚦 Dispatch</span></div><div class="d"><span data-zh>指派车辆与司机</span><span data-en>Assign vehicle & driver</span></div></div>
+        <div class="step"><div class="n">5</div><div class="t"><span data-zh>✍️ 送达签收</span><span data-en>✍️ Proof of delivery</span></div><div class="d"><span data-zh>照片 + 签名 + GPS</span><span data-en>Photo + signature + GPS</span></div></div>
+        <div class="step"><div class="n">6</div><div class="t"><span data-zh>💰 回冲额度</span><span data-en>💰 Credit settled</span></div><div class="d"><span data-zh>收款后额度自动放回</span><span data-en>Paid → limit freed back</span></div></div>
+      </div>
+      <p class="kick">
+        <span data-zh><b>闸门是关键:</b>选一个欠太多的客户,信用检查当场把整条流挡住 —— 派车、签收、结算全部停。钱没清,货不动。这就是一套系统和六套系统的差别。</span>
+        <span data-en><b>The gate is the point:</b> pick a customer who owes too much and the credit check stops the whole flow — dispatch, sign-off, settlement all halt. Money not cleared, goods don't move. That's the difference between one system and six.</span>
+      </p>
+      <div class="cta-row" style="margin-top:22px">
+        <a class="btn btn-primary" href="https://demo.mimos.digital/demo/crm/flow" target="_blank" rel="noopener">
+          <span data-zh>▶ 亲手试试闸门挡流</span><span data-en>▶ Try the gate yourself</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 模块 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow"><span data-zh>按需选模块 · 无按用户月费</span><span data-en>Pick the modules you need · no per-user fee</span></div>
+    <h2><span data-zh>每个环节都能单独点进去玩</span><span data-en>Every step is a live module you can click into</span></h2>
+    <p class="sub"><span data-zh>下面每一个都是能上手的线上 demo。你只买用得到的,不是买一套永远用不完也互不相通的大系统。</span><span data-en>Each below is a hands-on live demo. You buy only what you use — not one giant system that never connects to itself.</span></p>
+    <div class="mods">
+      <a class="mod" href="https://demo.mimos.digital/demo/crm/credit" target="_blank" rel="noopener">
+        <div class="ic">💳</div><b><span data-zh>信用管控</span><span data-en>Credit control</span></b>
+        <p><span data-zh>额度/帐期/逾期,超额自动扣住</span><span data-en>Limits, terms, overdue — auto-hold</span></p>
+        <span class="go"><span data-zh>试用 →</span><span data-en>Try →</span></span>
+      </a>
+      <a class="mod" href="https://demo.mimos.digital/demo/crm/pricing" target="_blank" rel="noopener">
+        <div class="ic">🏷️</div><b><span data-zh>B2B 报价与包装</span><span data-en>B2B pricing & UOM</span></b>
+        <p><span data-zh>多包装单位 + 一客一价</span><span data-en>Multi-UOM + per-customer price</span></p>
+        <span class="go"><span data-zh>试用 →</span><span data-en>Try →</span></span>
+      </a>
+      <a class="mod" href="https://demo.mimos.digital/demo/whatsapp" target="_blank" rel="noopener">
+        <div class="ic">💬</div><b><span data-zh>WhatsApp 收款</span><span data-en>WhatsApp + Payment</span></b>
+        <p><span data-zh>收据自动对帐,撞号转人工</span><span data-en>Receipts auto-matched, holds when unsure</span></p>
+        <span class="go"><span data-zh>试用 →</span><span data-en>Try →</span></span>
+      </a>
+      <a class="mod" href="https://demo.mimos.digital/demo/logistics/pod" target="_blank" rel="noopener">
+        <div class="ic">✍️</div><b><span data-zh>送达签收 POD</span><span data-en>Proof of delivery</span></b>
+        <p><span data-zh>拍照 + 签名 + GPS 闭环留证</span><span data-en>Photo + signature + GPS, closed loop</span></p>
+        <span class="go"><span data-zh>试用 →</span><span data-en>Try →</span></span>
+      </a>
+      <a class="mod" href="https://demo.mimos.digital/demo/email" target="_blank" rel="noopener">
+        <div class="ic">📥</div><b><span data-zh>Email 订单自动化</span><span data-en>Email order automation</span></b>
+        <p><span data-zh>PDF/扫描/手写单读进来、对帐才汇入</span><span data-en>Reads PDFs/scans, imports only if it reconciles</span></p>
+        <span class="go"><span data-zh>试用 →</span><span data-en>Try →</span></span>
+      </a>
+      <a class="mod" href="https://demo.mimos.digital/demo/kpi" target="_blank" rel="noopener">
+        <div class="ic">📊</div><b><span data-zh>KPI 仪表板</span><span data-en>KPI dashboard</span></b>
+        <p><span data-zh>给签支票的人:每个数字都从模组即算</span><span data-en>For whoever signs the cheques — every figure computed live</span></p>
+        <span class="go"><span data-zh>试用 →</span><span data-en>Try →</span></span>
+      </a>
+      <a class="mod" href="https://demo.mimos.digital/demo/stocktake" target="_blank" rel="noopener">
+        <div class="ic">📋</div><b><span data-zh>智能盘点</span><span data-en>Smart stocktake</span></b>
+        <p><span data-zh>手机扫码,扫不到就拍标签</span><span data-en>Scan on a phone, photograph the label when it won't</span></p>
+        <span class="go"><span data-zh>试用 →</span><span data-en>Try →</span></span>
+      </a>
+      <a class="mod" href="https://demo.mimos.digital/demo/crm" target="_blank" rel="noopener">
+        <div class="ic">🤖</div><b><span data-zh>CRM + AI 客服</span><span data-en>CRM + AI chatbot</span></b>
+        <p><span data-zh>漏单红字标出,AI 回掉无聊八成</span><span data-en>Missed follow-ups flagged, AI handles the boring 80%</span></p>
+        <span class="go"><span data-zh>试用 →</span><span data-en>Try →</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 为什么选 Mimo -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow"><span data-zh>为什么是 Mimo</span><span data-en>Why Mimo</span></div>
+    <h2><span data-zh>不是又一套通用软件</span><span data-en>Not another generic platform</span></h2>
+    <div class="why">
+      <div class="why-card">
+        <div class="ic">🔗</div>
+        <b><span data-zh>一套系统,不是六套</span><span data-en>One system, not six</span></b>
+        <p><span data-zh>价、额度、车、签名、收款挂在同一张单上 —— 信用能挡派车、收款能放回额度,中间没人重打。</span><span data-en>Price, limit, vehicle, signature and payment on one order — credit can stop dispatch, a payment frees the limit, nobody re-keys.</span></p>
+      </div>
+      <div class="why-card">
+        <div class="ic">💵</div>
+        <b><span data-zh>无按用户月费</span><span data-en>No per-user monthly fee</span></b>
+        <p><span data-zh>一次性实施 + 低月维护。人多不加价,不像按 user/月 收的方案越用越贵。</span><span data-en>One-off implementation + low monthly upkeep. Adding staff doesn't raise the bill, unlike per-user/month tools.</span></p>
+      </div>
+      <div class="why-card">
+        <div class="ic">🇲🇾</div>
+        <b><span data-zh>本地团队 · 中英双语</span><span data-en>Local team · bilingual</span></b>
+        <p><span data-zh>马来西亚团队,WhatsApp 原生集成,照你这一行实际怎么做事来建,不是套模板。</span><span data-en>A Malaysian team, native WhatsApp, built around how your trade actually runs — not a template.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 试用 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="try">
+      <h2><span data-zh>不用先约业务,自己先玩一遍</span><span data-en>No sales call first — try it yourself</span></h2>
+      <p class="sub" style="margin:12px auto 0"><span data-zh>所有模块都能直接点进去操作,资料为模拟产生、重整即还原。</span><span data-en>Every module is hands-on. Data is simulated and resets on refresh.</span></p>
+      <div class="cta-row" style="justify-content:center;margin-top:22px">
+        <a class="btn btn-primary" href="https://demo.mimos.digital" target="_blank" rel="noopener"><span data-zh>打开产品 Demo</span><span data-en>Open the product demo</span></a>
+      </div>
+      <div class="cred">
+        <span data-zh>登入帐号</span><span data-en>Login</span>: <code>demo@mimos.digital</code> · <code>demo1234</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="wrap">
+  <div class="cta">
+    <h2><span data-zh>你的批发单,现在怎么走?</span><span data-en>How does your order flow run today?</span></h2>
+    <p><span data-zh>跟我们说说你现在卡在哪一环 —— 报价、挂帐、送货签收还是月底对帐。我们照你的做法给建议。</span><span data-en>Tell us where it breaks — pricing, credit, delivery sign-off or month-end reconciliation. We'll advise around how you actually work.</span></p>
+    <div class="cta-row">
+      <a class="btn btn-wa" href="https://wa.me/60XXXXXXXXX?text=Hi%20Mimo%2C%20I%27d%20like%20to%20talk%20about%20our%20wholesale%20distribution%20flow" target="_blank" rel="noopener">
+        <span data-zh>💬 WhatsApp 我们</span><span data-en>💬 WhatsApp us</span>
+      </a>
+      <a class="btn btn-ghost" href="mailto:hello@mimos.digital?subject=Wholesale%20distribution%20enquiry" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.3)">
+        <span data-zh>✉ hello@mimos.digital</span><span data-en>✉ hello@mimos.digital</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <div class="logo" style="font-size:16px">Mimo<span>Solutions</span></div>
+    <div><span data-zh>模块化数字系统 · 马来西亚 SME · </span><span data-en>Modular digital systems · Malaysian SMEs · </span>hello@mimos.digital</div>
+  </div>
+</footer>
+
+</body>
+</html>
