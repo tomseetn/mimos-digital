@@ -33,6 +33,7 @@ Anyone can try our modules without signing up or booking a sales call. All demo 
 - **PERSATUAN DEWAN KHAI CHIANG SENG-ONG-HU MALAYSIA** (mkca1419.com) — Malaysia's premier cultural heritage association preserving the legacy of General Chen Yuanguang. Services: Web Development, Digital Transformation.
 - **Green Honey by NS Field Sdn Bhd** (greenhoney.com.my) — Rare natural Borneo green honey, 100% raw and bioactive. Services: Web Development, SEO.
 - **Durian Lab** (durianlab.com.my) — Malaysian old-tree durian industry consortium exporting to China, Hong Kong, Australia and Indonesia. Bilingual site. Services: Web Development, SEO.
+- **Life'n Craft 乐由手作** (lifencraft.vercel.app) — Hands-on craft studio in Bandar Mahkota Cheras, Selangor (sewing, embroidery, felt, stamp carving; 5.0★ / 32 Google reviews). Single-offer craft-workshop landing page with Razorpay Curlec online payments, mobile-first on Vercel. Services: Landing Page, Payment Integration, Content Strategy.
 
 ## Contact
 
