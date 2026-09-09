@@ -295,7 +295,8 @@
   }
   .hero-inner {
     max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    /* 直式手机图占的宽度比原本的横式截图少，文字栏拿多一点 */
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 56px; align-items: center;
   }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
@@ -327,7 +328,9 @@
   .btn-wa:hover { background: #1eb959; transform: translateY(-1px); }
   .btn-xl { font-size: 17px; padding: 18px 30px; }
   .hero-vis picture, .shot-frame picture { display: block; }
-  .hero-shot { width: 100%; height: auto; border-radius: 16px; box-shadow: 0 24px 60px rgba(15,23,42,.14); background: #fff; }
+  /* 直式手机图：限高，否则 570px 栏宽会撑到 1013px 高、把 CTA 推到折线以下 */
+  .hero-vis { display: flex; justify-content: center; }
+  .hero-shot { display: block; width: auto; max-width: 100%; max-height: 560px; height: auto; border-radius: 20px; box-shadow: 0 24px 60px rgba(15,23,42,.18); }
   .hero-shot-cap { font-size: 12px; color: var(--txt2); margin-top: 10px; text-align: center; opacity: .75; }
 
   .logos-band { padding: 40px 24px 8px; background: #fff; }
@@ -351,12 +354,46 @@
 
   .shots-section { padding: 88px 24px; background: #fff; }
   .shots-inner { max-width: 1140px; margin: 0 auto; }
-  .shots-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .shots-stage {
+    position: relative; min-height: clamp(420px,55vw,628px); overflow: hidden;
+    border: 1px solid rgba(15,23,42,.08); border-radius: 24px;
+    background: #EEF4FB; box-shadow: 0 24px 60px rgba(15,23,42,.12);
+  }
+  .shots-stage-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .shots-stage::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg,rgba(255,255,255,.02) 48%,rgba(8,19,42,.15) 100%);
+  }
+  .shots-devices {
+    position: absolute; inset: 7% 6% 3%; z-index: 1;
+    display: flex; align-items: flex-end; justify-content: center; gap: clamp(14px,3.2vw,44px);
+  }
+  .device-card { display: block; width: min(25%,255px); transition: transform .25s ease; }
+  .device-card:hover { transform: translateY(-8px); }
+  .device-card:nth-child(2) { transform: translateY(-5%); }
+  .device-card:nth-child(2):hover { transform: translateY(calc(-5% - 8px)); }
+  .device-phone {
+    position: relative; width: 100%; aspect-ratio: 9 / 17.8; padding: 17px 8px 9px;
+    border-radius: clamp(18px,2.5vw,34px); background: #111827;
+    border: 2px solid #334155;
+    box-shadow: 0 22px 45px rgba(15,23,42,.28), inset 0 0 0 1px rgba(255,255,255,.2);
+  }
+  .device-speaker {
+    position: absolute; top: 7px; left: 50%; z-index: 3; transform: translateX(-50%);
+    width: 26%; height: 4px; border-radius: 999px; background: #475569;
+  }
+  .device-screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: clamp(13px,2vw,26px); background: #fff; }
+  .device-screen-fill {
+    position: absolute; inset: -12px; width: calc(100% + 24px); height: calc(100% + 24px);
+    object-fit: cover; filter: blur(13px) saturate(.8); opacity: .35;
+  }
+  .device-screen-ui {
+    position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; object-position: center top;
+    background: rgba(255,255,255,.72);
+  }
+  .shots-copy-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 22px; }
   .shot-card { display: block; text-decoration: none; color: inherit; }
-  .shot-frame { border-radius: 14px; overflow: hidden; border: 1px solid rgba(15,23,42,.08); box-shadow: 0 12px 32px rgba(15,23,42,.08); background: #F1F5F9; }
-  .shot-frame.shot-empty { min-height: 190px; }
-  .shot-frame img { display: block; width: 100%; height: auto; }
-  .shot-card p { font-size: 15px; line-height: 1.7; color: var(--txt2); margin: 16px 0 6px; }
+  .shot-card p { font-size: 15px; line-height: 1.7; color: var(--txt2); margin: 0 0 6px; }
   .shot-link { font-size: 13px; font-weight: 700; color: #2563EB; }
   .shots-note { text-align: center; font-size: 12px; color: var(--txt2); opacity: .75; margin-top: 28px; }
 
@@ -405,7 +442,13 @@
   @media (max-width: 860px) {
     .pain-row { grid-template-columns: 1fr; }
     .fix-cell { border-left: none; border-top: 1px solid rgba(15,23,42,.06); }
-    .shots-grid, .voice-cases, .metrics-lite { grid-template-columns: 1fr; }
+    .voice-cases, .metrics-lite { grid-template-columns: 1fr; }
+    .shots-stage { min-height: clamp(330px,88vw,520px); border-radius: 18px; }
+    .shots-devices { inset: 10% 3% 4%; gap: 8px; }
+    .device-card { width: 30%; }
+    .device-phone { padding: 12px 5px 6px; border-width: 1px; }
+    .device-speaker { top: 5px; height: 3px; }
+    .shots-copy-grid { grid-template-columns: 1fr; gap: 18px; }
     .voice-quote p { font-size: 17px; }
     .wa-float { width: 52px; height: 52px; right: 14px; bottom: 70px; }
   }
@@ -802,8 +845,11 @@
   @media (max-width: 980px) {
     .nav-links, .nav-cta, .nav-lang-wrap { display: none; }
     .burger { display: flex; }
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-vis { display: none; }
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    /* 手机上原本整块隐藏，等于首屏没有图；改成显示、限矮一点 */
+    .hero-vis { display: flex; }
+    .hero-shot { max-height: 380px; }
+    .hero-shot-cap { font-size: 11px; }
     .svc-grid { grid-template-columns: 1fr; }
     .about-band-inner { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1091,6 +1137,17 @@ function HomePage({ setPage }) {
   useReveal();
   const openAssessment = useOpenAssessment();
   const go = id => { setPage(id); window.scrollTo(0,0); };
+  const showcase = [
+    { img:"assets/demo-mobile-telematics.png", href:"https://demo.mimos.digital/demo/logistics", w:"1092", h:"1406",
+      cap:{ en:"Where each vehicle is, how far it ran, who sped — one map.", zh:"车在哪、跑了多远、谁超速，一张图看完" },
+      alt:"车队总览地图：在线车辆、今日总里程、未处理预警与车辆清单" },
+    { img:"assets/demo-mobile-kpi.png", href:"https://demo.mimos.digital/demo/sales", w:"1088", h:"1342",
+      cap:{ en:"One message each morning: yesterday's sales, unpaid, stuck orders.", zh:"每天早上一条：昨天卖了多少、谁还没付、哪张单卡住" },
+      alt:"KPI 仪表板：今日已收款、待收款、正在流失的金额" },
+    { img:"assets/demo-mobile-whatsapp.png", href:"https://demo.mimos.digital/demo/whatsapp", w:"618", h:"1048",
+      cap:{ en:"Customer pays inside WhatsApp; the books match themselves.", zh:"客户在 WhatsApp 付款，账自己入，不用人手对" },
+      alt:"WhatsApp 收款自动化：客户下单、系统自动建立订单与付款资讯" }
+  ];
   return React.createElement("div", { className:"page" },
 
     /* Hero */
@@ -1135,10 +1192,10 @@ function HomePage({ setPage }) {
         ),
         React.createElement("div", { className:"hero-vis" },
           React.createElement("picture", null,
-            React.createElement("source", { srcSet:"assets/demo-kpi.webp", type:"image/webp" }),
+            React.createElement("source", { srcSet:"assets/hero-phone.webp", type:"image/webp" }),
             React.createElement("img", {
-              className:"hero-shot", src:"assets/demo-kpi.png", loading:"eager", fetchPriority:"high", width:"1600", height:"747",
-              alt:"KPI 仪表板：今日已收款、待收款、正在流失的金额",
+              className:"hero-shot", src:"assets/hero-phone.png", loading:"eager", fetchPriority:"high", width:"630", height:"1120",
+              alt:"手机上的老板早报：今天该跟的 5 件事、进行中 pipeline、停滞的单",
               onError:e=>{ e.currentTarget.style.display="none"; }
             })
           ),
@@ -1228,26 +1285,23 @@ function HomePage({ setPage }) {
             React.createElement(T, { en:"Three screens, straight from the live demo", zh:"三张画面，全部取自线上 demo" })
           )
         ),
-        React.createElement("div", { className:"shots-grid" },
-          [
-            { img:"assets/demo-telematics", href:"https://demo.mimos.digital/demo/logistics", w:"1600", h:"749",
-              cap:{ en:"Where each vehicle is, how far it ran, who sped — one map.", zh:"车在哪、跑了多远、谁超速，一张图看完" },
-              alt:"车队总览地图：在线车辆、今日总里程、未处理预警与车辆清单" },
-            { img:"assets/demo-kpi", href:"https://demo.mimos.digital/demo/sales", w:"1600", h:"747",
-              cap:{ en:"One message each morning: yesterday's sales, unpaid, stuck orders.", zh:"每天早上一条：昨天卖了多少、谁还没付、哪张单卡住" },
-              alt:"KPI 仪表板：今日已收款、待收款、正在流失的金额" },
-            { img:"assets/demo-whatsapp", href:"https://demo.mimos.digital/demo/whatsapp", w:"1600", h:"996",
-              cap:{ en:"Customer pays inside WhatsApp; the books match themselves.", zh:"客户在 WhatsApp 付款，账自己入，不用人手对" },
-              alt:"WhatsApp 收款自动化：客户下单、系统自动建立订单与付款资讯" }
-          ].map((s,i) => React.createElement("a", { key:i, className:"shot-card reveal", href:s.href, target:"_blank", rel:"noopener",
-              style:{transitionDelay:i*.08+"s"} },
-            React.createElement("div", { className:"shot-frame" },
-              React.createElement("picture", null,
-                React.createElement("source", { srcSet:s.img+".webp", type:"image/webp" }),
-                React.createElement("img", { src:s.img+".png", alt:s.alt, loading:"lazy", width:s.w, height:s.h,
-                  onError:e=>{ e.currentTarget.closest(".shot-frame").classList.add("shot-empty"); e.currentTarget.style.display="none"; } })
+        React.createElement("div", { className:"shots-stage reveal" },
+          React.createElement("img", { className:"shots-stage-bg", src:"assets/device-showcase-bg.jpg", alt:"", loading:"lazy", width:"1672", height:"941" }),
+          React.createElement("div", { className:"shots-devices" },
+            showcase.map((s,i) => React.createElement("a", { key:i, className:"device-card", href:s.href, target:"_blank", rel:"noopener", "aria-label":s.alt },
+              React.createElement("div", { className:"device-phone" },
+                React.createElement("span", { className:"device-speaker", "aria-hidden":"true" }),
+                React.createElement("div", { className:"device-screen" },
+                  React.createElement("img", { className:"device-screen-fill", src:s.img, alt:"", "aria-hidden":"true" }),
+                  React.createElement("img", { className:"device-screen-ui", src:s.img, alt:s.alt, loading:"lazy", width:s.w, height:s.h })
+                )
               )
-            ),
+            ))
+          )
+        ),
+        React.createElement("div", { className:"shots-copy-grid" },
+          showcase.map((s,i) => React.createElement("a", { key:i, className:"shot-card reveal", href:s.href, target:"_blank", rel:"noopener",
+              style:{transitionDelay:i*.08+"s"} },
             React.createElement("p", null, React.createElement(T, s.cap)),
             React.createElement("span", { className:"shot-link" }, React.createElement(T, { en:"Open it →", zh:"点进去看真的 →" }))
           ))
