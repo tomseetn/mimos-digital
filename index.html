@@ -329,8 +329,11 @@
   .btn-xl { font-size: 17px; padding: 18px 30px; }
   .hero-vis picture, .shot-frame picture { display: block; }
   /* 直式手机图：限高，否则 570px 栏宽会撑到 1013px 高、把 CTA 推到折线以下 */
-  .hero-vis { display: flex; justify-content: center; }
-  .hero-shot { display: block; width: auto; max-width: 100%; max-height: 560px; height: auto; border-radius: 20px; box-shadow: 0 24px 60px rgba(15,23,42,.18); }
+  /* column：图在上、说明在下。原本是 row，说明会飞到图旁边 */
+  .hero-vis { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  .hero-vis picture { flex: 0 0 auto; }
+  /* 用明确 height（不是 max-height），否则 flex 会把图压到剩一半、手机屏幕上的字看不清 */
+  .hero-shot { display: block; height: clamp(380px,40vw,560px); width: auto; max-width: 100%; border-radius: 20px; box-shadow: 0 24px 60px rgba(15,23,42,.18); }
   .hero-shot-cap { font-size: 12px; color: var(--txt2); margin-top: 10px; text-align: center; opacity: .75; }
 
   .logos-band { padding: 40px 24px 8px; background: #fff; }
@@ -848,7 +851,7 @@
     .hero-inner { grid-template-columns: 1fr; gap: 32px; }
     /* 手机上原本整块隐藏，等于首屏没有图；改成显示、限矮一点 */
     .hero-vis { display: flex; }
-    .hero-shot { max-height: 380px; }
+    .hero-shot { height: 340px; }
     .hero-shot-cap { font-size: 11px; }
     .svc-grid { grid-template-columns: 1fr; }
     .about-band-inner { grid-template-columns: 1fr; }
@@ -1138,13 +1141,13 @@ function HomePage({ setPage }) {
   const openAssessment = useOpenAssessment();
   const go = id => { setPage(id); window.scrollTo(0,0); };
   const showcase = [
-    { img:"assets/demo-mobile-telematics.png", href:"https://demo.mimos.digital/demo/logistics", w:"1092", h:"1406",
+    { img:"assets/telematics-macbook", href:"https://demo.mimos.digital/demo/logistics", w:"1000", h:"625",
       cap:{ en:"Where each vehicle is, how far it ran, who sped — one map.", zh:"车在哪、跑了多远、谁超速，一张图看完" },
       alt:"车队总览地图：在线车辆、今日总里程、未处理预警与车辆清单" },
-    { img:"assets/demo-mobile-kpi.png", href:"https://demo.mimos.digital/demo/sales", w:"1088", h:"1342",
+    { img:"assets/kpi-macbook", href:"https://demo.mimos.digital/demo/sales", w:"1000", h:"625",
       cap:{ en:"One message each morning: yesterday's sales, unpaid, stuck orders.", zh:"每天早上一条：昨天卖了多少、谁还没付、哪张单卡住" },
       alt:"KPI 仪表板：今日已收款、待收款、正在流失的金额" },
-    { img:"assets/demo-mobile-whatsapp.png", href:"https://demo.mimos.digital/demo/whatsapp", w:"618", h:"1048",
+    { img:"assets/whatsapp-macbook", href:"https://demo.mimos.digital/demo/whatsapp", w:"1000", h:"625",
       cap:{ en:"Customer pays inside WhatsApp; the books match themselves.", zh:"客户在 WhatsApp 付款，账自己入，不用人手对" },
       alt:"WhatsApp 收款自动化：客户下单、系统自动建立订单与付款资讯" }
   ];
@@ -1285,23 +1288,16 @@ function HomePage({ setPage }) {
             React.createElement(T, { en:"Three screens, straight from the live demo", zh:"三张画面，全部取自线上 demo" })
           )
         ),
-        React.createElement("div", { className:"shots-stage reveal" },
-          React.createElement("img", { className:"shots-stage-bg", src:"assets/device-showcase-bg.jpg", alt:"", loading:"lazy", width:"1672", height:"941" }),
-          React.createElement("div", { className:"shots-devices" },
-            showcase.map((s,i) => React.createElement("a", { key:i, className:"device-card", href:s.href, target:"_blank", rel:"noopener", "aria-label":s.alt },
-              React.createElement("div", { className:"device-phone" },
-                React.createElement("span", { className:"device-speaker", "aria-hidden":"true" }),
-                React.createElement("div", { className:"device-screen" },
-                  React.createElement("img", { className:"device-screen-fill", src:s.img, alt:"", "aria-hidden":"true" }),
-                  React.createElement("img", { className:"device-screen-ui", src:s.img, alt:s.alt, loading:"lazy", width:s.w, height:s.h })
-                )
-              )
-            ))
-          )
-        ),
-        React.createElement("div", { className:"shots-copy-grid" },
+        React.createElement("div", { className:"shots-grid" },
           showcase.map((s,i) => React.createElement("a", { key:i, className:"shot-card reveal", href:s.href, target:"_blank", rel:"noopener",
               style:{transitionDelay:i*.08+"s"} },
+            React.createElement("div", { className:"shot-frame" },
+              React.createElement("picture", null,
+                React.createElement("source", { srcSet:s.img+".webp", type:"image/webp" }),
+                React.createElement("img", { src:s.img+".png", alt:s.alt, loading:"lazy", width:s.w, height:s.h,
+                  onError:e=>{ e.currentTarget.closest(".shot-frame").classList.add("shot-empty"); e.currentTarget.style.display="none"; } })
+              )
+            ),
             React.createElement("p", null, React.createElement(T, s.cap)),
             React.createElement("span", { className:"shot-link" }, React.createElement(T, { en:"Open it →", zh:"点进去看真的 →" }))
           ))
