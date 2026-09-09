@@ -1,0 +1,4 @@
+# Cloudflare Pages · SPA fallback
+# 静态档案（/wholesale/、/assets/…）优先命中；其余路由交给 index.html 的前端路由处理，
+# 这样直接输入 https://mimos.digital/refund 或 /pricing 不会 404。
+/*    /index.html   200

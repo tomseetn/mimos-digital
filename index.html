@@ -315,6 +315,97 @@
   .hero-assess-link { display: inline-flex; align-items: center; gap: 6px; background: none; border: none; margin-top: 18px; padding: 0; font-size: 14px; font-weight: 700; color: #2563EB; cursor: pointer; text-align: left; }
   .hero-assess-link:hover { text-decoration: underline; }
 
+  /* ── 2026-09 强转化改版 ───────────────────── */
+  .hero-points { list-style: none; margin: 0 0 32px; padding: 0; max-width: 500px; }
+  .hero-points li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; line-height: 1.7; color: var(--txt2); margin-bottom: 12px; }
+  .hero-points .tick { color: #16a34a; font-weight: 800; flex: 0 0 auto; }
+  .hero-note { font-size: 13px; color: var(--txt2); margin-top: 12px; opacity: .85; }
+  .btn-wa { background: #25D366; color: #fff; }
+  .btn-wa:hover { background: #1eb959; transform: translateY(-1px); }
+  .btn-xl { font-size: 17px; padding: 18px 30px; }
+  .hero-vis picture, .shot-frame picture { display: block; }
+  .hero-shot { width: 100%; height: auto; border-radius: 16px; box-shadow: 0 24px 60px rgba(15,23,42,.14); background: #fff; }
+  .hero-shot-cap { font-size: 12px; color: var(--txt2); margin-top: 10px; text-align: center; opacity: .75; }
+
+  .logos-band { padding: 40px 24px 8px; background: #fff; }
+  .logos-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+  .logos-label { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--txt2); opacity: .7; margin-bottom: 18px; }
+  .logos-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 34px; align-items: center; }
+  .logo-chip { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--txt2); opacity: .6; filter: grayscale(1); transition: .2s; }
+  .logo-chip:hover { opacity: 1; filter: none; }
+  .logo-chip img { width: 24px; height: 24px; object-fit: contain; border-radius: 5px; }
+
+  .pain-section { padding: 88px 24px; background: var(--soft, #F8FAFC); }
+  .pain-inner { max-width: 1000px; margin: 0 auto; }
+  .pain-list { display: flex; flex-direction: column; gap: 18px; }
+  .pain-row { display: grid; grid-template-columns: 1.15fr 1fr; gap: 0; background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 16px; overflow: hidden; }
+  .pain-cell { padding: 26px 28px; }
+  .pain-quote { font-size: 16px; line-height: 1.8; color: var(--txt); margin: 0 0 10px; }
+  .pain-who { font-size: 12px; color: var(--txt2); opacity: .8; }
+  .fix-cell { padding: 26px 28px; background: #EFF6FF; border-left: 1px solid rgba(15,23,42,.06); }
+  .fix-cell p { font-size: 15px; line-height: 1.75; color: var(--txt); margin: 8px 0 0; }
+  .fix-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .05em; color: #2563EB; background: #DBEAFE; padding: 3px 9px; border-radius: 999px; }
+
+  .shots-section { padding: 88px 24px; background: #fff; }
+  .shots-inner { max-width: 1140px; margin: 0 auto; }
+  .shots-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .shot-card { display: block; text-decoration: none; color: inherit; }
+  .shot-frame { border-radius: 14px; overflow: hidden; border: 1px solid rgba(15,23,42,.08); box-shadow: 0 12px 32px rgba(15,23,42,.08); background: #F1F5F9; }
+  .shot-frame.shot-empty { min-height: 190px; }
+  .shot-frame img { display: block; width: 100%; height: auto; }
+  .shot-card p { font-size: 15px; line-height: 1.7; color: var(--txt2); margin: 16px 0 6px; }
+  .shot-link { font-size: 13px; font-weight: 700; color: #2563EB; }
+  .shots-note { text-align: center; font-size: 12px; color: var(--txt2); opacity: .75; margin-top: 28px; }
+
+  .voice-section { padding: 88px 24px; background: var(--soft, #F8FAFC); }
+  .voice-inner { max-width: 1000px; margin: 0 auto; }
+  .voice-quote { margin: 0 0 40px; padding: 34px 36px; background: #fff; border-left: 4px solid #2563EB; border-radius: 0 16px 16px 0; box-shadow: 0 10px 30px rgba(15,23,42,.06); }
+  .voice-quote p { font-size: 19px; line-height: 1.85; color: var(--txt); margin: 0 0 14px; }
+  .voice-quote footer { font-size: 13px; font-weight: 700; color: var(--txt2); }
+  .voice-cases { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .voice-case { background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 14px; padding: 24px; }
+  .voice-case h3 { font-size: 16px; margin: 0 0 10px; }
+  .voice-case p { font-size: 14px; line-height: 1.75; color: var(--txt2); margin: 0; }
+
+  .steps-list li { align-items: flex-start; }
+  .steps-list .step-n { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: #2563EB; color: #fff; font-size: 13px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; margin-right: 4px; }
+  .steps-list small { font-size: 14px; color: var(--txt2); line-height: 1.7; }
+  .getbox { background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 18px; padding: 30px; }
+  .getbox h3 { font-size: 18px; margin: 0 0 18px; }
+  .getbox ul { list-style: none; margin: 0 0 26px; padding: 0; }
+  .getbox li { display: flex; gap: 10px; font-size: 14px; line-height: 1.75; color: var(--txt2); margin-bottom: 12px; }
+  .metrics-lite { grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .metric-sub { font-size: 11px; line-height: 1.6; color: var(--txt2); opacity: .8; margin-top: 6px; }
+
+  .faq-section { padding: 88px 24px; background: #fff; }
+  .faq-inner { max-width: 860px; margin: 0 auto; }
+  .faq-list { display: flex; flex-direction: column; gap: 14px; }
+  .faq-item { background: var(--soft, #F8FAFC); border: 1px solid rgba(15,23,42,.07); border-radius: 14px; padding: 24px 26px; }
+  .faq-item h3 { font-size: 17px; margin: 0 0 10px; }
+  .faq-item p { font-size: 15px; line-height: 1.8; color: var(--txt2); margin: 0; }
+  .faq-link { background: none; border: none; padding: 0; margin-top: 10px; font-size: 13px; font-weight: 700; color: #2563EB; cursor: pointer; }
+  .faq-link:hover { text-decoration: underline; }
+
+  .btn-buy { display: inline-flex; margin-top: 12px; background: #F59E0B; color: #fff; font-size: 15px; padding: 13px 24px; }
+  .btn-buy:hover { background: #d97706; transform: translateY(-1px); }
+  .price-anchor { font-size: 15px; color: rgba(255,255,255,.9); margin-top: 18px; }
+  .price-anchor s { opacity: .6; }
+  .price-anchor strong { color: #fff; }
+  .guarantee { display: inline-block; margin-top: 14px; font-size: 13px; color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 7px 16px; }
+  .cta-alt { display: block; margin-top: 22px; font-size: 14px; font-weight: 700; color: rgba(255,255,255,.9); text-decoration: none; }
+  .cta-alt:hover { text-decoration: underline; }
+
+  .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 10px 26px rgba(37,211,102,.42); transition: transform .18s; }
+  .wa-float:hover { transform: scale(1.06); }
+
+  @media (max-width: 860px) {
+    .pain-row { grid-template-columns: 1fr; }
+    .fix-cell { border-left: none; border-top: 1px solid rgba(15,23,42,.06); }
+    .shots-grid, .voice-cases, .metrics-lite { grid-template-columns: 1fr; }
+    .voice-quote p { font-size: 17px; }
+    .wa-float { width: 52px; height: 52px; right: 14px; bottom: 14px; }
+  }
+
   /* Hero visual card */
   .hero-card {
     background: #fff; border-radius: var(--r-lg);
@@ -1004,58 +1095,192 @@ function HomePage({ setPage }) {
         React.createElement("div", { className:"hero-content" },
           React.createElement("div", { className:"hero-badge" },
             React.createElement("span", { className:"live-dot" }),
-            React.createElement(T, { en:"Malaysia's Modular IT Partner", zh:"马来西亚模块化 IT 伙伴" })
+            React.createElement(T, { en:"For Malaysian SMEs with 10–50 staff", zh:"给马来西亚 10–50 人的中小企业老板" })
           ),
           React.createElement("h1", null,
-            React.createElement(T, { en:"Build Your Digital Stack,", zh:"按需搭建，" }),
+            React.createElement(T, { en:"Your business runs on WhatsApp and Excel —", zh:"生意跑在 WhatsApp 和 Excel 上，" }),
             React.createElement("br"),
             React.createElement("span", { className:"grad-text" },
-              React.createElement(T, { en:"Module by Module", zh:"模块化数字系统" })
+              React.createElement(T, { en:"let's make it one system", zh:"把它接成一套自己的系统" })
             )
           ),
-          React.createElement("p", { className:"hero-sub" },
-            React.createElement(T, {
-              en:"Pick only the modules your SME actually needs — WhatsApp payments, CRM, ERP, KPI dashboards, and more. Custom-built, locally supported, no bloated per-user fees.",
-              zh:"只选你真正需要的模块 — WhatsApp 收款、CRM、ERP、KPI 仪表板等。量身定制，本地团队支持，无按用户计费的 SaaS 费用。"
-            })
+          React.createElement("ul", { className:"hero-points" },
+            [
+              { en:"Payments made in WhatsApp reconcile themselves — no more matching by hand", zh:"客户在 WhatsApp 付款，自动入账，不用人手对" },
+              { en:"One message every morning: yesterday's sales, who hasn't paid, what's stuck", zh:"每天早上一条早报：昨天卖了多少、谁还没付、哪张单卡住" },
+              { en:"One build fee, maintained by a KL team — never priced per user", zh:"一次开发费，KL 本地团队维护，不按人头收月费" }
+            ].map((p,i) => React.createElement("li", { key:i },
+              React.createElement("span", { className:"tick" }, "✓"),
+              React.createElement(T, p)
+            ))
           ),
           React.createElement("div", { className:"hero-actions" },
-            React.createElement("button", { className:"btn btn-blue", onClick:()=>go("contact") },
-              React.createElement(T, { en:"Build My Stack →", zh:"开始搭建 →" })
-            ),
-            React.createElement("button", { className:"btn btn-ghost", onClick:()=>go("services") },
-              React.createElement(T, { en:"Explore Modules", zh:"查看模块" })
+            React.createElement("a", { className:"btn btn-wa", href:WA_MAIN, target:"_blank", rel:"noopener" },
+              React.createElement(T, { en:"💬 Tell us where your money leaks →", zh:"💬 WhatsApp 我们，说你最漏钱的那一段 →" })
             )
           ),
-          React.createElement("button", { className:"hero-assess-link", onClick:openAssessment },
-            "🔬 ", React.createElement(T, {
-              en:"Not sure where to start? Take our 2-min Digital Check →",
-              zh:"不知从何开始？做个2分钟数字化检测 →"
+          React.createElement("div", { className:"hero-note" },
+            React.createElement(T, {
+              en:"Keep your current Excel and systems — start with one module and see.",
+              zh:"不用换掉现有 Excel 或系统；先接一个模块看效果"
             })
+          ),
+          React.createElement("a", { className:"hero-assess-link", href:"https://demo.mimos.digital", target:"_blank", rel:"noopener" },
+            React.createElement(T, { en:"Or try the demo first — no sign-up →", zh:"或者先玩 demo，不用注册 →" })
           )
         ),
         React.createElement("div", { className:"hero-vis" },
-          React.createElement("div", { className:"hero-card" },
-            React.createElement("div", { className:"hero-card-label" },
-              React.createElement(T, { en:"Available Modules", zh:"可选模块" })
-            ),
-            React.createElement("ul", { className:"svc-check-list" },
-              SVCS.map((s,i) => React.createElement("li", { key:i, className:"svc-check" },
-                React.createElement("span", { className:"ck", style:{color:s.clr} }, s.ico),
-                React.createElement(T, { en:s.en, zh:s.zh })
-              ))
-            ),
-            React.createElement("div", { className:"hero-stats" },
-              React.createElement("div", { className:"hstat" },
-                React.createElement("div", { className:"hstat-num grad-text" }, String(SVCS.length)),
-                React.createElement("div", { className:"hstat-lbl" }, React.createElement(T, { en:"Ready Modules", zh:"可选模块" }))
-              ),
-              React.createElement("div", { className:"hstat" },
-                React.createElement("div", { className:"hstat-num grad-text" }, "100%"),
-                React.createElement("div", { className:"hstat-lbl" }, React.createElement(T, { en:"Custom-Built", zh:"全程定制" }))
-              )
-            )
+          React.createElement("picture", null,
+            React.createElement("source", { srcSet:"assets/demo-kpi.webp", type:"image/webp" }),
+            React.createElement("img", {
+              className:"hero-shot", src:"assets/demo-kpi.png", loading:"eager", fetchPriority:"high", width:"1600", height:"747",
+              alt:"KPI 仪表板：今日已收款、待收款、正在流失的金额",
+              onError:e=>{ e.currentTarget.style.display="none"; }
+            })
+          ),
+          React.createElement("div", { className:"hero-shot-cap" },
+            React.createElement(T, { en:"A real screen from our live demo. Data shown is simulated.", zh:"取自线上 demo 的真实画面，数据为模拟" })
           )
+        )
+      )
+    ),
+
+    /* 合作企业 —— 只放 logo，一行 */
+    React.createElement("section", { className:"logos-band" },
+      React.createElement("div", { className:"logos-inner" },
+        React.createElement("div", { className:"logos-label" },
+          React.createElement(T, { en:"Companies we've built for", zh:"我们服务过的企业" })
+        ),
+        React.createElement("div", { className:"logos-row" },
+          PROJECTS.map((p,i) => React.createElement("div", { key:i, className:"logo-chip", title:p.domain },
+            p.logo ? React.createElement("img", { src:p.logo, alt:"", loading:"lazy",
+              onError:e=>{ e.currentTarget.style.display="none"; } }) : null,
+            React.createElement("span", null, React.createElement(T, p.name))
+          ))
+        )
+      )
+    ),
+
+    /* 痛点 + 方案（同屏并列）*/
+    React.createElement("section", { className:"pain-section" },
+      React.createElement("div", { className:"pain-inner" },
+        React.createElement("div", { className:"section-header reveal", style:{marginBottom:40} },
+          React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Sound familiar?", zh:"是不是也这样？" })),
+          React.createElement("h2", { className:"section-title" },
+            React.createElement(T, { en:"The money doesn't leak from lack of sales", zh:"钱不是漏在没生意" })
+          ),
+          React.createElement("p", { className:"section-sub" },
+            React.createElement(T, {
+              en:"Three things Malaysian bosses told us this year.",
+              zh:"今年三位老板亲口跟我们说的话。"
+            })
+          )
+        ),
+        React.createElement("div", { className:"pain-list" },
+          [
+            { quote:{ en:"“Driver forms come in, and I only find out at month end which lorry's road tax expired or which inspection was skipped. I'm always patching after the fact.”",
+                      zh:"「司机的表格交上来，我要等到月底才知道哪台车路税过期、哪张检查没做。出事了才补，永远慢一步。」" },
+              who:{ en:"— Leisure fleet owner · 30+ vehicles", zh:"—— 休闲车队老板 · 30+ 台车" },
+              fix:{ en:"Expiry alerts land on WhatsApp 30 days ahead. Inspection not done, the vehicle can't be dispatched.",
+                    zh:"证件到期 30 天自动 WhatsApp 提醒；检查没做，车子派不出去" } },
+            { quote:{ en:"“Hundreds of customers in the system, and I can't tell who's still active this month and who's already gone. I ask sales, sales asks the dealer.”",
+                      zh:"「系统里几百个客户，我不知道这个月谁还在跑、谁已经跑掉了。要问回销售，销售也要问回 dealer。」" },
+              who:{ en:"— Auto-parts distributor · two-state sales team", zh:"—— 汽配经销商老板 · 双州销售团队" },
+              fix:{ en:"Active and paid status calculates itself. Dealer commission comes out as one table at month end.",
+                    zh:"每个客户的活跃 / 缴费状态自己会算，dealer 佣金月底一张表" } },
+            { quote:{ en:"“Sign-ups come through WhatsApp, money comes through another app, and I reconcile them myself every night. A few more students and I can't keep up.”",
+                      zh:"「报名从 WhatsApp 进来，钱从另一个 app 进来，我每天晚上自己对一遍。人多一点就对不完。」" },
+              who:{ en:"— Craft studio owner", zh:"—— 手作教室主理人" },
+              fix:{ en:"A WhatsApp sign-up opens the order directly, payment matches itself — no more reconciling at night.",
+                    zh:"WhatsApp 报名直接开单，收款自动对上，不用晚上再对一次" } }
+          ].map((r,i) => React.createElement("div", { key:i, className:"pain-row reveal" },
+            React.createElement("div", { className:"pain-cell" },
+              React.createElement("p", { className:"pain-quote" }, React.createElement(T, r.quote)),
+              React.createElement("div", { className:"pain-who" }, React.createElement(T, r.who))
+            ),
+            React.createElement("div", { className:"fix-cell" },
+              React.createElement("span", { className:"fix-tag" }, React.createElement(T, { en:"What we do", zh:"我们的做法" })),
+              React.createElement("p", null, React.createElement(T, r.fix))
+            )
+          ))
+        ),
+        React.createElement("div", { style:{textAlign:"center",marginTop:36} },
+          React.createElement("button", { className:"hero-assess-link", onClick:openAssessment },
+            "🔬 ", React.createElement(T, {
+              en:"Not sure which part is leaking? Take the 2-min check →",
+              zh:"不确定你漏在哪一段？2 分钟测一下 →"
+            })
+          )
+        )
+      )
+    ),
+
+    /* 结果展示 —— 三张真截图 */
+    React.createElement("section", { className:"shots-section" },
+      React.createElement("div", { className:"shots-inner" },
+        React.createElement("div", { className:"section-header reveal", style:{marginBottom:44} },
+          React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"What you'll see", zh:"你会看到什么" })),
+          React.createElement("h2", { className:"section-title" },
+            React.createElement(T, { en:"Three screens, straight from the live demo", zh:"三张画面，全部取自线上 demo" })
+          )
+        ),
+        React.createElement("div", { className:"shots-grid" },
+          [
+            { img:"assets/demo-telematics", href:"https://demo.mimos.digital/demo/logistics", w:"1600", h:"749",
+              cap:{ en:"Where each vehicle is, how far it ran, who sped — one map.", zh:"车在哪、跑了多远、谁超速，一张图看完" },
+              alt:"车队总览地图：在线车辆、今日总里程、未处理预警与车辆清单" },
+            { img:"assets/demo-kpi", href:"https://demo.mimos.digital/demo/sales", w:"1600", h:"747",
+              cap:{ en:"One message each morning: yesterday's sales, unpaid, stuck orders.", zh:"每天早上一条：昨天卖了多少、谁还没付、哪张单卡住" },
+              alt:"KPI 仪表板：今日已收款、待收款、正在流失的金额" },
+            { img:"assets/demo-whatsapp", href:"https://demo.mimos.digital", w:"1600", h:"996",
+              cap:{ en:"Customer pays inside WhatsApp; the books match themselves.", zh:"客户在 WhatsApp 付款，账自己入，不用人手对" },
+              alt:"WhatsApp 收款自动化：客户下单、系统自动建立订单与付款资讯" }
+          ].map((s,i) => React.createElement("a", { key:i, className:"shot-card reveal", href:s.href, target:"_blank", rel:"noopener",
+              style:{transitionDelay:i*.08+"s"} },
+            React.createElement("div", { className:"shot-frame" },
+              React.createElement("picture", null,
+                React.createElement("source", { srcSet:s.img+".webp", type:"image/webp" }),
+                React.createElement("img", { src:s.img+".png", alt:s.alt, loading:"lazy", width:s.w, height:s.h,
+                  onError:e=>{ e.currentTarget.closest(".shot-frame").classList.add("shot-empty"); e.currentTarget.style.display="none"; } })
+              )
+            ),
+            React.createElement("p", null, React.createElement(T, s.cap)),
+            React.createElement("span", { className:"shot-link" }, React.createElement(T, { en:"Open it →", zh:"点进去看真的 →" }))
+          ))
+        ),
+        React.createElement("p", { className:"shots-note" },
+          React.createElement(T, { en:"All data shown in the demo is simulated. No sign-up needed.", zh:"demo 里的数据全部为模拟；不用注册" })
+        )
+      )
+    ),
+
+    /* 用户见证 */
+    React.createElement("section", { className:"voice-section" },
+      React.createElement("div", { className:"voice-inner" },
+        React.createElement("blockquote", { className:"voice-quote reveal" },
+          React.createElement("p", null, React.createElement(T, {
+            en:"“Before, I had to wait for finance to close the month before I knew anything. Now I open the dashboard and I know the same day — how much we sold, how far each driver ran, how much fuel went in, and whether anyone was slacking.”",
+            zh:"「以前月底要等财务整理完才知道。现在看后台，当天就知道 —— 卖了多少、司机跑了多远、打了多少油、有没有偷懒。」"
+          })),
+          React.createElement("footer", null, React.createElement(T, {
+            en:"— Chin, MJC Leisure Sdn Bhd", zh:"—— Chin，MJC Leisure Sdn Bhd"
+          }))
+        ),
+        React.createElement("div", { className:"voice-cases" },
+          [
+            { n:{en:"MJC Leisure",zh:"MJC Leisure"},
+              d:{en:"Fleet safety and compliance: scan a QR to run the check, photograph the odometer and the number is read for you, Lampiran A2 / B / C exported in one click, expiry warnings by colour block. Live and running daily.",
+                 zh:"车队安全与合规：手机扫 QR 做检查、拍里程表照片自动读数、Lampiran A2 / B / C 一键导出、证件到期色块预警。已上线，日常在跑"} },
+            { n:{en:"DurianLab",zh:"DurianLab"},
+              d:{en:"Orchard, varietal and provenance records for durian export, plus the public site — three orchards and eight varieties live and searchable.",
+                 zh:"榴莲出口的园区、品种与产地档案系统 + 官网，三个园区、八个品种上线可查"} },
+            { n:{en:"Life'n Craft",zh:"Life'n Craft 乐由手作"},
+              d:{en:"Class sign-ups and payments: WhatsApp enquiry → online booking → automatic payment → schedule reminder, all on one thread.",
+                 zh:"手作班报名与收款：WhatsApp 询问 → 线上报名 → 自动收款 → 排课提醒，一条线走完"} }
+          ].map((c,i) => React.createElement("div", { key:i, className:"voice-case reveal", style:{transitionDelay:i*.07+"s"} },
+            React.createElement("h3", null, React.createElement(T, c.n)),
+            React.createElement("p", null, React.createElement(T, c.d))
+          ))
         )
       )
     ),
@@ -1070,8 +1295,8 @@ function HomePage({ setPage }) {
           ),
           React.createElement("p", { className:"section-sub" },
             React.createElement(T, {
-              en:"Mix and match modules to build the exact digital system your SME needs — no bloated all-in-one ERP, no per-user monthly fees.",
-              zh:"灵活选择模块，搭建专属数字系统 — 无需购买臃肿的 ERP，无按用户计费的月费负担。"
+              en:"You don't have to take them all at once. Connect the one that's leaking most, get it working, then add the next.",
+              zh:"不用一次全上。先接最漏钱的那一个，跑通了再加。"
             })
           )
         ),
@@ -1097,60 +1322,137 @@ function HomePage({ setPage }) {
       )
     ),
 
-    /* About band */
+    /* 使用流程 —— 最多 3 步 */
     React.createElement("section", { className:"about-band" },
       React.createElement("div", { className:"about-band-inner" },
         React.createElement("div", { className:"reveal" },
-          React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"About Us", zh:"关于我们" })),
+          React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"How it starts", zh:"怎么开始" })),
           React.createElement("h2", { className:"section-title" },
-            React.createElement(T, { en:"Why SMEs Choose Mimo Over SaaS", zh:"为什么中小企业选择 Mimo 而非 SaaS" })
+            React.createElement(T, { en:"Three steps, then you're using it", zh:"三步，然后你就在用了" })
           ),
-          React.createElement("p", { className:"section-sub" },
-            React.createElement(T, {
-              en:"Most SaaS platforms charge per user, every month, for features you'll never fully use. Mimo builds what you actually need, once — custom to your workflow, locally supported in Malaysia.",
-              zh:"大多数 SaaS 平台按用户逐月收费，功能却用不到一半。Mimo 一次性定制开发您真正需要的功能，贴合您的业务流程，本地团队持续支持。"
-            })
-          ),
-          React.createElement("ul", { className:"about-list" },
+          React.createElement("ul", { className:"about-list steps-list" },
             [
-              {en:"One-time build fee — no per-user monthly SaaS trap",zh:"一次实施费，无 SaaS 按用户月费"},
-              {en:"Built around your workflow, not a generic template",zh:"贴合您的业务流程，非通用模板"},
-              {en:"Local team, bilingual support (EN / 中文), Malaysia-based",zh:"本地团队，中英双语支持，扎根马来西亚"},
+              {n:"1",t:{en:"One WhatsApp call — free",zh:"一通 WhatsApp（免费）"},
+                 d:{en:"30 minutes on where your money leaks today. No pitch, no proposal document.",zh:"30 分钟，讲你现在哪一段最漏钱。不推销、不写建议书"}},
+              {n:"2",t:{en:"We look, then we quote",zh:"摸底 + 报价"},
+                 d:{en:"We read your real documents and flow, then give a fixed price and a fixed scope in writing.",zh:"看你真实的单据和流程，给一个固定价、固定范围的书面报价"}},
+              {n:"3",t:{en:"Connect the first module",zh:"接第一个模块"},
+                 d:{en:"Your team uses it for real. Once it works, we connect the next one.",zh:"你的人先用，跑通了再接下一个"}}
+            ].map((item,i) => React.createElement("li", { key:i },
+              React.createElement("span", { className:"step-n" }, item.n),
+              React.createElement("span", null,
+                React.createElement("strong", null, React.createElement(T, item.t)),
+                React.createElement("br"),
+                React.createElement("small", null, React.createElement(T, item.d))
+              )
+            ))
+          ),
+          React.createElement("a", { className:"btn btn-wa", style:{marginTop:28}, href:WA_MAIN, target:"_blank", rel:"noopener" },
+            React.createElement(T, { en:"💬 Start with the WhatsApp call →", zh:"💬 先来一通 WhatsApp →" })
+          )
+        ),
+        React.createElement("div", { className:"getbox reveal" },
+          React.createElement("h3", null, React.createElement(T, { en:"What you own once you pay", zh:"付款后你拿到什么" })),
+          React.createElement("ul", null,
+            [
+              {en:"Every cloud account opened in your company's name — we are added as collaborators, not owners",zh:"所有云端帐号都开在你公司名下 —— 我们只是被加进去的协作者，不是拥有者"},
+              {en:"The full source code sits in your own cloud repository",zh:"源代码全部在你自己的云端仓库里"},
+              {en:"A bilingual how-to guide (EN / 中文) plus one training session, on-site or online",zh:"一份中英文操作说明 + 一次培训（上门或线上）"},
+              {en:"Nothing is locked. Export your data any time; remove us any time and the system keeps running",zh:"我们不锁数据。你随时可以导出，也随时可以把我们移除，系统照跑"}
             ].map((item,i) => React.createElement("li", { key:i },
               React.createElement("span", { className:"star" }, "✦"),
               React.createElement(T, item)
             ))
           ),
-          React.createElement("button", { className:"btn btn-blue", style:{marginTop:28}, onClick:()=>go("about") },
-            React.createElement(T, { en:"Learn More About Us", zh:"了解更多" })
+          React.createElement("div", { className:"metrics-grid metrics-lite" },
+            [
+              {ico:"🏢",num:"6",lbl:{en:"client projects live",zh:"上线中的客户项目"},sub:{en:"craft classes, metaphysics, an association, durian export, honey retail, leisure",zh:"手作班 · 玄学 · 总会 · 榴莲出口 · 蜂蜜零售 · 休闲服务"}},
+              {ico:"🧩",num:String(SVCS.length),lbl:{en:"modules you can click into",zh:"可以点进去玩的模块"},sub:{en:"no sign-up, simulated data",zh:"不用注册，资料是模拟的"}},
+              {ico:"📍",num:"KL",lbl:{en:"local team",zh:"本地团队"},sub:{en:"Bangsar South, bilingual, not offshore",zh:"Bangsar South，中英双语，不是海外外包"}}
+            ].map((m,i) => React.createElement("div", { key:i, className:"metric-card" },
+              React.createElement("div", { className:"metric-ico" }, m.ico),
+              React.createElement("div", { className:"metric-num grad-text" }, m.num),
+              React.createElement("div", { className:"metric-lbl" }, React.createElement(T, m.lbl)),
+              React.createElement("div", { className:"metric-sub" }, React.createElement(T, m.sub))
+            ))
+          )
+        )
+      )
+    ),
+
+    /* 消除疑虑 FAQ */
+    React.createElement("section", { className:"faq-section" },
+      React.createElement("div", { className:"faq-inner" },
+        React.createElement("div", { className:"section-header reveal", style:{marginBottom:36} },
+          React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Before you ask", zh:"你可能会想问" })),
+          React.createElement("h2", { className:"section-title" },
+            React.createElement(T, { en:"Four things everyone asks", zh:"每个老板都会问的四件事" })
           )
         ),
-        React.createElement("div", { className:"metrics-grid reveal" },
+        React.createElement("div", { className:"faq-list" },
           [
-            {ico:"🏢",num:"50+",lbl:{en:"Clients Served",zh:"服务客户"}},
-            {ico:"🌏",num:"5+",lbl:{en:"Years in Market",zh:"市场经验年"}},
-            {ico:"⚡",num:"100%",lbl:{en:"Project Success",zh:"项目成功率"}},
-            {ico:"🤝",num:"24/7",lbl:{en:"Support Available",zh:"全天候支持"}},
-          ].map((m,i) => React.createElement("div", { key:i, className:"metric-card" },
-            React.createElement("div", { className:"metric-ico" }, m.ico),
-            React.createElement("div", { className:"metric-num grad-text" }, m.num),
-            React.createElement("div", { className:"metric-lbl" }, React.createElement(T, m.lbl))
+            { q:{en:"How much?",zh:"多少钱？"},
+              a:{en:"Full pricing is on our pricing page. The cheapest way in is the WhatsApp module at RM 1,000 (usual RM 3,000) for the first 5 companies. A full build is quoted by scope: a one-time build fee plus optional monthly support — never priced per user.",
+                 zh:"完整价目在定价页。最便宜的入门是 WhatsApp 模块，首 5 家 RM 1,000（原价 RM 3,000）。完整搭建按范围报价：一次性开发费 + 可选月度陪跑，不按用户人数收月费。"},
+              act:{ label:{en:"See pricing →",zh:"看价目 →"}, go:"pricing" } },
+            { q:{en:"How long until we can use it?",zh:"多久能用？"},
+              a:{en:"It depends on what we find. A single module is usually 2–4 weeks. Multiple modules go in stages, and every stage is usable before the next one starts. We only put a date in writing after we've seen your actual flow — we don't promise up front.",
+                 zh:"看摸底结果。单一模块通常 2–4 周；多模块按阶段上，每个阶段都能先用起来，不用等全部做完。我们只在看过你实际流程之后才给时间，不先承诺。"} },
+            { q:{en:"Who holds the data?",zh:"数据在谁那里？"},
+              a:{en:"You do. Every cloud account is opened in your company's name and we are added as collaborators. Remove us whenever you like — the system keeps running and the data stays yours.",
+                 zh:"在你那里。所有云端帐号都开在你公司名下，我们是被加进去的协作者。你随时可以把我们移除，系统照跑，数据照在。"} },
+            { q:{en:"What if I'm not happy?",zh:"不满意怎么办？"},
+              a:{en:"We bill and sign off stage by stage. If the first stage doesn't satisfy you, you don't have to go on to the next, and work not yet started isn't charged. Full terms are in our refund policy.",
+                 zh:"分阶段付款、分阶段验收。第一个阶段交付不满意，可以不进下一阶段，未开工的部分不收费。完整条款见退款政策。"},
+              act:{ label:{en:"Refund policy →",zh:"退款政策 →"}, go:"refund" } }
+          ].map((f,i) => React.createElement("div", { key:i, className:"faq-item reveal" },
+            React.createElement("h3", null, React.createElement(T, f.q)),
+            React.createElement("p", null, React.createElement(T, f.a)),
+            f.act ? React.createElement("button", { className:"faq-link", onClick:()=>go(f.act.go) },
+              React.createElement(T, f.act.label)) : null
           ))
         )
       )
     ),
 
-    /* CTA */
+    /* 最后行动呼吁 */
     React.createElement("section", { className:"cta-band" },
       React.createElement("div", { className:"cta-box reveal" },
-        React.createElement("h2", null, React.createElement(T, { en:"Ready to Build Your Digital Stack?", zh:"准备好开始搭建了吗？" })),
-        React.createElement("p", null, React.createElement(T, {
-          en:"Start with one module, add more as you grow. Tell us what you need — we'll scope it and build it for you.",
-          zh:"从一个模块开始，随业务增长灵活扩展。告诉我们你需要什么，我们来评估和搭建。"
+        React.createElement("h2", null, React.createElement(T, {
+          en:"Today, just tell us one thing — where the money leaks",
+          zh:"今天先讲一段就好 —— 你最漏钱的那一段"
         })),
-        React.createElement("button", { className:"btn btn-white", onClick:()=>go("contact") },
-          React.createElement(T, { en:"Get a Free Consultation →", zh:"获取免费咨询 →" })
+        React.createElement("a", { className:"btn btn-wa btn-xl", href:WA_MAIN, target:"_blank", rel:"noopener" },
+          React.createElement(T, { en:"💬 Tell us where your money leaks →", zh:"💬 WhatsApp 我们，说你最漏钱的那一段 →" })
+        ),
+        React.createElement("a", { className:"btn btn-buy", href:BUY_WA_MODULE, target:"_blank", rel:"noopener" },
+          React.createElement(T, { en:"Buy the WhatsApp module · RM 1,000 →", zh:"直接买 WhatsApp 模块 · RM 1,000 →" })
+        ),
+        React.createElement("div", { className:"price-anchor" },
+          React.createElement(T, { en:"WhatsApp module", zh:"WhatsApp 模块" }),
+          " ",
+          React.createElement("s", null, "RM 3,000"),
+          " ",
+          React.createElement("strong", null, React.createElement(T, { en:"RM 1,000 for the first 5 companies", zh:"首 5 家 RM 1,000" }))
+        ),
+        React.createElement("div", { className:"guarantee" },
+          "🛡 ",
+          React.createElement(T, {
+            en:"Signed off stage by stage. Not happy with stage one? Stop there — work not started isn't charged.",
+            zh:"分阶段验收 · 第一阶段不满意可停，未开工不收费"
+          })
+        ),
+        React.createElement("a", { className:"cta-alt", href:"https://demo.mimos.digital", target:"_blank", rel:"noopener" },
+          React.createElement(T, { en:"Or try the demo first — no sign-up →", zh:"或者先玩 demo，不用注册 →" })
         )
+      )
+    ),
+
+    /* 跟随滚动的 WhatsApp 按钮 */
+    React.createElement("a", { className:"wa-float", href:WA_MAIN, target:"_blank", rel:"noopener",
+      "aria-label":"WhatsApp Mimo Solutions" },
+      React.createElement("svg", { viewBox:"0 0 24 24", width:"26", height:"26", fill:"currentColor", "aria-hidden":"true" },
+        React.createElement("path", { d:"M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06 0 1.22.89 2.39 1.01 2.56.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z" })
       )
     )
   );
@@ -1256,6 +1558,10 @@ function ServicesPage({ setPage }) {
 }
 
 /* ─── Projects Page ──────────────────────────────────── */
+const WA_MAIN = "https://wa.me/60192815191?text=" + encodeURIComponent("Hi Mimo, 我想聊一下我们公司最漏钱的那一段。");
+/* Curlec Payment Page · WhatsApp 收款模块 RM 1,000（库存限 5，售完页面自动关）*/
+const BUY_WA_MODULE = "https://rzp.io/rzp/joQ3RjF3";
+
 const PROJECTS = [
   { logo:"assets/lifencraft-logo.jpeg", emoji:"🐱", name:{en:"Life'n Craft — Craft Workshop Landing Page",zh:"Life'n Craft 乐由手作 — 手作体验班 Landing Page"}, url:"https://lifencraft.vercel.app", domain:"lifencraft.vercel.app",
     tags:[{en:"Landing Page",zh:"落地页开发"},{en:"Payment Integration",zh:"线上收款"},{en:"Content Strategy",zh:"内容策略"}],

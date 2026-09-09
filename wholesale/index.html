@@ -43,6 +43,42 @@
   .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
   .hero-note{margin-top:16px;font-size:13px;color:var(--ink3)}
 
+  /* 2026-09 强转化改版 */
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .hero-shot picture{display:block}
+  .hero-shot img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(15,23,42,.13);background:#fff}
+  .hero-shot figcaption{margin-top:10px;font-size:12px;color:var(--ink3);text-align:center}
+  .btn-sm{font-size:14px;padding:11px 18px}
+
+  .proof{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 30px;margin-top:34px}
+  .proof ul{list-style:none;margin:14px 0 0;padding:0}
+  .proof li{display:flex;gap:10px;font-size:15px;line-height:1.75;color:var(--ink2);margin-bottom:12px}
+  .proof li b{color:var(--ink)}
+  .proof .tick{color:#16a34a;font-weight:800;flex:0 0 auto}
+
+  .roadmap{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:center;margin-top:34px}
+  .roadmap picture{display:block}
+  .roadmap img{width:100%;height:auto;border-radius:18px;border:1px solid var(--line);background:#fff}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .steps li:last-child{border-bottom:none}
+  .steps .n{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--blue);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .steps b{display:block;font-size:15px}
+  .steps span.d{display:block;color:var(--ink2);font-size:13.5px;margin-top:2px}
+  .roadmap-note{margin-top:16px;font-size:12.5px;color:var(--ink3)}
+
+  .faq{display:grid;gap:12px;margin-top:30px}
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px}
+  .faq summary{font-weight:700;font-size:16px;cursor:pointer;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:'+';float:right;color:var(--blue);font-weight:800}
+  .faq details[open] summary::after{content:'–'}
+  .faq p{color:var(--ink2);font-size:14.5px;line-height:1.8;margin-top:10px}
+
+  @media(max-width:860px){
+    .hero-grid,.roadmap{grid-template-columns:1fr;gap:28px}
+  }
+
   section{padding:64px 0}
   .eyebrow{color:var(--blue);font-weight:700;font-size:14px;letter-spacing:.02em;margin-bottom:10px}
   h2{font-size:30px;letter-spacing:-.02em;font-weight:800;line-height:1.2}
@@ -112,28 +148,44 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="wrap">
-    <span class="kicker"><span data-zh>批发 · 配送 SME 数字化</span><span data-en>Wholesale · Distribution SMEs</span></span>
-    <h1>
-      <span data-zh>一张单,一套系统,走完整个批发配送。</span>
-      <span data-en>One order. One system. From quote to delivered.</span>
-    </h1>
-    <p class="lead">
-      <span data-zh>下单、信用检查、一客一价、派车、送达签收、回冲额度 —— 全挂在同一张单上。不用在六个 app 之间重打一次,不用等月底才发现漏单、超额出货、收不回签收。</span>
-      <span data-en>Order, credit check, per-customer pricing, dispatch, proof of delivery, credit settled — all on the same order. No re-keying across six apps, no discovering missed orders, over-limit shipments or unsigned deliveries at month-end.</span>
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-wa" href="https://wa.me/60192815191?text=Hi%20Mimo%2C%20I%27d%20like%20to%20know%20more%20about%20the%20wholesale%20distribution%20system" target="_blank" rel="noopener">
-        <span data-zh>💬 WhatsApp 聊聊</span><span data-en>💬 Chat on WhatsApp</span>
-      </a>
-      <a class="btn btn-ghost" href="https://demo.mimos.digital/demo/crm/flow" target="_blank" rel="noopener">
-        <span data-zh>▶ 看「一条龙」现场演示</span><span data-en>▶ See the one-flow demo</span>
-      </a>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker"><span data-zh>批发 · 配送 SME 数字化</span><span data-en>Wholesale · Distribution SMEs</span></span>
+      <h1>
+        <span data-zh>一张单,一套系统,走完整个批发配送。</span>
+        <span data-en>One order. One system. From quote to delivered.</span>
+      </h1>
+      <p class="lead">
+        <span data-zh>下单、信用检查、一客一价、派车、送达签收、回冲额度 —— 全挂在同一张单上。不用在六个 app 之间重打一次,不用等月底才发现漏单、超额出货、收不回签收。</span>
+        <span data-en>Order, credit check, per-customer pricing, dispatch, proof of delivery, credit settled — all on the same order. No re-keying across six apps, no discovering missed orders, over-limit shipments or unsigned deliveries at month-end.</span>
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/60192815191?text=Hi%20Mimo%2C%20I%27d%20like%20to%20know%20more%20about%20the%20wholesale%20distribution%20system" target="_blank" rel="noopener">
+          <span data-zh>💬 WhatsApp 我们,说你卡在哪一环 →</span><span data-en>💬 Tell us where it breaks →</span>
+        </a>
+      </div>
+      <div class="cta-row" style="margin-top:12px">
+        <a class="btn btn-ghost btn-sm" href="https://demo.mimos.digital/demo/crm/flow" target="_blank" rel="noopener">
+          <span data-zh>▶ 先看「一条龙」演示</span><span data-en>▶ See the one-flow demo first</span>
+        </a>
+      </div>
+      <p class="hero-note">
+        <span data-zh>线上 demo 直接点进去玩,无需注册。所有资料为模拟产生。</span>
+        <span data-en>Try the live demo hands-on, no sign-up. All data is simulated.</span>
+      </p>
     </div>
-    <p class="hero-note">
-      <span data-zh>线上 demo 直接点进去玩,无需注册。所有资料为模拟产生。</span>
-      <span data-en>Try the live demo hands-on, no sign-up. All data is simulated.</span>
-    </p>
+    <figure class="hero-shot" style="margin:0">
+      <picture>
+        <source srcset="../assets/wholesale-flow.webp" type="image/webp">
+        <img src="../assets/wholesale-flow.png" width="1200" height="1320" loading="eager" fetchpriority="high"
+             alt="一条龙画面:同一张单上的信用检查、派车与送达签收"
+             onerror="this.closest('.hero-shot').style.display='none'">
+      </picture>
+      <figcaption>
+        <span data-zh>取自线上 demo 的真实画面,数据为模拟</span>
+        <span data-en>A real screen from the live demo. Data is simulated.</span>
+      </figcaption>
+    </figure>
   </div>
 </div>
 
@@ -279,6 +331,76 @@
       <div class="cred">
         <span data-zh>登入帐号</span><span data-en>Login</span>: <code>demo@mimos.digital</code> · <code>demo1234</code>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 诚实证据 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow"><span data-zh>我们凭什么</span><span data-en>Why take us seriously</span></div>
+    <h2><span data-zh>还没有批发客户上线 —— 所以我们不编</span><span data-en>No wholesale client live yet — so we won't pretend</span></h2>
+    <div class="proof">
+      <ul>
+        <li><span class="tick">✓</span><span><b><span data-zh>这套「一条龙」用真实批发流程在跑,不是简报动画。</span><span data-en>The one-flow demo runs a real wholesale process, not a slideshow.</span></b> <span data-zh>你自己点进去操作,不用注册。</span><span data-en>Click in and drive it yourself, no sign-up.</span></span></li>
+        <li><span class="tick">✓</span><span><b><span data-zh>同一套底层已经在 6 个上线项目里跑。</span><span data-en>The same foundation already runs 6 live client projects.</span></b> <span data-zh>扫码存证、拍照读数、WhatsApp 通知、收款对账 —— 车队合规、榴莲出口档案、手作班报名收款、总会捐款、蜂蜜零售、休闲服务。</span><span data-en>QR evidence, photo-to-number reading, WhatsApp alerts, payment reconciliation — across fleet compliance, durian export records, class bookings, association donations, honey retail and leisure services.</span></span></li>
+        <li><span class="tick">✓</span><span><b><span data-zh>首批 3 家批发商试用招募中。</span><span data-en>Looking for the first 3 distributors.</span></b> <span data-zh>前 3 家跟我们一起把行业细节磨出来,价格另议。</span><span data-en>The first three shape the industry details with us; pricing negotiated separately.</span></span></li>
+        <li><span class="tick">✓</span><span><b><span data-zh>帐号开在你公司名下。</span><span data-en>Every cloud account is in your company's name.</span></b> <span data-zh>源代码在你自己的云端仓库,你随时把我们移除,系统照跑。</span><span data-en>The source sits in your own cloud repository. Remove us any time and it keeps running.</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 30 天路线图 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow"><span data-zh>路线图</span><span data-en>Roadmap</span></div>
+    <h2><span data-zh>上线 30 天,怎么走</span><span data-en>Live in 30 days — here's how</span></h2>
+    <p class="sub"><span data-zh>不是「签了约等三个月」。第一段接上就能用,边用边接下一段。</span><span data-en>Not "sign now, wait three months". The first step is usable immediately; the rest connects while you use it.</span></p>
+    <div class="roadmap">
+      <picture>
+        <source srcset="../assets/30days.webp" type="image/webp">
+        <img src="../assets/30days.png" width="1000" height="1333" loading="lazy"
+             alt="上线 30 天路线图:Day 0 一通 WhatsApp 到 Day 25-30 交钥匙"
+             onerror="this.closest('picture').style.display='none'">
+      </picture>
+      <div>
+        <ul class="steps">
+          <li><span class="n">01</span><span><b><span data-zh>Day 0 · 一通 WhatsApp</span><span data-en>Day 0 · One WhatsApp call</span></b><span class="d"><span data-zh>30 分钟,讲你现在一张单怎么走。你会拿到一张流程草图,指出最漏钱的那一段。</span><span data-en>30 minutes on how one order flows today. You get a flow sketch marking where the money leaks.</span></span></span></li>
+          <li><span class="n">02</span><span><b><span data-zh>Day 1–3 · 摸底与报价</span><span data-en>Day 1–3 · Look, then quote</span></b><span class="d"><span data-zh>拿你 3 张真单、客户名单、一客一价表 → 固定价、固定范围的书面报价。</span><span data-en>Three real orders, your customer list and price table → a fixed price and fixed scope, in writing.</span></span></span></li>
+          <li><span class="n">03</span><span><b><span data-zh>Day 4–10 · 下单 + 一客一价</span><span data-en>Day 4–10 · Orders + per-customer pricing</span></b><span class="d"><span data-zh>销售先用,客户不受影响。开单页面,价格自己带出来。</span><span data-en>Sales use it first; customers feel nothing. Prices fill themselves in.</span></span></span></li>
+          <li><span class="n">04</span><span><b><span data-zh>Day 11–17 · 信用检查 + 派车</span><span data-en>Day 11–17 · Credit check + dispatch</span></b><span class="d"><span data-zh>额度没过的单走不到派车,超额自动挡下,车单一起出。</span><span data-en>Over-limit orders never reach dispatch; the run sheet goes out with the order.</span></span></span></li>
+          <li><span class="n">05</span><span><b><span data-zh>Day 18–24 · 送达签收 + 回冲额度</span><span data-en>Day 18–24 · Proof of delivery + credit released</span></b><span class="d"><span data-zh>司机手机签收,照片、时间、位置挂在同一张单上,钱回冲,额度自己释放。</span><span data-en>Drivers sign on their phone; photo, time and location stay on the order. Credit releases itself.</span></span></span></li>
+          <li><span class="n">06</span><span><b><span data-zh>Day 25–30 · 跑真单一周 → 交钥匙</span><span data-en>Day 25–30 · One real week, then the keys</span></b><span class="d"><span data-zh>全流程用真单跑一周,然后帐号全部交给你,开在你公司名下。</span><span data-en>A full week on real orders, then every account is handed over in your company's name.</span></span></span></li>
+        </ul>
+        <p class="roadmap-note"><span data-zh>天数是目标不是承诺。实际排期在摸底之后写进报价单;哪一段先接由你决定,不一定照这个顺序。</span><span data-en>These days are a target, not a promise. The real schedule goes into the quote after we've looked; you choose which step goes first.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow"><span data-zh>你可能会想问</span><span data-en>Before you ask</span></div>
+    <h2><span data-zh>每个批发老板都会问的四件事</span><span data-en>Four things every distributor asks</span></h2>
+    <div class="faq">
+      <details>
+        <summary><span data-zh>要换掉我现在的系统吗?</span><span data-en>Do I have to replace my current system?</span></summary>
+        <p><span data-zh>不用。先接最漏钱的那一段,其余照旧。你现在的 Excel、会计软件继续用,我们只把订单这条线接起来;跑通了再决定要不要接下一段。</span><span data-en>No. We connect the leakiest step first and leave the rest alone. Your Excel and accounting software keep running; once the order line works, you decide whether to connect the next step.</span></p>
+      </details>
+      <details>
+        <summary><span data-zh>司机和仓库的人会用吗?</span><span data-en>Will the drivers and warehouse staff actually use it?</span></summary>
+        <p><span data-zh>司机端只有大按钮:接单 → 到场 → 拍照签收。不用打字,不用装 app,手机开网址就能用,中 / 英 / 马来文。仓库那边扫码即可,不会打字也没关系。</span><span data-en>The driver screen is big buttons only: accept → arrive → photo sign-off. No typing, no app install — it opens in a phone browser, in Chinese, English or Malay. The warehouse just scans.</span></p>
+      </details>
+      <details>
+        <summary><span data-zh>多少钱?</span><span data-en>How much?</span></summary>
+        <p><span data-zh>按范围报价:一次性开发费 + 可选月度陪跑,不按用户人数收月费。首批 3 家试用商价格另议。摸底之后才给数字 —— 我们不先报价再改。</span><span data-en>Quoted by scope: a one-time build fee plus optional monthly support, never priced per user. Pricing for the first three pilots is negotiated separately. We quote after looking, not before.</span></p>
+      </details>
+      <details>
+        <summary><span data-zh>数据是谁的?</span><span data-en>Who owns the data?</span></summary>
+        <p><span data-zh>你的。云端帐号开在你公司名下,我们是被加进去的协作者,源代码在你自己的仓库里。你随时可以导出、随时可以把我们移除,系统照跑。完整条款见 <a href="https://mimos.digital/refund" style="color:var(--blue)">退款与验收政策</a>。</span><span data-en>Yours. Cloud accounts are opened in your company's name with us added as collaborators, and the source sits in your repository. Export any time, remove us any time, and it keeps running. Full terms in our <a href="https://mimos.digital/refund" style="color:var(--blue)">refund and acceptance policy</a>.</span></p>
+      </details>
     </div>
   </div>
 </section>
