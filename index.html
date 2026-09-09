@@ -310,6 +310,8 @@
   .hero h1 {
     font-size: clamp(32px,3.9vw,42px); line-height: 1.14;
     margin-bottom: 22px;
+    text-wrap: balance;      /* 支援的浏览器自动平衡行长,避免尾行孤字 */
+    overflow-wrap: normal;
   }
   .hero-sub { font-size: 17px; color: var(--txt2); line-height: 1.75; margin-bottom: 36px; max-width: 460px; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -1100,7 +1102,7 @@ function HomePage({ setPage }) {
             React.createElement(T, { en:"For Malaysian SMEs with 10–50 staff", zh:"给马来西亚 10–50 人的中小企业老板" })
           ),
           React.createElement("h1", null,
-            React.createElement(T, { en:"Your WhatsApp and Excel,", zh:"WhatsApp 和 Excel 上的生意，" }),
+            React.createElement(T, { en:"Your WhatsApp and Excel,", zh:"你的 WhatsApp 和 Excel，" }),
             React.createElement("br"),
             React.createElement("span", { className:"grad-text" },
               React.createElement(T, { en:"now one system", zh:"接成一套系统" })
