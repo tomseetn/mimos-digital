@@ -361,6 +361,8 @@
 
   .pain-section { padding: 88px 24px; background: var(--soft, #F8FAFC); }
   .pain-inner { max-width: 1000px; margin: 0 auto; }
+  /* 只给读屏器与搜寻引擎，视觉上不占位 */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   .pain-figure { margin: 0; max-width: 860px; margin-inline: auto; }
   .pain-figure picture { display: block; }
   .pain-figure img { display: block; width: 100%; height: auto; border-radius: 16px; }
@@ -1166,6 +1168,7 @@ const SVCS = [
 function HomePage({ setPage }) {
   useReveal();
   const openAssessment = useOpenAssessment();
+  const { lang } = useLang();
   const go = id => { setPage(id); window.scrollTo(0,0); };
   const showcase = [
     { img:"assets/telematics-macbook", href:"https://demo.mimos.digital/demo/logistics", w:"1000", h:"625",
@@ -1255,24 +1258,20 @@ function HomePage({ setPage }) {
     /* 痛点 + 方案（同屏并列）*/
     React.createElement("section", { className:"pain-section" },
       React.createElement("div", { className:"pain-inner" },
-        React.createElement("div", { className:"section-header reveal", style:{marginBottom:40} },
-          React.createElement("div", { className:"section-chip" }, React.createElement(T, { en:"Sound familiar?", zh:"是不是也这样？" })),
-          React.createElement("h2", { className:"section-title" },
-            React.createElement(T, { en:"The money doesn't leak from lack of sales", zh:"钱不是漏在没生意" })
-          ),
-          React.createElement("p", { className:"section-sub" },
-            React.createElement(T, {
-              en:"It leaks where nobody followed up, nobody was reminded, nothing was reconciled.",
-              zh:"是漏在没跟进、没提醒、没对上。"
-            })
-          )
+        /* 标题与副标已经印在图里了，页面上不再重复；保留一个只给读屏器与 SEO 的 h2 */
+        React.createElement("h2", { className:"sr-only" },
+          React.createElement(T, { en:"Sales aren't the problem — missed follow-ups, late reminders, unmatched payments",
+                                   zh:"钱不是漏在没生意，是漏在没跟进、没提醒、没对上" })
         ),
         React.createElement("figure", { className:"pain-figure reveal" },
           React.createElement("picture", null,
-            React.createElement("source", { srcSet:"assets/problem-and-solutions.webp", type:"image/webp" }),
+            React.createElement("source", { srcSet:"assets/pain-solution-"+(lang==="zh"?"zh":"en")+".webp", type:"image/webp" }),
             React.createElement("img", {
-              src:"assets/problem-and-solutions.png", width:"1122", height:"1402", loading:"lazy",
-              alt:"三组对照：① 月底才发现路税过期 → 到期前 30 天提醒、检查没做暂停派车；② 客户还在不在要问一圈 → 活跃、缴费、dealer 佣金集中查看；③ 白天接报名、晚上对账 → WhatsApp 报名直接开单、收款自动对上",
+              src:"assets/pain-solution-"+(lang==="zh"?"zh":"en")+".png",
+              width:"1122", height:"1402", loading:"lazy",
+              alt:tx(lang,
+                "Three before-and-after pairs: expired road tax found at month end versus an alert 30 days ahead; asking around whether a customer is still active versus activity, payments and dealer commission in one place; taking bookings by day and matching payments by night versus WhatsApp bookings opening orders with payments matched.",
+                "三组对照：月底才发现路税过期，对上到期前 30 天就提醒；客户还在不在要问一圈，对上活跃、缴费、dealer 佣金集中查看；白天接报名、晚上对账，对上 WhatsApp 报名直接开单、收款自动对上。"),
               onError:e=>{ e.currentTarget.closest(".pain-figure").style.display="none"; }
             })
           )
