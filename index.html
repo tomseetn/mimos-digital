@@ -155,11 +155,26 @@
     display: inline-flex; align-items: center; gap: 6px;
     padding: 5px 14px; border-radius: 20px;
     background: var(--blue-lt); color: var(--blue);
-    font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    /* 字阶：H1 42 > H2 34 > h3 18 > body 17 > 眉题 12。眉题原本 11px 太小、与 42px 标题落差过大 */
+    font-size: 12px; font-weight: 700; letter-spacing: .04em;
     margin-bottom: 14px;
   }
-  .section-title { font-size: clamp(26px,4vw,42px); margin-bottom: 14px; }
-  .section-sub { font-size: 16px; color: var(--txt2); line-height: 1.75; max-width: 520px; }
+  /* 区块标题收到 34px，让首屏 H1（42px）稳坐全页最大 */
+  .section-title { font-size: clamp(24px,3vw,34px); line-height: 1.25; margin-bottom: 12px; }
+  .section-sub { font-size: 17px; color: var(--txt2); line-height: 1.7; max-width: 560px; }
+  /* 卡片标题统一 18px / 600（Mimo Design System §3）*/
+  .svc-card h3, .voice-case h3, .faq-item h3, .getbox h3 { font-size: 18px; font-weight: 600; }
+
+  /* 模块卡编号 + hover 高亮（学 ray-realms：静止灰、hover 变主色 + 卡片浮起）*/
+  .svc-card { position: relative; }
+  .svc-num {
+    position: absolute; top: 14px; right: 18px;
+    font-size: 26px; font-weight: 800; line-height: 1;
+    color: var(--txt3); opacity: .35; transition: color .2s, opacity .2s;
+    font-variant-numeric: tabular-nums; pointer-events: none;
+  }
+  .svc-card:hover { border-color: var(--blue); box-shadow: 0 10px 28px rgba(29,91,232,.12); }
+  .svc-card:hover .svc-num { color: var(--blue); opacity: 1; }
 
   /* ── Buttons ── */
   .btn {
@@ -346,6 +361,9 @@
 
   .pain-section { padding: 88px 24px; background: var(--soft, #F8FAFC); }
   .pain-inner { max-width: 1000px; margin: 0 auto; }
+  .pain-figure { margin: 0; max-width: 860px; margin-inline: auto; }
+  .pain-figure picture { display: block; }
+  .pain-figure img { display: block; width: 100%; height: auto; border-radius: 16px; }
   .pain-list { display: flex; flex-direction: column; gap: 18px; }
   .pain-row { display: grid; grid-template-columns: 1.15fr 1fr; gap: 0; background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 16px; overflow: hidden; }
   .pain-cell { padding: 26px 28px; }
@@ -433,8 +451,11 @@
   .faq-link { background: none; border: none; padding: 0; margin-top: 10px; font-size: 13px; font-weight: 700; color: #2563EB; cursor: pointer; }
   .faq-link:hover { text-decoration: underline; }
 
-  .btn-buy { display: inline-flex; margin-top: 12px; background: #F59E0B; color: #fff; font-size: 15px; padding: 13px 24px; }
-  .btn-buy:hover { background: #d97706; transform: translateY(-1px); }
+  /* 次要钮：白底深字。原本用橙色 —— 那是 Myycar 的品牌色，而且语义层里橙 = warn，
+     放在 Mimo 页上等于「一色两义」，违反 Design System §2.1 与 Rule 1 */
+  .btn-buy { background: #fff; color: var(--txt); font-size: 15px; padding: 14px 24px; box-shadow: var(--sh-sm); }
+  .btn-buy:hover { background: #F1F5F9; transform: translateY(-1px); }
+  .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 4px; }
   .price-anchor { font-size: 15px; color: rgba(255,255,255,.9); margin-top: 18px; }
   .price-anchor s { opacity: .6; }
   .price-anchor strong { color: #fff; }
@@ -1239,38 +1260,20 @@ function HomePage({ setPage }) {
           ),
           React.createElement("p", { className:"section-sub" },
             React.createElement(T, {
-              en:"Three things Malaysian bosses told us this year.",
-              zh:"今年三位老板亲口跟我们说的话。"
+              en:"It leaks where nobody followed up, nobody was reminded, nothing was reconciled.",
+              zh:"是漏在没跟进、没提醒、没对上。"
             })
           )
         ),
-        React.createElement("div", { className:"pain-list" },
-          [
-            { quote:{ en:"“Driver forms come in, and I only find out at month end which lorry's road tax expired or which inspection was skipped. I'm always patching after the fact.”",
-                      zh:"「司机的表格交上来，我要等到月底才知道哪台车路税过期、哪张检查没做。出事了才补，永远慢一步。」" },
-              who:{ en:"— Leisure fleet owner · 30+ vehicles", zh:"—— 休闲车队老板 · 30+ 台车" },
-              fix:{ en:"Expiry alerts land on WhatsApp 30 days ahead. Inspection not done, the vehicle can't be dispatched.",
-                    zh:"证件到期 30 天自动 WhatsApp 提醒；检查没做，车子派不出去" } },
-            { quote:{ en:"“Hundreds of customers in the system, and I can't tell who's still active this month and who's already gone. I ask sales, sales asks the dealer.”",
-                      zh:"「系统里几百个客户，我不知道这个月谁还在跑、谁已经跑掉了。要问回销售，销售也要问回 dealer。」" },
-              who:{ en:"— Auto-parts distributor · two-state sales team", zh:"—— 汽配经销商老板 · 双州销售团队" },
-              fix:{ en:"Active and paid status calculates itself. Dealer commission comes out as one table at month end.",
-                    zh:"每个客户的活跃 / 缴费状态自己会算，dealer 佣金月底一张表" } },
-            { quote:{ en:"“Sign-ups come through WhatsApp, money comes through another app, and I reconcile them myself every night. A few more students and I can't keep up.”",
-                      zh:"「报名从 WhatsApp 进来，钱从另一个 app 进来，我每天晚上自己对一遍。人多一点就对不完。」" },
-              who:{ en:"— Craft studio owner", zh:"—— 手作教室主理人" },
-              fix:{ en:"A WhatsApp sign-up opens the order directly, payment matches itself — no more reconciling at night.",
-                    zh:"WhatsApp 报名直接开单，收款自动对上，不用晚上再对一次" } }
-          ].map((r,i) => React.createElement("div", { key:i, className:"pain-row reveal" },
-            React.createElement("div", { className:"pain-cell" },
-              React.createElement("p", { className:"pain-quote" }, React.createElement(T, r.quote)),
-              React.createElement("div", { className:"pain-who" }, React.createElement(T, r.who))
-            ),
-            React.createElement("div", { className:"fix-cell" },
-              React.createElement("span", { className:"fix-tag" }, React.createElement(T, { en:"What we do", zh:"我们的做法" })),
-              React.createElement("p", null, React.createElement(T, r.fix))
-            )
-          ))
+        React.createElement("figure", { className:"pain-figure reveal" },
+          React.createElement("picture", null,
+            React.createElement("source", { srcSet:"assets/problem-and-solutions.webp", type:"image/webp" }),
+            React.createElement("img", {
+              src:"assets/problem-and-solutions.png", width:"1122", height:"1402", loading:"lazy",
+              alt:"三组对照：① 月底才发现路税过期 → 到期前 30 天提醒、检查没做暂停派车；② 客户还在不在要问一圈 → 活跃、缴费、dealer 佣金集中查看；③ 白天接报名、晚上对账 → WhatsApp 报名直接开单、收款自动对上",
+              onError:e=>{ e.currentTarget.closest(".pain-figure").style.display="none"; }
+            })
+          )
         ),
         React.createElement("div", { style:{textAlign:"center",marginTop:36} },
           React.createElement("button", { className:"hero-assess-link", onClick:openAssessment },
@@ -1360,6 +1363,7 @@ function HomePage({ setPage }) {
         ),
         React.createElement("div", { className:"svc-grid" },
           SVCS.map((s,i) => React.createElement("div", { key:i, className:"svc-card reveal", style:{transitionDelay:i*.07+"s"} },
+            React.createElement("span", { className:"svc-num", "aria-hidden":"true" }, String(i+1).padStart(2,"0")),
             React.createElement("div", { className:"svc-ico", style:{background:s.bg, fontSize:"22px"} }, s.ico),
             React.createElement("h3", null,
               React.createElement(T, { en:s.en, zh:s.zh }),
@@ -1480,11 +1484,13 @@ function HomePage({ setPage }) {
           en:"Today, just tell us one thing — where the money leaks",
           zh:"今天先讲一段就好 —— 你最漏钱的那一段"
         })),
-        React.createElement("a", { className:"btn btn-wa btn-xl", href:WA_MAIN, target:"_blank", rel:"noopener" },
-          React.createElement(T, { en:"💬 Tell us where your money leaks →", zh:"💬 WhatsApp 我们，说你最漏钱的那一段 →" })
-        ),
-        React.createElement("a", { className:"btn btn-buy", href:BUY_WA_MODULE, target:"_blank", rel:"noopener" },
-          React.createElement(T, { en:"Buy the WhatsApp module · RM 1,000 →", zh:"直接买 WhatsApp 模块 · RM 1,000 →" })
+        React.createElement("div", { className:"cta-actions" },
+          React.createElement("a", { className:"btn btn-wa btn-xl", href:WA_MAIN, target:"_blank", rel:"noopener" },
+            React.createElement(T, { en:"💬 Tell us where your money leaks →", zh:"💬 WhatsApp 我们，说你最漏钱的那一段 →" })
+          ),
+          React.createElement("a", { className:"btn btn-buy", href:BUY_WA_MODULE, target:"_blank", rel:"noopener" },
+            React.createElement(T, { en:"Buy the WhatsApp module · RM 1,000 →", zh:"直接买 WhatsApp 模块 · RM 1,000 →" })
+          )
         ),
         React.createElement("div", { className:"price-anchor" },
           React.createElement(T, { en:"WhatsApp module", zh:"WhatsApp 模块" }),
