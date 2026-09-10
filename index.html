@@ -940,9 +940,30 @@
 
 /* ─── i18n ─────────────────────────────────────────── */
 const LangCtx = React.createContext({ lang:"en", setLang:()=>{} });
+
+/* 语言决定顺序：?lang= → localStorage → 浏览器语言 → en。
+   在模块层跑一次（不是在 render 里），因为 App 的 pushState 会把 query string 擦掉。 */
+const INITIAL_LANG = (function () {
+  var v = null;
+  try {
+    var q = new URLSearchParams(window.location.search).get("lang");
+    if (q) v = /^zh/i.test(q) ? "zh" : "en";
+    if (!v) v = localStorage.getItem("ms-lang");
+    if (!v) v = /^zh/i.test(navigator.language || "") ? "zh" : "en";
+    localStorage.setItem("ms-lang", v);
+  } catch (e) { v = "en"; }
+  v = (v === "zh") ? "zh" : "en";
+  try { document.documentElement.lang = (v === "zh") ? "zh-Hans" : "en"; } catch (e) {}
+  return v;
+})();
+
 function LanguageProvider({ children }) {
-  const [lang, setL] = React.useState(() => localStorage.getItem("ms-lang") || "en");
-  const setLang = v => { setL(v); localStorage.setItem("ms-lang", v); };
+  const [lang, setL] = React.useState(INITIAL_LANG);
+  const setLang = v => {
+    setL(v);
+    try { localStorage.setItem("ms-lang", v); } catch (e) {}
+    try { document.documentElement.lang = (v === "zh") ? "zh-Hans" : "en"; } catch (e) {}
+  };
   return React.createElement(LangCtx.Provider, { value:{lang,setLang} }, children);
 }
 function useLang() { return React.useContext(LangCtx); }
