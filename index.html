@@ -428,9 +428,11 @@
   .voice-quote p { font-size: 19px; line-height: 1.85; color: var(--txt); margin: 0 0 14px; }
   .voice-quote footer { font-size: 13px; font-weight: 700; color: var(--txt2); }
   .voice-cases { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-  .voice-case { background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 14px; padding: 24px; }
-  .voice-case h3 { font-size: 16px; margin: 0 0 10px; }
-  .voice-case p { font-size: 14px; line-height: 1.75; color: var(--txt2); margin: 0; }
+  /* 见证卡沿用 /projects 页的 .proj-card 外观（logo 头 + 标签 + 名称 + 网址），只有描述不同 */
+  .voice-case { padding: 0; }
+  .voice-case .proj-body { padding: 22px; }
+  .voice-case h3 { font-size: 18px; font-weight: 700; margin: 0 0 9px; }
+  .voice-case p { font-size: 14px; line-height: 1.75; color: var(--txt2); margin: 0 0 14px; }
 
   .steps-list li { align-items: flex-start; }
   .steps-list .step-n { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: #2563EB; color: #fff; font-size: 13px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; margin-right: 4px; }
@@ -1329,19 +1331,40 @@ function HomePage({ setPage }) {
         ),
         React.createElement("div", { className:"voice-cases" },
           [
-            { n:{en:"MJC Leisure",zh:"MJC Leisure"},
+            { domain:"mjcleisure.com",
               d:{en:"Fleet safety and compliance: scan a QR to run the check, photograph the odometer and the number is read for you, Lampiran A2 / B / C exported in one click, expiry warnings by colour block. Live and running daily.",
                  zh:"车队安全与合规：手机扫 QR 做检查、拍里程表照片自动读数、Lampiran A2 / B / C 一键导出、证件到期色块预警。已上线，日常在跑"} },
-            { n:{en:"DurianLab",zh:"DurianLab"},
+            { domain:"durianlab.com.my",
               d:{en:"Orchard, varietal and provenance records for durian export, plus the public site — three orchards and eight varieties live and searchable.",
                  zh:"榴莲出口的园区、品种与产地档案系统 + 官网，三个园区、八个品种上线可查"} },
-            { n:{en:"Life'n Craft",zh:"Life'n Craft 乐由手作"},
+            { domain:"lifencraft.vercel.app",
               d:{en:"Class sign-ups and payments: WhatsApp enquiry → online booking → automatic payment → schedule reminder, all on one thread.",
                  zh:"手作班报名与收款：WhatsApp 询问 → 线上报名 → 自动收款 → 排课提醒，一条线走完"} }
-          ].map((c,i) => React.createElement("div", { key:i, className:"voice-case reveal", style:{transitionDelay:i*.07+"s"} },
-            React.createElement("h3", null, React.createElement(T, c.n)),
-            React.createElement("p", null, React.createElement(T, c.d))
-          ))
+          ].map((c,i) => {
+            /* logo / 标签 / 名称 / 网址一律取自 PROJECTS，跟 /projects 页同一份资料；只有描述用这里的 */
+            const p = PROJECTS.find(x => x.domain === c.domain);
+            if (!p) return null;
+            return React.createElement("div", { key:i, className:"proj-card voice-case reveal", style:{transitionDelay:i*.07+"s"} },
+              React.createElement("div", { className:"proj-head", style:{ background:p.bg, minHeight:"120px" } },
+                p.logo
+                  ? React.createElement("img", { src:p.logo, alt:"", loading:"lazy", style:{maxHeight:"64px",maxWidth:"78%",objectFit:"contain"},
+                      onError:e=>{ e.currentTarget.style.display="none"; } })
+                  : React.createElement("span", { style:{ color:p.color, fontSize:"48px", fontWeight:900 } }, p.emoji)
+              ),
+              React.createElement("div", { className:"proj-body" },
+                React.createElement("div", { style:{display:"flex",flexWrap:"wrap",gap:"6px",marginBottom:"12px"} },
+                  p.tags.slice(0,3).map((tag,j) => React.createElement("span", { key:j, className:"proj-chip", style:{background:p.bg,color:p.color,marginBottom:0} },
+                    React.createElement(T, tag)
+                  ))
+                ),
+                React.createElement("h3", null, React.createElement(T, p.name)),
+                React.createElement("p", null, React.createElement(T, c.d)),
+                React.createElement("a", { href:p.url, target:"_blank", rel:"noreferrer", className:"proj-link", style:{color:p.color} },
+                  p.domain, " ", React.createElement(ExtIcon)
+                )
+              )
+            );
+          })
         )
       )
     ),
